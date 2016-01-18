@@ -10,6 +10,10 @@ class Nail < ActiveRecord::Base
     dabs = self.dabs.merge user.dabs
     dabs = dabs.order('created_at DESC').limit(10)
 
-    dabs.map(&:milliseconds).sum / dabs.count
+    if dabs.any?
+      dabs.map(&:milliseconds).sum / dabs.count
+    else
+      0
+    end
   end
 end
