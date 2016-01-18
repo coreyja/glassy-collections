@@ -78,4 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'timer.glassyauctions.com' }
+
+  Rails.application.config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  Rails.application.config.secret_token = ENV["SECRET_TOKEN"]
 end
