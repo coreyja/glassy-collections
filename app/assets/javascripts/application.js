@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require moment.min
+//= require howler.min
 //= require_tree .

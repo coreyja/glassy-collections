@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :nails, only: %i(new create index destroy)
+
+  resources :dabs, only: %i(new create)
 end
