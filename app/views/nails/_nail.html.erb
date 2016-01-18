@@ -1,0 +1,9 @@
+<div class='nail'>
+  <p class='name'><%= nail.name %></p>
+  <% if nail.description.present? %>
+    <p class='description'>
+      <%= nail.description %>
+    </p>
+  <% end %>
+  <%= link_to 'Delete Nail', nail_path(nail), method: :delete %>
+</end>

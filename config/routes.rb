@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   root 'home#index'
+
+  resources :nails, only: %i(new create index destroy)
 end
