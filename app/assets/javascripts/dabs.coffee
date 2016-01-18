@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 bell = new Howl({
-  urls: ['https://s3.amazonaws.com/glassy-timers/sounds/bell.mp3']
+  urls: ['https://s3.amazonaws.com/glassy-timers/sounds/bell.webm', 'https://s3.amazonaws.com/glassy-timers/sounds/bell.ogg', 'https://s3.amazonaws.com/glassy-timers/sounds/bell.mp3']
 })
 
 refresh_seconds = ->
@@ -17,7 +17,7 @@ refresh_seconds = ->
     setTimeout(refresh_seconds, 10)
   else
     seconds.text(0)
-    bell.play();
+    bell.play()
     $('a.take-a-dab').addClass('done')
 
 
