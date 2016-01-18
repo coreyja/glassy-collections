@@ -18,6 +18,7 @@ refresh_seconds = ->
   else
     seconds.text(0)
     bell.play();
+    $('a.take-a-dab').addClass('done')
 
 
 root = exports ? this
