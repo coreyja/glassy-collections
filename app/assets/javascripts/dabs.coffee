@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 bell = new Howl({
-  urls: ['assets/bell.mp3']
+  urls: ['https://s3.amazonaws.com/glassy-timers/sounds/bell.mp3']
 })
 
 refresh_seconds = ->
