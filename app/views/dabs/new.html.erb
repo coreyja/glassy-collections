@@ -1,7 +1,10 @@
 <%= simple_form_for @dab do |f| %>
   <%= f.input :user_id, as: :hidden %>
   <%= f.input :nail_id, collection: current_user.nails %>
-  <%= f.input :milliseconds %>
+  <%= f.input :milliseconds, as: :hidden %>
+  <%= f.input :seconds %>
+
+  <%= render partial: 'nail_average', collection: current_user.nails, as: :nail %>
 
   <%= f.submit :submit %>
 <% end %>

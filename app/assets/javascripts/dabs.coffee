@@ -23,3 +23,15 @@ refresh_seconds = ->
 root = exports ? this
 root.start_dab_timer = ->
   refresh_seconds()
+
+$('html').on 'change', 'form.new_dab select#dab_nail_id', (event)->
+  select = $('form.new_dab select#dab_nail_id')
+  avg = $('form.new_dab input#nail_avg_' + select.val()).val()
+  avg = parseFloat(avg)
+  $('form.new_dab input#dab_seconds').val(avg / 1000.0)
+  $('form.new_dab input#dab_seconds').change()
+
+$('html').on 'change', 'form.new_dab input#dab_seconds', (event)->
+  seconds = $('form.new_dab input#dab_seconds')
+  milliseconds = $('form.new_dab input#dab_milliseconds')
+  milliseconds.val(parseFloat(seconds.val())*1000)
