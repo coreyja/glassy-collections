@@ -15,6 +15,13 @@ class DabsController < ApplicationController
     end
   end
 
+  def index
+    @dabs = current_user.nails.map do |nail|
+      { nail => nail.dabs.merge(current_user.dabs).order('created_at DESC').limit(10) }
+    end.reduce({}, :merge)
+    @nails = current_user.nails
+  end
+
   private
 
   def dab

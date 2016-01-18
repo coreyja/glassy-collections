@@ -17,4 +17,6 @@ class Dab < ActiveRecord::Base
   def ends_at
     created_at + seconds
   end
+  alias_method :dabbed_at, :ends_at
+
 end
