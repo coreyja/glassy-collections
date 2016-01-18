@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118045553) do
+ActiveRecord::Schema.define(version: 20160118052059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dabs", force: :cascade do |t|
+    t.integer  "user_id",      null: false
+    t.integer  "nail_id",      null: false
+    t.integer  "milliseconds", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "dabs", ["nail_id"], name: "index_dabs_on_nail_id", using: :btree
+  add_index "dabs", ["user_id"], name: "index_dabs_on_user_id", using: :btree
 
   create_table "nails", force: :cascade do |t|
     t.string   "name",        null: false
@@ -38,5 +49,7 @@ ActiveRecord::Schema.define(version: 20160118045553) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "dabs", "nails"
+  add_foreign_key "dabs", "users"
   add_foreign_key "nails", "users"
 end
