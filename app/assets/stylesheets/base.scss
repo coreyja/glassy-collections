@@ -1,0 +1,30 @@
+html {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-width: 100%;
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  div {
+    flex: 0 0 auto;
+
+    &.page-content {
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  
+
+  div {
+    flex: 1 0 auto;
+  }
+}

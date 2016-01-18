@@ -9,3 +9,12 @@ a.take-a-dab {
     display: inline;
   }
 }
+
+.dab {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    flex: 1 0 auto;
+  }
+}

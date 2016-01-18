@@ -6,6 +6,17 @@ bell = new Howl({
   urls: ['https://s3.amazonaws.com/glassy-timers/sounds/bell.webm', 'https://s3.amazonaws.com/glassy-timers/sounds/bell.ogg', 'https://s3.amazonaws.com/glassy-timers/sounds/bell.mp3']
 })
 
+reset_background = ->
+  $('html').css('background', 'white');
+
+timer_finished = ->
+  seconds = $('.dab .seconds')
+  seconds.text(0)
+  bell.play()
+  $('a.take-a-dab').addClass('done')
+  $('html').css('background', 'red')
+  setTimeout(reset_background, 5000)
+
 refresh_seconds = ->
   seconds = $('.dab .seconds')
   started_at = moment.unix(parseFloat($('.dab').attr('data-created-at-time')))
@@ -13,17 +24,19 @@ refresh_seconds = ->
   now = moment()
   remaining_milli = (ends_at - now)
   if remaining_milli > 0
-    seconds.text(remaining_milli / 1000.0)
-    setTimeout(refresh_seconds, 10)
+    seconds.text((remaining_milli / 1000.0).toFixed(1))
+    setTimeout(refresh_seconds, 50)
   else
-    seconds.text(0)
-    bell.play()
-    $('a.take-a-dab').addClass('done')
+    timer_finished()
 
 
 root = exports ? this
 root.start_dab_timer = ->
   refresh_seconds()
+
+root.set_seconds_size = ->
+  fontSize = parseInt($('.page-content .seconds').height())+"px";
+  $('.page-content .seconds').css('font-size', fontSize);
 
 $('html').on 'change', 'form.new_dab select#dab_nail_id', (event)->
   select = $('form.new_dab select#dab_nail_id')
