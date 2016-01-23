@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
   has_many :dabs
 
   has_many :pendants
+  has_many :pendant_records
+
+  has_many :photos
 end

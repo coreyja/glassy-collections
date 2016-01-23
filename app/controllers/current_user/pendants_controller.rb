@@ -1,4 +1,6 @@
 class CurrentUser::PendantsController < ApplicationController
+  before_action :require_login
+
   def index
     @pendants = current_user.pendants
   end
