@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :nails, only: %i(new create index destroy)
 
   resources :dabs, only: %i(new create index)
+
+  resources :artists, only: %i(new create index)
 end
