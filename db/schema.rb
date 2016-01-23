@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123211203) do
+ActiveRecord::Schema.define(version: 20160123211434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20160123211203) do
 
   add_index "nails", ["user_id"], name: "index_nails_on_user_id", using: :btree
 
+  create_table "pendants", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "artist_id"
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pendants", ["artist_id"], name: "index_pendants_on_artist_id", using: :btree
+  add_index "pendants", ["user_id"], name: "index_pendants_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -59,4 +70,6 @@ ActiveRecord::Schema.define(version: 20160123211203) do
   add_foreign_key "dabs", "nails"
   add_foreign_key "dabs", "users"
   add_foreign_key "nails", "users"
+  add_foreign_key "pendants", "artists"
+  add_foreign_key "pendants", "users"
 end
