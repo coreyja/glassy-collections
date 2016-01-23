@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
 
   has_many :nails
   has_many :dabs
+
+  has_many :pendants
 end
