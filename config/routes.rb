@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :dabs, only: %i(new create index)
 
   resources :artists, only: %i(new create index)
+
+  namespace :user, module: :current_user do
+    resources :pendants, only: %i(new create index)
+  end
 end
