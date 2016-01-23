@@ -1,2 +1,0 @@
-module CurrentUser::PendantRecordsHelper
-end
