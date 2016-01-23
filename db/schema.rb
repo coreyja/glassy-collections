@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123212233) do
+ActiveRecord::Schema.define(version: 20160123213851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 20160123212233) do
   end
 
   add_index "nails", ["user_id"], name: "index_nails_on_user_id", using: :btree
+
+  create_table "pendant_records", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "pendant_id", null: false
+    t.integer  "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pendant_records", ["created_at"], name: "index_pendant_records_on_created_at", using: :btree
+  add_index "pendant_records", ["pendant_id"], name: "index_pendant_records_on_pendant_id", using: :btree
+  add_index "pendant_records", ["photo_id"], name: "index_pendant_records_on_photo_id", using: :btree
+  add_index "pendant_records", ["user_id"], name: "index_pendant_records_on_user_id", using: :btree
 
   create_table "pendants", force: :cascade do |t|
     t.string   "name",       null: false
@@ -82,6 +95,9 @@ ActiveRecord::Schema.define(version: 20160123212233) do
   add_foreign_key "dabs", "nails"
   add_foreign_key "dabs", "users"
   add_foreign_key "nails", "users"
+  add_foreign_key "pendant_records", "pendants"
+  add_foreign_key "pendant_records", "photos"
+  add_foreign_key "pendant_records", "users"
   add_foreign_key "pendants", "artists"
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
