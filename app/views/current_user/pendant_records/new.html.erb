@@ -1,0 +1,6 @@
+<%= simple_form_for @pendant_record, url: user_pendant_records_path do |f| %>
+  <%= f.input :pendant_id, collection: @pendants, label_method: ->(pendant) { "#{pendant.name} - #{pendant.artist.name}"} %>
+  <%= f.input :photo, as: :camera %>
+
+  <%= f.submit %>
+<% end %>

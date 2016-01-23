@@ -38,6 +38,12 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     ast (2.2.0)
+    aws-sdk (2.2.13)
+      aws-sdk-resources (= 2.2.13)
+    aws-sdk-core (2.2.13)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.2.13)
+      aws-sdk-core (= 2.2.13)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -47,6 +53,10 @@ GEM
       bcrypt
       email_validator (~> 1.4)
       rails (>= 3.1)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -68,6 +78,7 @@ GEM
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jmespath (1.1.3)
     jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -79,11 +90,18 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
+    mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    paperclip (4.3.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     parser (2.3.0.1)
       ast (~> 2.2)
     pg (0.18.4)
@@ -194,11 +212,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   byebug
   clearance
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  paperclip (~> 4.3)
   pg
   pry-rails
   rails (= 4.2.5)

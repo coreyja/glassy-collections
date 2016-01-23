@@ -77,8 +77,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'timer.glassyauctions.com' }
+  config.action_mailer.default_url_options = { host: 'collections.glassyauctions.com' }
 
   Rails.application.config.secret_key_base = ENV['SECRET_KEY_BASE']
   Rails.application.config.secret_token = ENV['SECRET_TOKEN']
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    path: '/paperclip-uploads:url',
+    url: '/:class/:hash/:style.:extension',
+    hash_secret: ENV['PAPERCLIP_SECRET']
+  }
 end

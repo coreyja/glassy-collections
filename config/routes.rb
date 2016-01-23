@@ -18,4 +18,11 @@ Rails.application.routes.draw do
   resources :nails, only: %i(new create index destroy)
 
   resources :dabs, only: %i(new create index)
+
+  resources :artists, only: %i(new create index)
+
+  namespace :user, module: :current_user do
+    resources :pendants, only: %i(new create index)
+    resources :pendant_records, only: %i(new create index)
+  end
 end

@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'vendor/**/*'
+    - 'db/migrate/**/*'
     - 'db/schema.rb'
 
 Metrics/LineLength:

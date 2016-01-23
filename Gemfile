@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'paperclip', '~> 4.3'
+gem 'aws-sdk'
+
 gem 'clearance'
 
 gem 'simple_form'
