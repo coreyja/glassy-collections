@@ -1,3 +1,14 @@
-<div class="artists">
-  <%= render partial: 'artist', collection: @artists %>
+<div class="artists table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Instram Username</th>
+        <th># of Pendants</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'artist', collection: @artists %>
+    </tbody>
+  </table>
 </div>

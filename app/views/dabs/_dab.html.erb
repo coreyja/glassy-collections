@@ -1,8 +1,4 @@
-<div class='dab'>
-  <p>
-    Dabbed at: <%= dab.dabbed_at %> (<%= time_ago_in_words(dab.dabbed_at) %> ago)
-  </p>
-  <p>
-    Seconds: <%= dab.seconds %>
-  </p>
-</div>
+<tr>
+  <td><%= dab.dabbed_at %> (<%= time_ago_in_words(dab.dabbed_at) %> ago)</td>
+  <td><%= dab.seconds %></td>
+</tr>
