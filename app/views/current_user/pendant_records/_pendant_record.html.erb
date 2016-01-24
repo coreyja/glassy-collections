@@ -1,5 +1,5 @@
 <div class="card pendant_record">
-  <%= image_tag pendant_record.photo.photo.url(:medium), class: 'card-img-top', data: { src: pendant_record.photo.photo.url(:medium) } %>
+  <%= image_tag pendant_record.photo.photo.url, class: 'card-img-top', data: { src: pendant_record.photo.photo.url } %>
   <div class="card-block">
     <h4 class="card-title"><%= pendant_record.pendant.name %></h4>
     <h5 class="card-subtitle text-muted"><%= pendant_record.pendant.artist.name %></h5>
