@@ -1,3 +1,5 @@
-<div class="pendant_records">
+<%= link_to 'Record Pendy', new_user_pendant_record_path, class: 'btn btn-primary btn-sm' %>
+
+<div class="pendant_records card-columns">
   <%= render partial: 'pendant_record', collection: @pendant_records %>
 </div>

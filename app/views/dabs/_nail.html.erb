@@ -1,4 +1,14 @@
-<div class='nail'>
+<div class="nail table-responsive">
   <h2><%= nail.name %></h2>
-  <%= render partial: 'dab', collection: @dabs[nail] %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Dabbed At</th>
+        <th>Seconds Waited</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'dab', collection: @dabs[nail] %>
+    </tbody>
+  </table>
 </div>

@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require moment.min
 //= require howler.min
+//= require tether
+//= require bootstrap-sprockets
 //= require_tree .
