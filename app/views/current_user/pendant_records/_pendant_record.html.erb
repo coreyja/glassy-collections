@@ -4,8 +4,8 @@
     <h4 class="card-title"><%= pendant_record.pendant.name %></h4>
     <h5 class="card-subtitle text-muted"><%= pendant_record.pendant.artist.name %></h5>
     <p class="card-text">
-      <span class="created-at">
-        <%= pendant_record.created_at %>
+      <span class="created-at" title="<%= pendant_record.created_at %>">
+        <%= time_ago_in_words(pendant_record.created_at) %>
       </span>
     </p>
   </div>
