@@ -2,5 +2,5 @@
   <%= f.input :pendant_id, collection: @pendants, label_method: ->(pendant) { "#{pendant.name} - #{pendant.artist.name}"} %>
   <%= f.input :photo, as: :camera %>
 
-  <%= f.submit %>
+  <%= f.button :submit %>
 <% end %>
