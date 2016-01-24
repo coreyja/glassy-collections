@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="/">GlassyCollections</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="<%= dabs_path %>">Dabs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= artists_path %>">Artists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= user_pendants_path %>">Pendants</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= user_pendant_records_path %>">Pendant Tracking</a>
+      </li>
+    </ul>
+    <span class="pull-xs-right logged-in-status">
+      <% if signed_in? %>
+        Signed in as: <%= current_user.email %>
+        <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-primary btn-sm' %>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path %>
+      <% end %>
+    </span>
+  </nav>
+
+  <div class="flashes">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
+</header>

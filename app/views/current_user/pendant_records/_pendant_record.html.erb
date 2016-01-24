@@ -1,9 +1,12 @@
-<div class="pendant_record">
-  <%= image_tag pendant_record.photo.photo.url(:thumb) %>
-  <p>
-    <%= pendant_record.pendant.name %> - <%= pendant_record.pendant.artist.name %>
-  </p>
-  <span class="created-at">
-    <%= pendant_record.created_at %>
-  </span>
+<div class="card pendant_record">
+  <%= image_tag pendant_record.photo.photo.url(:medium), class: 'card-img-top', data: { src: pendant_record.photo.photo.url(:medium) } %>
+  <div class="card-block">
+    <h4 class="card-title"><%= pendant_record.pendant.name %></h4>
+    <h5 class="card-subtitle text-muted"><%= pendant_record.pendant.artist.name %></h5>
+    <p class="card-text">
+      <span class="created-at">
+        <%= pendant_record.created_at %>
+      </span>
+    </p>
+  </div>
 </div>
