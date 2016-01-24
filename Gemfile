@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'paperclip', '~> 4.3'
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
 
 gem 'clearance'
 
