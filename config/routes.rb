@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :pendants, only: %i(new create index)
     resources :pendant_records, only: %i(new create index)
 
-    resources :crews, only: %i(new create index)
+    resources :crews, only: %i(new create index) do
+      resources :crew_memberships, only: %i(new create index)
+    end
   end
 end

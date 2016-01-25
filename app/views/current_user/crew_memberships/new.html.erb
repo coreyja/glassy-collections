@@ -1,0 +1,5 @@
+<%= simple_form_for @membership, url: user_crew_crew_memberships_path do |f| %>
+  <%= f.input :user, collection: @crew.potential_members, label_method: :email %>
+
+  <%= f.button :submit %>
+<% end %>
