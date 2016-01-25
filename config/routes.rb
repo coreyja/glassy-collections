@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   namespace :user, module: :current_user do
     resources :pendants, only: %i(new create index)
     resources :pendant_records, only: %i(new create index)
+
+    resources :crews, only: %i(new create index)
   end
 end

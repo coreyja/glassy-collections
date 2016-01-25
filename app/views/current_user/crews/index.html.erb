@@ -1,0 +1,16 @@
+<%= link_to 'Add a new Crew', new_user_crew_path, class: 'btn btn-primary' %>
+
+<div class="crews table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Crew Name</th>
+        <th>Member Count</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'crew', collection: @crews %>
+    </tbody>
+  </table>
+</div>
