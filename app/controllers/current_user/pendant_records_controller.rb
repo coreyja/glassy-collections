@@ -4,7 +4,7 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      @pendants = current_user.pendants
+      @pendants = current_user.wearable_pendants
     end
 
     def create
