@@ -4,4 +4,8 @@ class Crew < ActiveRecord::Base
 
   validates :name, presence: true
   validates :leader, presence: true
+
+  has_many :crew_memberships
+  has_many :users, through: :crew_memberships
+  alias_attribute :members, :users
 end
