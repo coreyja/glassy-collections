@@ -9,6 +9,8 @@ class Crew < ActiveRecord::Base
   has_many :users, through: :crew_memberships
   alias_attribute :members, :users
 
+  delegate :pendants, to: :leader
+
   def potential_members
     User.where('id != ?', leader.id) - members
   end
