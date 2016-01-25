@@ -26,6 +26,5 @@ module CurrentUser
     def crew
       @crew ||= current_user.ownded_crews.find crew_id
     end
-
   end
 end
