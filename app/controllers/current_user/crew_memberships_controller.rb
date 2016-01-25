@@ -9,7 +9,7 @@ module CurrentUser
     end
 
     def create
-      @membership = crew.crew_memberships.new
+      @membership = crew.crew_memberships.new create_params
       if @membership.save
         redirect_to action: :index
       else
@@ -25,6 +25,10 @@ module CurrentUser
 
     def crew
       @crew ||= current_user.ownded_crews.find crew_id
+    end
+
+    def create_params
+      params.require(:crew_membership).permit(:user_id)
     end
   end
 end
