@@ -3,11 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 bell = new Howl({
-  urls: ['https://s3.amazonaws.com/glassy-collections/sounds/bell.webm', 'https://s3.amazonaws.com/glassy-collections/sounds/bell.ogg', 'https://s3.amazonaws.com/glassy-collections/sounds/bell.mp3']
+  urls: [
+    'https://s3.amazonaws.com/glassy-collections/sounds/bell.webm',
+    'https://s3.amazonaws.com/glassy-collections/sounds/bell.ogg',
+    'https://s3.amazonaws.com/glassy-collections/sounds/bell.mp3'
+  ]
 })
 
 reset_background = ->
-  $('html').css('background', 'white');
+  $('html').css('background', 'white')
 
 timer_finished = ->
   seconds = $('.dab .seconds')
@@ -35,8 +39,8 @@ root.start_dab_timer = ->
   refresh_seconds()
 
 root.set_seconds_size = ->
-  fontSize = parseInt($('.page-content .seconds').height())+"px";
-  $('.page-content .seconds').css('font-size', fontSize);
+  fontSize = parseInt($('.page-content .seconds').height())+"px"
+  $('.page-content .seconds').css('font-size', fontSize)
 
 $('html').on 'change', 'form.new_dab select#dab_nail_id', (event)->
   select = $('form.new_dab select#dab_nail_id')
