@@ -1,3 +1,10 @@
-<div class="week" style='width: 1080px'>
-  <%= render partial: 'last_week_in_pendants/day', collection: pendant_records_by_day, as: :hash %>
+<style type="text/css">
+  <%= GlassyCollections::Application.assets.find_asset('last_week_in_pendants.scss').to_s %>
+</style>
+
+<div class="week">
+  <%= render partial: 'last_week_in_pendants/day', collection: pendant_records_by_day[0..3], as: :hash %>
+</div>
+<div class="week">
+  <%= render partial: 'last_week_in_pendants/day', collection: pendant_records_by_day[4..-1], as: :hash %>
 </div>

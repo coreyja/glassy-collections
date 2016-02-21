@@ -15,7 +15,7 @@ class LastWeekInPendantsImage
   attr_reader :user
 
   def image_kit
-    @image_kit ||= IMGKit.new(html, quality: 100)
+    @image_kit ||= IMGKit.new(html, width: 1080)
   end
 
   def pendant_records_by_day
