@@ -1,0 +1,3 @@
+<% if pendant_record && pendant_record.photo %>
+  <img src="<%= pendant_record.photo.data_uri(:medium) %>" style='width: 100%; padding: 2px 0;'>
+<% end %>

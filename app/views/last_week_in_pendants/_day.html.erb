@@ -1,0 +1,9 @@
+<div class="day" style='display: inline-block; width: 265px; float: left; padding: 0 2px;'>
+  <h1 style="text-align: center; font-size: 1.5em; margin: 0.1em 0;">
+    <%= hash[:day].strftime("%A") %>
+  </h1>
+  <p style="text-align: center; font-size: 1em; margin: 0.1em 0;">
+    <%= hash[:day].strftime("%b %d") %>
+  </p>
+  <%= render partial: 'last_week_in_pendants/pendant_record', collection: hash[:pendants] %>
+</div>
