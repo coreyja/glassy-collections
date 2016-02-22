@@ -6,8 +6,8 @@ class Photo < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: %r{\Aimage/.*\Z}
 
-  def data_uri(style=nil)
-    base64 = Base64.encode64(Paperclip.io_adapters.for(photo).read.to_s).gsub(/\s+/, "")
+  def data_uri(_style = nil)
+    base64 = Base64.encode64(Paperclip.io_adapters.for(photo).read.to_s).gsub(/\s+/, '')
     "data:#{photo.content_type};base64,#{Rack::Utils.escape(base64)}"
   end
 end

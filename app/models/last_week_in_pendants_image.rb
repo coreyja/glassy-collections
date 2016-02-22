@@ -7,7 +7,10 @@ class LastWeekInPendantsImage
   delegate :to_png, :to_jpeg, to: :image_kit
 
   def html
-    @html ||= render partial: 'last_week_in_pendants/last_week_in_pendants',locals: { pendant_records_by_day: pendant_records_by_day }
+    @html ||= render(
+      partial: 'last_week_in_pendants/last_week_in_pendants',
+      locals: { pendant_records_by_day: pendant_records_by_day }
+    )
   end
 
   private
