@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     resources :crews, only: %i(new create index) do
       resources :crew_memberships, only: %i(new create index)
     end
+
+    resource :last_week_in_pendants, only: %i(show)
   end
 end

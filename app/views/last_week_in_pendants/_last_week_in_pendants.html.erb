@@ -1,0 +1,45 @@
+<style type="text/css">
+
+    /* line 1, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week {
+    width: 1080px;
+    overflow: hidden;
+  }
+  /* line 5, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week .day {
+    width: 265px;
+    max-height: 530px;
+    float: left;
+    padding: 5px 2px;
+  }
+  /* line 11, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week .day h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0.1em 0;
+  }
+  /* line 17, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week .day p {
+    text-align: center;
+    font-size: 1em;
+    margin: 0.1em 0;
+  }
+  /* line 24, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week .day .images .image {
+    padding: 2px 0;
+    text-align: center;
+  }
+  /* line 28, /Users/coreyja/Projects/glassy-collections/app/assets/stylesheets/last_week_in_pendants.scss */
+  .week .day .images .image img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+  }
+</style>
+
+<div class="week">
+  <%= render partial: 'last_week_in_pendants/day', collection: pendant_records_by_day[0..3], as: :hash %>
+</div>
+<div class="week">
+  <%= render partial: 'last_week_in_pendants/day', collection: pendant_records_by_day[4..-1], as: :hash %>
+</div>

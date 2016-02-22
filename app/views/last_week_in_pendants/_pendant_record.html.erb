@@ -1,0 +1,5 @@
+<% if pendant_record && pendant_record.photo %>
+  <div class="image">
+    <img src="<%= pendant_record.photo.data_uri %>" style="<%= "max-height: #{480/num_pendants}px;" %>">
+  </div>
+<% end %>
