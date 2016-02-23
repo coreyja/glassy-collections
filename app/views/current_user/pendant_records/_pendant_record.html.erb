@@ -5,7 +5,7 @@
     <h5 class="card-subtitle text-muted"><%= pendant_record.pendant.artist.name %></h5>
     <p class="card-text">
       <span class="created-at" title="<%= pendant_record.created_at %>">
-        <%= time_ago_in_words(pendant_record.created_at) %>
+        <%= pendant_record.created_at.strftime('%B %-d') %>
       </span>
     </p>
   </div>
