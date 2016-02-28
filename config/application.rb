@@ -25,5 +25,7 @@ module GlassyCollections
     config.assets.compile = true
 
     config.time_zone = 'Eastern Time (US & Canada)'
+
+    config.active_job.queue_adapter = :delayed_job
   end
 end

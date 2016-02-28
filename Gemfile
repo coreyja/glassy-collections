@@ -35,6 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', '~> 4.3'
 gem 'aws-sdk-v1'
 
+gem 'delayed_job_active_record'
+gem 'delayed_paperclip'
+
 gem 'clearance'
 
 gem 'simple_form'
