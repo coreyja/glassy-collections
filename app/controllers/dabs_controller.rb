@@ -2,12 +2,11 @@ class DabsController < ApplicationController
   before_action :require_login
 
   def new
-    dab
+    dab.assign_attributes new_params
   end
 
   def create
     dab.assign_attributes create_params
-    # dab.seconds = params['seconds'].to_f
     if dab.save
       render :create
     else
@@ -25,7 +24,11 @@ class DabsController < ApplicationController
   private
 
   def dab
-    @dab ||= current_user.dabs.new
+    @dab ||= Dab.new
+  end
+
+  def new_params
+    params.permit(:user_id, :nail_id, :milliseconds)
   end
 
   def create_params
