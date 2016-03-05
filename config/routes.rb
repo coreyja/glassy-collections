@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :nails, only: %i(new create index destroy)
 
   resources :dabs, only: %i(new create index)
+  resource :timer_recommendation, only: %i(new create)
 
   resources :artists, only: %i(new create index)
 
