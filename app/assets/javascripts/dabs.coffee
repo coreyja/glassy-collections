@@ -18,6 +18,8 @@ start_timer = (duration)->
   ends_at = started_at.add(duration, 's')
   $('.timer .seconds').text(duration)
   $('.timer').show();
+
+  set_hidden_milisecond_input()
   refresh_seconds();
 
 reset_background = ->
@@ -44,10 +46,14 @@ refresh_seconds = ->
   else
     timer_finished()
 
-$('html').on 'change', 'form.new_dab input#dab_seconds', (event)->
+set_hidden_milisecond_input = ->
   seconds = $('form.new_dab input#dab_seconds')
   milliseconds = $('form.new_dab input#dab_milliseconds')
   milliseconds.val(parseFloat(seconds.val())*1000)
+
+
+$('html').on 'change', 'form.new_dab input#dab_seconds', (event)->
+  set_hidden_milisecond_input()
 
 $('html').on 'click', 'button#start-timer', (event)->
   seconds = $('form.new_dab input#dab_seconds')
