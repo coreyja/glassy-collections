@@ -15,4 +15,14 @@ class Dab < ActiveRecord::Base
   end
 
   alias_attribute :dabbed_at, :created_at
+
+  def rating_modifier
+    {
+      1 => 0.9,
+      2 => 0.95,
+      3 => 1.0,
+      4 => 1.05,
+      5 => 1.1
+    }[rating]
+  end
 end

@@ -13,8 +13,14 @@ class TimerRecommendation
 
   private
 
+  def last_dab
+    previous_dabs.first
+  end
+
   def milliseconds
-    previous_dabs.first&.milliseconds
+    if last_dab.present?
+      last_dab.milliseconds * last_dab.rating_modifier
+    end
   end
 
   def previous_dabs
