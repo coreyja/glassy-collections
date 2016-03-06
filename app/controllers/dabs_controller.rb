@@ -8,7 +8,7 @@ class DabsController < ApplicationController
   def create
     dab.assign_attributes create_params
     if dab.save
-      render :create
+      redirect_to action: :index
     else
       render :new
     end
@@ -32,6 +32,6 @@ class DabsController < ApplicationController
   end
 
   def create_params
-    params.require(:dab).permit(:user_id, :nail_id, :milliseconds)
+    params.require(:dab).permit(:user_id, :nail_id, :milliseconds, :rating)
   end
 end

@@ -14,8 +14,5 @@ class Dab < ActiveRecord::Base
     self.milliseconds = (seconds * 1000).to_i
   end
 
-  def ends_at
-    created_at + seconds
-  end
-  alias dabbed_at ends_at
+  alias_attribute :dabbed_at, :created_at
 end

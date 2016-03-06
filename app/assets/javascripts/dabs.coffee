@@ -10,21 +10,32 @@ bell = new Howl({
   ]
 })
 
+started_at = null
+ends_at = null
+
+start_timer = (duration)->
+  started_at = moment()
+  ends_at = started_at.add(duration, 's')
+  $('.timer .seconds').text(duration)
+  $('.timer').show();
+  refresh_seconds();
+
 reset_background = ->
-  $('html').css('background', 'white')
+  $('html').css('background', '')
 
 timer_finished = ->
-  seconds = $('.dab .seconds')
+  seconds = $('.timer .seconds')
   seconds.text(0)
   bell.play()
   $('a.take-a-dab').addClass('done')
   $('html').css('background', 'red')
   setTimeout(reset_background, 5000)
 
+  $('form.new_dab').addClass('post-dab')
+  $('.timer').hide();
+
 refresh_seconds = ->
-  seconds = $('.dab .seconds')
-  started_at = moment.unix(parseFloat($('.dab').attr('data-created-at-time')))
-  ends_at = moment.unix(parseFloat($('.dab').attr('data-ends-at-time')))
+  seconds = $('.timer .seconds')
   now = moment()
   remaining_milli = (ends_at - now)
   if remaining_milli > 0
@@ -33,23 +44,13 @@ refresh_seconds = ->
   else
     timer_finished()
 
-
-root = exports ? this
-root.start_dab_timer = ->
-  refresh_seconds()
-
-root.set_seconds_size = ->
-  fontSize = parseInt($('.page-content .seconds').height())+"px"
-  $('.page-content .seconds').css('font-size', fontSize)
-
-$('html').on 'change', 'form.new_dab select#dab_nail_id', (event)->
-  select = $('form.new_dab select#dab_nail_id')
-  avg = $('form.new_dab input#nail_avg_' + select.val()).val()
-  avg = parseFloat(avg)
-  $('form.new_dab input#dab_seconds').val(avg / 1000.0)
-  $('form.new_dab input#dab_seconds').change()
-
 $('html').on 'change', 'form.new_dab input#dab_seconds', (event)->
   seconds = $('form.new_dab input#dab_seconds')
   milliseconds = $('form.new_dab input#dab_milliseconds')
   milliseconds.val(parseFloat(seconds.val())*1000)
+
+$('html').on 'click', 'button#start-timer', (event)->
+  seconds = $('form.new_dab input#dab_seconds')
+  $('.timer-form').hide()
+
+  start_timer(parseFloat(seconds.val()))
