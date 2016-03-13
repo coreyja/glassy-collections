@@ -18,3 +18,39 @@ a.take-a-dab {
     flex: 1 0 auto;
   }
 }
+
+form#new_dab {
+
+    .post-dab-form {
+        display: none;
+
+        .radio {
+            margin: 0 15px;
+
+            input.radio_buttons {
+                margin: 5px;
+            }
+        }
+
+        input[type="submit"] {
+            display: block;
+        }
+    }
+
+    &.post-dab {
+        .timer-form {
+            display: none;
+        }
+        .post-dab-form {
+            display: block;
+        }
+    }
+}
+
+.timer {
+    text-align: center;
+
+    .seconds {
+        font-size: 80px;
+    }
+}

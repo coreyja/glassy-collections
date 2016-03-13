@@ -1,5 +1,5 @@
 module HashAttributeAssignment
-  def initialize(hash)
+  def initialize(hash = {})
     assign_asstributes(hash)
   end
 

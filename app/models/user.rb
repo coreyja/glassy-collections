@@ -18,9 +18,17 @@ class User < ActiveRecord::Base
     Pendant.where(id: wearable_pendant_ids)
   end
 
+  def dabable_users
+    User.where(id: dabable_user_ids)
+  end
+
   private
 
   def wearable_pendant_ids
     pendants.ids + crews.map(&:pendants).map(&:ids).flatten
+  end
+
+  def dabable_user_ids
+    [id] + ownded_crews.map(&:members).map(&:ids).flatten
   end
 end

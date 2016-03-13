@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228185019) do
+ActiveRecord::Schema.define(version: 20160306184139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,12 @@ ActiveRecord::Schema.define(version: 20160228185019) do
   add_index "crews", ["user_id"], name: "index_crews_on_user_id", using: :btree
 
   create_table "dabs", force: :cascade do |t|
-    t.integer  "user_id",      null: false
-    t.integer  "nail_id",      null: false
-    t.integer  "milliseconds", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "nail_id",                  null: false
+    t.integer  "milliseconds",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "rating",       default: 3, null: false
   end
 
   add_index "dabs", ["nail_id"], name: "index_dabs_on_nail_id", using: :btree
