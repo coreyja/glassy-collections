@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
   end
 
   def dabable_user_ids
-    [id] + crews.map(&:members).map(&:ids).flatten
+    [id] + ownded_crews.map(&:members).map(&:ids).flatten
   end
 end

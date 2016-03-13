@@ -18,9 +18,7 @@ class TimerRecommendation
   end
 
   def milliseconds
-    if last_dab.present?
-      last_dab.milliseconds * last_dab.rating_modifier
-    end
+    last_dab.milliseconds * last_dab.rating_modifier if last_dab.present?
   end
 
   def previous_dabs
