@@ -4,7 +4,7 @@ module CurrentUser
 
     def index
       @pendants = current_user.pendants
-      @chart_data = current_user.pendant_records.group(:pendant).count.map { |k,v| [k.name, v] }
+      @chart_data = current_user.pendant_records.group(:pendant).count.map { |k, v| [k.name, v] }
     end
 
     def new
