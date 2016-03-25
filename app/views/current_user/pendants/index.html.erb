@@ -1,16 +1,21 @@
 <div class="pendants table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Artist Name</th>
-        <th>Times Worn</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: 'pendant', collection: @pendants %>
-    </tbody>
-  </table>
-</div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Artist Name</th>
+          <th>Times Worn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'pendant', collection: @pendants %>
+      </tbody>
+    </table>
+  </div>
 
-<%= pie_chart @chart_data %>
+  <figure class="figure pendants__chart">
+    <figcaption class="figure-caption">Number of Times Worn by Pendant</figcaption>
+    <%= pie_chart @chart_data %>
+  </figure>
+</div>

@@ -1,16 +1,21 @@
-<div class="artists table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Instram Username</th>
-        <th># of Pendants</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: 'artist', collection: @artists %>
-    </tbody>
-  </table>
-</div>
+<div class="artists">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Instram Username</th>
+          <th># of Pendants</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'artist', collection: @artists %>
+      </tbody>
+    </table>
+  </div>
 
-<%= pie_chart @chart_data %>
+  <figure class="figure artists__chart">
+    <figcaption class="figure-caption">Number of Pendants by Artist</figcaption>
+    <%= pie_chart @chart_data %>
+  </figure>
+</div>
