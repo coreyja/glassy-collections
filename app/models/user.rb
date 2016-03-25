@@ -14,12 +14,37 @@ class User < ActiveRecord::Base
   has_many :crew_memberships
   has_many :crews, through: :crew_memberships
 
+  has_many :authentications, dependent: :destroy
+
+  def self.create_from_omniauth!(auth_hash)
+    create!(
+      name: auth_hash[:info][:nickname],
+      email: auth_hash[:info][:email]
+    )
+  end
+
   def wearable_pendants
     Pendant.where(id: wearable_pendant_ids)
   end
 
   def dabable_users
     User.where(id: dabable_user_ids)
+  end
+
+  def password_optional?
+    true
+  end
+
+  def email_optional?
+    true
+  end
+
+  def display_name
+    if name.present?
+      name
+    else
+      email
+    end
   end
 
   private

@@ -41,6 +41,10 @@ gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
 
 gem 'clearance'
+gem 'omniauth'
+gem 'omniauth-instagram'
+
+gem 'figaro'
 
 gem 'simple_form'
 

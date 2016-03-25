@@ -10,7 +10,7 @@ module CurrentUser
     private
 
     def artists
-      current_user.pendants.map(&:artist).uniq.sort { |l,r| l.name.downcase <=> r.name.downcase }
+      current_user.pendants.map(&:artist).uniq.sort { |l, r| l.name.downcase <=> r.name.downcase }
     end
   end
 end

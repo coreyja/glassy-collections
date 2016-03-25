@@ -14,7 +14,7 @@
         </li>
         <% if signed_in? %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.display_name %></a>
             <div class="dropdown-menu">
               <%= link_to 'My Artists', my_artists_path, class: 'dropdown-item' %>
               <%= link_to 'My Pendants', my_pendants_path, class: 'dropdown-item' %>
