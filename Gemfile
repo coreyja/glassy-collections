@@ -61,6 +61,8 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
+gem 'high_voltage', '~> 2.4.0'
+
 gem 'render_anywhere', require: false
 
 group :development, :test do
