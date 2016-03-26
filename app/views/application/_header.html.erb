@@ -1,7 +1,9 @@
 <header class="header">
   <nav class="navbar navbar-light bg-faded">
     <div class="header__logo">
-      <%= raw_asset 'penguin-logo.svg' %>
+      <%= link_to root_path do %>
+        <%= raw_asset 'penguin-logo.svg' %>
+      <% end %>
     </div>
     <div class="clearfix">
       <a class="navbar-brand header__name" href="/">Glassy Collections</a>
