@@ -1,50 +1,23 @@
 <header class="header">
-  <nav class="navbar navbar-light bg-faded">
-    <div class="header__logo">
+  <div class="header__brand brand">
+    <div class="brand__username">
+      coreyja@gmail.com
+    </div>
+    <div class="brand__logo">
       <%= link_to root_path do %>
         <%= raw_asset 'penguin-logo.svg' %>
       <% end %>
     </div>
-    <div class="clearfix">
-      <a class="navbar-brand header__name" href="/">Glassy Collections</a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="<%= dabs_path %>">Dabs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= artists_path %>">Artists</a>
-        </li>
-        <span class="nav__right-side">
-          <li class="nav-item">
-            <%= link_to 'Privacy Policy', page_path('privacy-policy'), class: 'nav-link' %>
-          </li>
-          <% if signed_in? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.display_name %></a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <%= link_to 'My Artists', my_artists_path, class: 'dropdown-item' %>
-                <%= link_to 'My Pendants', my_pendants_path, class: 'dropdown-item' %>
-                <%= link_to 'My Pendant Tracking', my_pendant_records_path, class: 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'dropdown-item' %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'Sign in', sign_in_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </span>
-      </ul>
+    <div class="brand__log_out">
+      <%= link_to 'Sign out', sign_out_path, method: :delete %>
     </div>
-  </nav>
-  <%= render partial: 'subheader' %>
-
-  <div class="flashes">
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert">
-        <%= value %>
-      </div>
-    <% end %>
+    <div class="brand__name">
+      <span class="brand__glassy brand__glassy--kaushan">
+        Glassy
+      </span>
+      <span class="brand__collections">
+        Collections
+      </span>
+    </div>
   </div>
 </header>

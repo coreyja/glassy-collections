@@ -1,8 +1,20 @@
-.header__logo {
+.header {
+
+}
+
+.brand {
+    position: relative;
+
+    height: 125px;
+    font-size: 0.8rem;
+}
+
+.brand__logo {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 37.5px);
     height: 75px;
     width: 75px;
-    margin-right: 10px;
-    float: left;
 
     svg {
         @include transition(transform 0.8s ease);
@@ -13,11 +25,48 @@
     }
 }
 
-.header__name {
-    font-weight: 700;
-    float: none;
+.brand__name {
+    position: absolute;
+    height: 45px;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
 }
 
-.nav__right-side {
+.brand__glassy {
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+    text-align: right;
+}
+
+.brand__collections {
+    font-family: 'Roboto Slab', serif;
+    font-size: 30px;
+    text-align: left;
+}
+
+.brand__username {
+    float: left;
+}
+
+.brand__log_out {
     float: right;
+}
+
+.brand.brand--collapsed {
+    .brand__logo {
+        left: 50%;
+    }
+    .brand__glassy {
+        position: absolute;
+        top: -50px;
+        right: calc(50% + 5px);
+        font-size: 16px;
+    }
+    .brand__collections {
+        position: absolute;
+        top: -30px;
+        right: calc(50% + 5px);
+        font-size: 15px;
+    }
 }
