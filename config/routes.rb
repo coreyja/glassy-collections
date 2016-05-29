@@ -17,11 +17,6 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create_from_omniauth'
 
-  resources :nails, only: %i(new create index destroy)
-
-  resources :dabs, only: %i(new create index)
-  resource :timer_recommendation, only: %i(new create)
-
   resources :artists, only: %i(new create index)
 
   namespace :my, module: :current_user do
