@@ -36,3 +36,7 @@ bower.json
 
 # Ignore secrets
 /config/application.yml
+
+# RubyMine config
+.idea/
+
