@@ -19,20 +19,21 @@ module CurrentUser
     end
 
     def index
-      @pendant_records = current_user.pendant_records.from_date(from_date).till_date(till_date).order('created_at DESC')
+      @pendant_records = calendar.pendant_records
     end
 
     private
 
-    def from_date
-      from_date_string = params.fetch(:from_date, Date.today.to_s)
-      Date.parse(from_date_string).at_beginning_of_month
+    def calendar_hash
+      {
+          from_date: params.fetch(:from_date, nil).try(:to_time),
+          to_date: params.fetch(:to_date, nil).try(:to_time),
+          user: current_user
+      }
     end
 
-    def till_date
-      till_date_string = params[:till_date]
-      if till_date_string.present?
-      from_date + 1.month
+    def calendar
+      PendantRecordCalendar.new calendar_hash
     end
 
     def photo_params
