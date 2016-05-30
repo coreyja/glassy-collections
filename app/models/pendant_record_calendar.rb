@@ -2,9 +2,9 @@ class PendantRecordCalendar
   include HashAttributeAssignment
 
   DEFAULT_HASH = {
-      duration: 1.month
+    duration: 1.month
   }.freeze
-  REQUIRED_KEYS = %i(user)
+  REQUIRED_KEYS = %i(user).freeze
 
   validate_hash ->(hash) { hash[:duration] >= 1.day }, message: 'Duration must be at least 1 day'
 

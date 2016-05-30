@@ -26,9 +26,9 @@ module CurrentUser
 
     def calendar_hash
       {
-          from_date: params.fetch(:from_date, nil).try(:to_time),
-          to_date: params.fetch(:to_date, nil).try(:to_time),
-          user: current_user
+        from_date: params.fetch(:from_date, nil).try(:to_time),
+        to_date: params.fetch(:to_date, nil).try(:to_time),
+        user: current_user
       }
     end
 
