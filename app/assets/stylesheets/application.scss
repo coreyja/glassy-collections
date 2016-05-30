@@ -11,19 +11,21 @@
  * file per style scope.
  *
  */
- $enable-flex: true;
- @import 'bootstrap';
+$enable-flex: true;
+@import 'bootstrap';
 
- // Imports
- @import 'bourbon';
+// Imports
+@import 'bourbon';
 
- @import "font-awesome-sprockets";
- @import "font-awesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
- @import 'base';
- @import 'header';
- @import 'logo';
- @import 'dabs';
- @import 'pendant_record';
- @import 'artists';
- @import 'pendants';
+@import 'family';
+
+@import 'base';
+@import 'header';
+@import 'logo';
+@import 'dabs';
+@import 'pendant_record';
+@import 'artists';
+@import 'pendants';

@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header header--collapsed">
   <div class="header__brand brand">
     <div class="brand__username">
       coreyja@gmail.com
@@ -20,4 +20,20 @@
       </span>
     </div>
   </div>
+  <ul class="header__nav nav">
+    <li class="nav-item">
+      <%= link_to 'Pendant Records', my_pendant_records_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Pendants', my_pendants_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Artists', my_artists_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'LWIP', my_last_week_in_pendants_path, class: 'nav-link' %>
+    </li>
+  </ul>
+
+  <div class="header__clicky"></div>
 </header>

@@ -1,15 +1,33 @@
 .header {
 
+  margin-bottom: 1rem;
+
+  &__nav {
+    margin-top: 1rem;
+  }
+
+  &__clicky {
+    font-size: 2rem;
+    line-height: 1em;
+    text-align: center;
+
+    &:before {
+      content: "\f102";
+      font-family: FontAwesome;
+
+      .header--collapsed & {
+        content: "\f103";
+      }
+    }
+  }
 }
 
 .brand {
-    position: relative;
+  position: relative;
+  height: 125px;
+  font-size: 0.8rem;
 
-    height: 125px;
-    font-size: 0.8rem;
-}
-
-.brand__logo {
+  .brand__logo {
     position: absolute;
     top: 0;
     left: calc(50% - 37.5px);
@@ -17,56 +35,108 @@
     width: 75px;
 
     svg {
-        @include transition(transform 0.8s ease);
+      @include transition(transform 0.8s ease);
 
-        &:hover {
-            @include transform(rotate(360deg));
-        }
+      &:hover {
+        @include transform(rotate(360deg));
+      }
     }
-}
+  }
 
-.brand__name {
+  .brand__name {
     position: absolute;
-    height: 45px;
+    height: 55px;
     width: 100%;
     bottom: 0;
     text-align: center;
-}
+  }
 
-.brand__glassy {
+  .brand__glassy {
     font-family: 'Pacifico', cursive;
     font-size: 32px;
     text-align: right;
-}
+  }
 
-.brand__collections {
+  .brand__collections {
     font-family: 'Roboto Slab', serif;
     font-size: 30px;
     text-align: left;
-}
+  }
 
-.brand__username {
+  .brand__username {
     float: left;
-}
+  }
 
-.brand__log_out {
+  .brand__log_out {
     float: right;
-}
+  }
 
-.brand.brand--collapsed {
+  .header--collapsed & {
+    height: 80px;
+
     .brand__logo {
-        left: 50%;
+      left: 50%;
     }
     .brand__glassy {
-        position: absolute;
-        top: -50px;
-        right: calc(50% + 5px);
-        font-size: 16px;
+      position: absolute;
+      top: -5px;
+      right: calc(50% + 5px);
+      font-size: 16px;
     }
     .brand__collections {
-        position: absolute;
-        top: -30px;
-        right: calc(50% + 5px);
-        font-size: 15px;
+      position: absolute;
+      top: 15px;
+      right: calc(50% + 5px);
+      font-size: 15px;
     }
+  }
+}
+
+.nav {
+  $border-color: rgb(178, 178, 178);
+  $border-width: 1px;
+
+  border-style: solid;
+  border-color: $border-color;
+  border-width: $border-width 0;
+
+  @include display(flex);
+  flex-wrap: wrap;
+
+  .header--collapsed & {
+    display: none;
+  }
+
+  .nav-item {
+    @include flex(0 0 50%);
+
+    text-align: center;
+
+
+    border-color: inherit;
+    border-style: inherit;
+    border-width: 0;
+
+    border-bottom-width: $border-width;
+
+    @include odd {
+      border-right-width: $border-width;
+    }
+
+    @include last(2) {
+      border-bottom-width: 0;
+    }
+
+
+    .nav-link {
+      padding: 0.5rem 0;
+      display: block;
+
+      color: darken($border-color, 50%);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
