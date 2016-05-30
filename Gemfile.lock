@@ -103,6 +103,7 @@ GEM
       sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hash_attribute_assignment (0.0.1)
     hashie (3.4.3)
     high_voltage (2.4.0)
     i18n (0.7.0)
@@ -291,6 +292,7 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   font-awesome-sass
+  hash_attribute_assignment
   high_voltage (~> 2.4.0)
   imgkit
   jbuilder (~> 2.0)

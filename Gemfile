@@ -48,6 +48,8 @@ gem 'figaro'
 
 gem 'simple_form'
 
+gem 'hash_attribute_assignment'
+
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'autoprefixer-rails'
 source 'https://rails-assets.org' do
