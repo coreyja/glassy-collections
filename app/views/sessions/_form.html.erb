@@ -19,4 +19,10 @@
     <% end %>
     <%= link_to t(".forgot_password"), new_password_path %>
   </div>
+
+  <div class="sign-in__social-login">
+    <%= link_to '/auth/instagram', class: 'btn btn-primary' do %>
+      <i class="fa fa-instagram"></i> Login with Instagram
+    <% end %>
+  </div>
 <% end %>

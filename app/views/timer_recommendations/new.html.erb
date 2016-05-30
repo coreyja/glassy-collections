@@ -1,6 +1,0 @@
-<%= simple_form_for @timer_recommendation, url: timer_recommendation_path do |f| %>
-  <%= f.input :user, as: :radio_buttons, collection: @users, label_method: :email %>
-  <%= f.input :nail, as: :radio_buttons, collection: @nails %>
-
-  <%= f.submit :submit %>
-<% end %>

@@ -7,6 +7,7 @@ gem 'rails', '4.2.5.1'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bourbon'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -40,16 +41,19 @@ gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
 
 gem 'clearance'
+gem 'omniauth'
+gem 'omniauth-instagram'
+
+gem 'figaro'
 
 gem 'simple_form'
-
-gem 'rails_12factor', group: :production
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'autoprefixer-rails'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+gem 'font-awesome-sass'
 
 gem 'rubocop'
 
@@ -57,6 +61,8 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
+
+gem 'high_voltage', '~> 2.4.0'
 
 gem 'render_anywhere', require: false
 
@@ -80,4 +86,5 @@ end
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end

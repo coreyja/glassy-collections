@@ -15,8 +15,8 @@ class ArtistsController < ApplicationController
   end
 
   def index
-    @artists = Artist.all
-    @chart_data = Pendant.where(artist: @artists).group(:artist).count.map { |k, v| [k.name, v] }
+    @artists = Artist.all.order('LOWER(name)')
+    @chart_data = Pendant.where(artist: @artists).group(:artist).count.sort.map { |k, v| [k.name, v] }
   end
 
   private

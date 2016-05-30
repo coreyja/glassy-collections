@@ -15,16 +15,14 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :nails, only: %i(new create index destroy)
-
-  resources :dabs, only: %i(new create index)
-  resource :timer_recommendation, only: %i(new create)
+  get '/auth/:provider/callback' => 'sessions#create_from_omniauth'
 
   resources :artists, only: %i(new create index)
 
-  namespace :user, module: :current_user do
+  namespace :my, module: :current_user do
     resources :pendants, only: %i(new create index)
     resources :pendant_records, only: %i(new create index)
+    resources :artists, only: %i(index)
 
     resources :crews, only: %i(new create index) do
       resources :crew_memberships, only: %i(new create index)
