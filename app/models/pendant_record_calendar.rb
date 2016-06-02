@@ -11,7 +11,7 @@ class PendantRecordCalendar
                 message: 'Must specify a from_date or a till_date'
 
   def pendant_records
-    @pendant_records ||= user.pendant_records.from_date(from_date).till_date(till_date).order('created_at DESC')
+    @pendant_records ||= user.pendant_records.from_date(from_date).till_date(till_date).order('created_at ASC')
   end
 
   private

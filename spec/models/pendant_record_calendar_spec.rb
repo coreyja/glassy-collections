@@ -29,7 +29,7 @@ RSpec.describe PendantRecordCalendar, type: :model do
       subject { PendantRecordCalendar.new user: user, from_date: from_date, till_date: till_date }
 
       it 'contains only the PendantRecords within the time frame' do
-        expect(subject.pendant_records).to contain_exactly pendant_record_during1, pendant_record_during2
+        expect(subject.pendant_records).to eq [pendant_record_during1, pendant_record_during2]
         expect(subject.pendant_records).to_not include pendant_record_on_till_date
       end
     end
@@ -46,7 +46,7 @@ RSpec.describe PendantRecordCalendar, type: :model do
       subject { PendantRecordCalendar.new user: user, from_date: from_date, duration: duration }
 
       it 'contains only the PendantRecords within the time frame' do
-        expect(subject.pendant_records).to contain_exactly pendant_record_during1, pendant_record_during2
+        expect(subject.pendant_records).to eq [pendant_record_during1, pendant_record_during2]
         expect(subject.pendant_records).to_not include pendant_record_on_till_date
       end
     end
@@ -62,7 +62,7 @@ RSpec.describe PendantRecordCalendar, type: :model do
       subject { PendantRecordCalendar.new user: user, from_date: from_date }
 
       it 'contains only the PendantRecords within the time frame' do
-        expect(subject.pendant_records).to contain_exactly pendant_record_during1, pendant_record_during2
+        expect(subject.pendant_records).to eq [pendant_record_during1, pendant_record_during2]
         expect(subject.pendant_records).to_not include pendant_record_on_till_date
       end
     end
