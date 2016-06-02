@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe PendantRecordCalendar, type: :model do
-
   let(:user) { FactoryGirl.create :user }
   let(:pendant) { FactoryGirl.create :pendant, user: user }
 
