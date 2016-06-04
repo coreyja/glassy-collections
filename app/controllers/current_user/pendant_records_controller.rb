@@ -28,7 +28,7 @@ module CurrentUser
       {
         from_date: params.fetch(:from_date, nil).try(:to_time) || Date.today.at_beginning_of_month,
         to_date: params.fetch(:to_date, nil).try(:to_time),
-        user: current_user
+        user: current_user 
       }
     end
 
