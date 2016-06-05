@@ -14,6 +14,10 @@ class PendantRecordCalendar
     @pendant_records ||= user.pendant_records.from_date(from_date).till_date(till_date).order('created_at ASC')
   end
 
+  def days
+    @days ||= date_range.map { |day| CalendarDay.new user: user, date: day }
+  end
+
   private
 
   attr_reader :user, :duration
@@ -24,5 +28,25 @@ class PendantRecordCalendar
 
   def till_date
     @till_date ||= from_date + duration
+  end
+
+  def date_range
+    from_date..(till_date-1.day)
+  end
+
+  class CalendarDay
+    include HashAttributeAssignment
+
+    REQUIRED_KEYS = %i(user date).freeze
+
+    attr_reader :date
+
+    def pendant_records
+      @pendant_records ||= user.pendant_records.on_date(date).order('created_at ASC')
+    end
+
+    private
+
+    attr_reader :user
   end
 end

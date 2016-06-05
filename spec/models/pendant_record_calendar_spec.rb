@@ -67,4 +67,15 @@ RSpec.describe PendantRecordCalendar, type: :model do
       end
     end
   end
+
+  describe '#days' do
+    let(:from_date) { Date.parse('2016-01-01') }
+    let(:duration) { 5.days }
+
+    subject { PendantRecordCalendar.new user: user, from_date: from_date, duration: duration }
+
+    it 'returns a CalendarDay for each date in the day range' do
+      expect(subject.days.count).to eq 5
+    end
+  end
 end
