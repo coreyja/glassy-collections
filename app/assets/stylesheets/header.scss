@@ -8,10 +8,10 @@
     text-align: center;
 
     &:before {
+      @include transition(all 0.8s ease);
       content: "\f102";
       display: inline-block;
       font-family: FontAwesome;
-      @include transition(all 0.8s ease);
 
       .header--collapsed & {
         @include transform(rotate(180deg));
@@ -92,14 +92,15 @@
   $border-color: rgb(178, 178, 178);
   $border-width: 1px;
 
+  @include display(flex);
+  @include transition(opacity 1.6s ease, max-height 1.6s ease);
+
+  flex-wrap: wrap;
+
   border-style: solid;
   border-color: $border-color;
   border-width: $border-width 0;
 
-  @include display(flex);
-  flex-wrap: wrap;
-
-  @include transition(opacity 1.6s ease, max-height 1.6s ease);
   max-height: 166px;
   opacity: 1;
 
@@ -116,11 +117,9 @@
 
     text-align: center;
 
-
     border-color: inherit;
     border-style: inherit;
     border-width: 0;
-
     border-bottom-width: $border-width;
 
     @include odd {
@@ -130,8 +129,7 @@
     @include last(2) {
       border-bottom-width: 0;
     }
-
-
+    
     .nav-link {
       padding: 0.5rem 0;
       display: block;
