@@ -93,7 +93,7 @@
   $border-width: 1px;
 
   @include display(flex);
-  @include transition(opacity 1.6s ease, max-height 1.6s ease);
+  //@include transition(opacity 1.6s ease, max-height 1.6s ease);
 
   flex-wrap: wrap;
 
@@ -107,7 +107,7 @@
   overflow: hidden;
 
   .header--collapsed & {
-    @include transition(opacity 1s ease, max-height 1s ease);
+    //@include transition(opacity 1s ease, max-height 1s ease);
     max-height: 0;
     opacity: 0;
   }
@@ -129,7 +129,7 @@
     @include last(2) {
       border-bottom-width: 0;
     }
-    
+
     .nav-link {
       padding: 0.5rem 0;
       display: block;

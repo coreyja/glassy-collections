@@ -1,37 +1,54 @@
 class PendantRecordCalendar
   include HashAttributeAssignment
 
-  DEFAULT_HASH = {
-    duration: 1.month
-  }.freeze
-  REQUIRED_KEYS = %i(user).freeze
-
-  validate_hash ->(hash) { hash[:duration] >= 1.day }, message: 'Duration must be at least 1 day'
-  validate_hash ->(hash) { hash.keys.include?(:from_date) || hash.keys.include?(:till_date) },
-                message: 'Must specify a from_date or a till_date'
-
-  def pendant_records
-    @pendant_records ||= user.pendant_records.from_date(from_date).till_date(till_date).order('created_at ASC')
-  end
+  REQUIRED_KEYS = %i(user date).freeze
 
   def days
-    @days ||= date_range.map { |day| CalendarDay.new user: user, date: day }
+    @days ||= date_range.map { |day| CalendarDay.new user: user, date: day, date_range: date_range }
+  end
+
+  def weeks
+    @weeks ||= calendar_days.each_slice(7).to_a
+  end
+
+  def month
+    date.strftime('%B')
+  end
+
+  def first_of_month
+    start_date
   end
 
   private
 
-  attr_reader :user, :duration
+  attr_reader :user, :date
 
-  def from_date
-    @from_date ||= till_date - duration
+  def start_date
+    @start_date ||= date.beginning_of_month
   end
 
-  def till_date
-    @till_date ||= from_date + duration
+  def end_date
+    @end_date ||= date.end_of_month
   end
 
   def date_range
-    from_date..(till_date-1.day)
+    start_date..end_date
+  end
+
+  def calendar_range
+    calendar_start..calendar_end
+  end
+
+  def calendar_start
+    start_date.beginning_of_week(:sunday)
+  end
+
+  def calendar_end
+    end_date.end_of_week(:sunday)
+  end
+
+  def calendar_days
+    calendar_range.map { |day| CalendarDay.new user: user, date: day, date_range: date_range }
   end
 
   class CalendarDay
@@ -45,8 +62,16 @@ class PendantRecordCalendar
       @pendant_records ||= user.pendant_records.on_date(date).order('created_at ASC')
     end
 
+    def enabled?
+      date_range.include? date
+    end
+
+    def disabled?
+      !enabled?
+    end
+
     private
 
-    attr_reader :user
+    attr_reader :user, :date_range
   end
 end

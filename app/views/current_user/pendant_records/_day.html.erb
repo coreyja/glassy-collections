@@ -1,0 +1,13 @@
+<td class="day <%= 'disabled' if day.disabled? %>"
+     data-date="<%= day.date.strftime('%Y-%m-%d') %>"
+     data-weekday="<%= day.date.strftime('%A') %>"
+>
+  <div class="day-number">
+    <%= day.date.strftime('%d') %>
+  </div>
+
+  <div class="pendant-records <%= 'single' if day.pendant_records.count == 1 %>">
+    <%= render partial: 'pendant_record', collection: day.pendant_records %>
+  </div>
+
+</td>

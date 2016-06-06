@@ -20,15 +20,14 @@ module CurrentUser
     end
 
     def index
-      @pendant_records = calendar.pendant_records
+      @calendar = calendar
     end
 
     private
 
     def calendar_hash
       {
-        from_date: params.fetch(:from_date, nil).try(:to_time) || Date.today.at_beginning_of_month,
-        to_date: params.fetch(:to_date, nil).try(:to_time),
+        date: params[:date].try(:to_date) || Date.today,
         user: current_user
       }
     end

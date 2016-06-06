@@ -1,12 +1,5 @@
-<div class="card pendant_record">
-  <%= image_tag pendant_record.photo.url, class: 'card-img-top', data: { src: pendant_record.photo.url } if pendant_record.photo.present? %>
-  <div class="card-block">
-    <h4 class="card-title"><%= pendant_record.pendant.name %></h4>
-    <h5 class="card-subtitle text-muted"><%= pendant_record.pendant.artist.name %></h5>
-    <p class="card-text">
-      <span class="created-at" title="<%= pendant_record.created_at %>">
-        <%= pendant_record.created_at.strftime('%B %-d') %>
-      </span>
-    </p>
-  </div>
+<div class="pendant-record">
+  <%= image_tag pendant_record.photo.url(:thumb), class: '', data: { src: pendant_record.photo.url(:thumb) } if pendant_record.photo.present? %>
+  <p class="pendant-name"><%= pendant_record.pendant.name %></p>
+  <p class="pendant-artist"><%= pendant_record.pendant.artist.name %></p>
 </div>
