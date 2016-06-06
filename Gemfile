@@ -59,6 +59,7 @@ end
 gem 'font-awesome-sass'
 
 gem 'rubocop'
+gem 'scss_lint', require: false
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
