@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a.take-a-dab {
+.take-a-dab {
   display: none;
 
   &.done {
@@ -19,38 +19,39 @@ a.take-a-dab {
   }
 }
 
-form#new_dab {
+#new_dab {
+
+  .post-dab-form {
+    display: none;
+
+    .radio {
+      margin: 0 15px;
+
+      .radio_buttons {
+        margin: 5px;
+      }
+    }
+
+    input[type="submit"] {
+      display: block;
+    }
+  }
+
+  &.post-dab {
+    .timer-form {
+      display: none;
+    }
 
     .post-dab-form {
-        display: none;
-
-        .radio {
-            margin: 0 15px;
-
-            input.radio_buttons {
-                margin: 5px;
-            }
-        }
-
-        input[type="submit"] {
-            display: block;
-        }
+      display: block;
     }
-
-    &.post-dab {
-        .timer-form {
-            display: none;
-        }
-        .post-dab-form {
-            display: block;
-        }
-    }
+  }
 }
 
 .timer {
-    text-align: center;
+  text-align: center;
 
-    .seconds {
-        font-size: 80px;
-    }
+  .seconds {
+    font-size: 80px;
+  }
 }

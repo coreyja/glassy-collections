@@ -1,37 +1,37 @@
 .week {
-    width: 1080px;
-    overflow: hidden;
+  width: 1080px;
+  overflow: hidden;
+}
 
-    .day {
-        width: 265px;
-        max-height: 530px;
-        float: left;
-        padding: 5px 2px;
+.day {
+  float: left;
+  padding: 5px 2px;
 
-        h1 {
-            text-align: center;
-            font-size: 1.5em;
-            margin: 0.1em 0;
-        }
+  width: 265px;
+  max-height: 530px;
 
-        p {
-            text-align: center;
-            font-size: 1em;
-            margin: 0.1em 0;
-        }
+  h1 {
+    margin: 0.1em 0;
+    text-align: center;
+    font-size: 1.5em;
+  }
 
-        .images {
-            .image {
-                padding: 2px 0;
-                text-align: center;
+  p {
+    margin: 0.1em 0;
+    text-align: center;
+    font-size: 1em;
+  }
+}
 
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
-                    display: inline-block;
-                }
-            }
+.images {
+  .image {
+    padding: 2px 0;
+    text-align: center;
 
-        }
+    img {
+      display: inline-block;
+      max-width: 100%;
+      max-height: 100%;
     }
+  }
 }

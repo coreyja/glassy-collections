@@ -1,9 +1,64 @@
-.pendant_record {
-  img {
-    width: 100%;
+.month {
+  text-align: center;
+}
+
+.next-link {
+  float: right;
+}
+
+.calendar {
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &,
+  th,
+  td {
+    border: 1px solid $black;
+    padding: 5px;
   }
 
-  .created-at {
-    font-size: 0.6rem;
+  th {
+    text-align: center;
+  }
+
+  .day {
+    position: relative;
+    width: calc(100%/7);
+    height: 200px;
+
+    &.disabled {
+      background: $light-grey;
+
+      * {
+        display: none !important;
+      }
+    }
+
+    .day-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      padding: 5px;
+
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .pendant-records {
+      .pendant-record {
+        text-align: center;
+      }
+
+      .pendant-name {
+        margin-bottom: 0.2rem;
+        font-weight: bold;
+      }
+
+      img {
+        display: inline-block;
+      }
+    }
   }
 }

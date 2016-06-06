@@ -6,6 +6,21 @@ AllCops:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'spec/**/*'
 
 Documentation:
   Enabled: false
+
+Style/StringLiterals:
+  Description: Checks if uses of quotes match the configured preference.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
+  Enabled: true
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+  - single_quotes
+  - double_quotes
