@@ -1,0 +1,17 @@
+scss_files: 'app/assets/stylesheets/**/*.scss'
+
+exclude: 'app/assets/stylesheets/application.scss'
+
+linters:
+  SelectorFormat:
+    enabled: false
+  LeadingZero:
+    enabled: false
+  NestingDepth:
+    max_depth: 4
+  SelectorDepth:
+    max_depth: 4
+  QualifyingElement:
+    allow_element_with_attribute: true
+  PropertySortOrder:
+    order: concentric

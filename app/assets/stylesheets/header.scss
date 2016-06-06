@@ -3,15 +3,15 @@
   margin-bottom: 1rem;
 
   &__clicky {
-    font-size: 2rem;
-    line-height: 1em;
     text-align: center;
+    line-height: 1em;
+    font-size: 2rem;
 
-    &:before {
+    &::before {
       @include transition(all 0.8s ease);
-      content: "\f102";
       display: inline-block;
       font-family: FontAwesome;
+      content: '\f102';
 
       .header--collapsed & {
         @include transform(rotate(180deg));
@@ -23,16 +23,18 @@
 .brand {
   position: relative;
   height: 125px;
+
   font-size: 0.8rem;
 
   .brand__logo {
     position: absolute;
     top: 0;
     left: calc(50% - 37.5px);
-    height: 75px;
-    width: 75px;
 
     z-index: 1;
+
+    width: 75px;
+    height: 75px;
 
     a {
       display: block;
@@ -41,22 +43,23 @@
 
   .brand__name {
     position: absolute;
-    height: 55px;
-    width: 100%;
     bottom: 0;
+    width: 100%;
+    height: 55px;
+
     text-align: center;
   }
 
   .brand__glassy {
+    text-align: right;
     font-family: 'Pacifico', cursive;
     font-size: 32px;
-    text-align: right;
   }
 
   .brand__collections {
+    text-align: left;
     font-family: 'Roboto Slab', serif;
     font-size: 30px;
-    text-align: left;
   }
 
   .brand__username {
@@ -73,12 +76,14 @@
     .brand__logo {
       left: 50%;
     }
+
     .brand__glassy {
       position: absolute;
       top: 5px;
       right: calc(50% + 5px);
       font-size: 16px;
     }
+
     .brand__collections {
       position: absolute;
       top: 25px;
@@ -93,34 +98,34 @@
   $border-width: 1px;
 
   @include display(flex);
-  //@include transition(opacity 1.6s ease, max-height 1.6s ease);
 
-  flex-wrap: wrap;
+  opacity: 1;
 
+  border-width: $border-width 0;
   border-style: solid;
   border-color: $border-color;
-  border-width: $border-width 0;
 
   max-height: 166px;
-  opacity: 1;
 
   overflow: hidden;
 
+  flex-wrap: wrap;
+
   .header--collapsed & {
-    //@include transition(opacity 1s ease, max-height 1s ease);
-    max-height: 0;
     opacity: 0;
+    max-height: 0;
   }
 
   .nav-item {
     @include flex(0 0 50%);
 
-    text-align: center;
 
-    border-color: inherit;
-    border-style: inherit;
     border-width: 0;
     border-bottom-width: $border-width;
+    border-style: inherit;
+    border-color: inherit;
+
+    text-align: center;
 
     @include odd {
       border-right-width: $border-width;
@@ -131,8 +136,8 @@
     }
 
     .nav-link {
-      padding: 0.5rem 0;
       display: block;
+      padding: 0.5rem 0;
 
       color: darken($border-color, 50%);
 
