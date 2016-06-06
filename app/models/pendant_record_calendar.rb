@@ -15,6 +15,10 @@ class PendantRecordCalendar
     date.strftime('%B')
   end
 
+  def year
+    date.strftime('%Y')
+  end
+
   def first_of_month
     start_date
   end
