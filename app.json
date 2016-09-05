@@ -35,6 +35,10 @@
     },
     "SECRET_TOKEN": {
       "required": true
+    },
+    "DEPLOY_TASKS": {
+      "description": "Rake tasks to run after deploying",
+      "value": "db:migrate cache:clear"
     }
   },
   "addons": [
@@ -45,6 +49,9 @@
   "buildpacks": [
     {
       "url": "urn:buildpack:heroku/ruby"
+    },
+    {
+      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ]
 }
