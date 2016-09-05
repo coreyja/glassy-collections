@@ -9,9 +9,9 @@ RSpec.describe PendantRecord, type: :model do
     end
 
     it 'sets the worn_on date correctly' do
-      expect { subject.save! }
-        .to change { subject.worn_on }
-        .from(nil).to(Date.parse('1-1-2000'))
+      expect { subject.save! }.
+        to change { subject.worn_on }.
+        from(nil).to(Date.parse('1-1-2000'))
     end
   end
 end

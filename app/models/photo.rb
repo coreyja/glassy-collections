@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   has_attached_file :photo, styles: {
     medium: '300x300>',
-    thumb: '100x100>'
+    thumb: '100x100>',
   }
   process_in_background :photo
 

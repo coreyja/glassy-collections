@@ -7,7 +7,7 @@ class Authentication < ActiveRecord::Base
       uid: auth_hash['uid'],
       token: auth_hash['credentials']['token'],
       username: auth_hash[:info][:nickname],
-      user: current_user || User.create_from_omniauth!(auth_hash)
+      user: current_user || User.create_from_omniauth!(auth_hash),
     )
   end
 
