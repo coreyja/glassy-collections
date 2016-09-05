@@ -65,14 +65,14 @@ gem 'high_voltage', '~> 2.4.0'
 
 gem 'render_anywhere', require: false
 
+gem 'rubocop'
+gem 'scss_lint', require: false
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'timecop'
 
   gem 'factory_girl_rails'
-
-  gem 'rubocop'
-  gem 'scss_lint', require: false
 end
 
 group :test do
