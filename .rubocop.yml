@@ -1,3 +1,5 @@
+inherit_from: .thoughtbot_rubocop.yml
+
 AllCops:
   Exclude:
     - 'vendor/**/*'

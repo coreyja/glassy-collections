@@ -58,11 +58,6 @@ source 'https://rails-assets.org' do
 end
 gem 'font-awesome-sass'
 
-gem 'rubocop'
-gem 'scss_lint', require: false
-
-gem 'codeclimate-test-reporter', group: :test, require: nil
-
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
@@ -71,14 +66,23 @@ gem 'high_voltage', '~> 2.4.0'
 gem 'render_anywhere', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
+  gem 'timecop'
 
   gem 'factory_girl_rails'
+
+  gem 'rubocop'
+  gem 'scss_lint', require: false
+end
+
+group :test do
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'pry-rails'
