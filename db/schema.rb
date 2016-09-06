@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905213838) do
+ActiveRecord::Schema.define(version: 20160906021957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,4 +158,16 @@ ActiveRecord::Schema.define(version: 20160905213838) do
   add_foreign_key "pendants", "artists"
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
+
+  create_view :pendant_searches,  sql_definition: <<-SQL
+      SELECT pendants.id AS pendant_id,
+      pendants.name AS term
+     FROM pendants
+  UNION
+   SELECT pendants.id AS pendant_id,
+      artists.name AS term
+     FROM (pendants
+       JOIN artists ON ((pendants.artist_id = artists.id)));
+  SQL
+
 end
