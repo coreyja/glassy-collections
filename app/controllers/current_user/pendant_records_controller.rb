@@ -4,11 +4,7 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      if filter_provided?
-        @pendants = current_user.wearable_pendants.search(filter_term)
-      else
-        @pendants = current_user.wearable_pendants
-      end
+      @pendants = filtered_pendants
     end
 
     def create
@@ -38,6 +34,14 @@ module CurrentUser
 
     def calendar
       PendantRecordCalendar.new calendar_hash
+    end
+
+    def filtered_pendants
+      if filter_provided?
+        current_user.wearable_pendants.search(filter_term)
+      else
+        current_user.wearable_pendants
+      end
     end
 
     def photo_params

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Pendant, type: :model do
-
   describe '.search' do
     let(:artist_1) { FactoryGirl.create(:artist, name: 'Aiuto') }
     let(:artist_2) { FactoryGirl.create(:artist, name: 'RyanKane') }
