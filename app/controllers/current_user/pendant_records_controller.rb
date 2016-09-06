@@ -4,7 +4,11 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      @pendants = current_user.wearable_pendants
+      if filter_provided?
+        @pendants = current_user.wearable_pendants.search(filter_term)
+      else
+        @pendants = current_user.wearable_pendants
+      end
     end
 
     def create
@@ -42,6 +46,18 @@ module CurrentUser
 
     def pendant_record_params
       params.require(:pendant_record).permit(:pendant_id)
+    end
+
+    def pendant_filter_params
+      params.fetch(:pendant_filter, {}).permit(:term)
+    end
+
+    def filter_provided?
+      pendant_filter_params.present? && filter_term.present?
+    end
+
+    def filter_term
+      pendant_filter_params[:term]
     end
   end
 end

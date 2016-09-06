@@ -5,7 +5,7 @@ class Pendant < ActiveRecord::Base
   has_many :pendant_records
   has_many :pendant_searches
 
-  scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term))}
+  scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term)).uniq }
 
   def to_s
     name

@@ -27,6 +27,15 @@ RSpec.describe Pendant, type: :model do
       end
     end
 
+    context 'when the search term is in the artist name and pendant name' do
+      let!(:pendant_3) { FactoryGirl.create(:pendant, artist: artist_2, name: 'ryan wolf head') }
+      let(:term) { 'ryan' }
+
+      it 'only returns the matching pendant once' do
+        expect(subject).to contain_exactly pendant_3
+      end
+    end
+
     context 'when the search term is not in any of the pendants' do
       let(:term) { 'eye' }
 
