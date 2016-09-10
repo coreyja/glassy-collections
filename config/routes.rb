@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Let's Encrypt SSL
+  get '/.well-known/acme-challenge/:id' => 'acme_challenges#letsencrypt'
+
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'clearance/sessions', only: [:create]
 
