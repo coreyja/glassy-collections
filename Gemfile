@@ -69,7 +69,7 @@ gem 'rubocop'
 gem 'scss_lint', require: false
 
 gem 'serviceworker-rails'
-gem 'fcm'
+gem 'webpush'
 
 gem 'lodash-rails'
 

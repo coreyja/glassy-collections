@@ -7,13 +7,13 @@ self.addEventListener('activate', function(event) {
     console.log('Activated', event);
 });
 self.addEventListener('push', function(event) {
-    var title = 'Push message';
-    event.waitUntil(
-        self.registration.showNotification(title, {
-            body: 'The Message',
-            icon: 'assets/launcher-icon-4x.png',
-            tag: 'my-tag'
-        }));
+    if (event.data) {
+        var json = event.data.json();
+        self.registration.showNotification(json.title, {
+            body: json.body,
+            icon: json.icon
+        });
+    }
 });
 self.addEventListener('notificationclick', function(event) {
     console.log('Notification click: tag ', event.notification.tag);

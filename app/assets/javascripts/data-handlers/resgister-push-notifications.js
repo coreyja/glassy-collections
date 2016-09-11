@@ -1,9 +1,13 @@
 (function() {
-    var sendSubscriberIdToServer = function(subscriber_id) {
-        console.log('subscriber_id:', subscriber_id);
+    var sendDataToServer = function(sub) {
         var url = "/api/my/push_notification_subscriptions";
+        var data = {
+            endpoint: sub.endpoint,
+            p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_'),
+            auth: btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_')
+        };
 
-        $.post(url, {subscription_id: subscriber_id}, function() {
+        $.post(url, data, function() {
             console.log('Saved to server!');
         });
     };
@@ -16,10 +20,7 @@
                 navigator.serviceWorker.ready.then(function (reg) {
                     reg.pushManager.subscribe({
                         userVisibleOnly: true
-                    }).then(function (sub) {
-                        var subscriber_id = _.last(_.split(sub.endpoint, '/'));
-                        sendSubscriberIdToServer(subscriber_id);
-                    });
+                    }).then(sendDataToServer);
                 }).catch(function (error) {
                     console.log(':^(', error);
                 });
