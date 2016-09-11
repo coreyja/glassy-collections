@@ -1,23 +1,23 @@
 {
   "name": "Glassy Collections",
   "shortname": "GlassyCollections",
-  "gcm_sender_id": "693216532696",
+  "gcm_sender_id": "<%= Figaro.env.GCM_SENDER_ID %>",
   "permissions": [
     "gcm"
   ],
   "icons": [
     {
-      "src": "assets/launcher-icon-2x.png",
+      "src": "<%= asset_path 'launcher-icon-2x.png' %>",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "assets/launcher-icon-3x.png",
+      "src": "<%= asset_path 'launcher-icon-3x.png' %>",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/launcher-icon-4x.png",
+      "src": "<%= asset_path 'launcher-icon-4x.png' %>",
       "sizes": "192x192",
       "type": "image/png"
     }
