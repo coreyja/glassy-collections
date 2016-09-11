@@ -69,6 +69,7 @@ gem 'rubocop'
 gem 'scss_lint', require: false
 
 gem 'serviceworker-rails'
+gem 'fcm'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

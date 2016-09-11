@@ -97,6 +97,9 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    fcm (0.0.2)
+      httparty
+      json
     figaro (1.1.1)
       thor (~> 0.14)
     font-awesome-sass (4.5.0)
@@ -106,6 +109,8 @@ GEM
     hash_attribute_assignment (0.0.5)
     hashie (3.4.3)
     high_voltage (2.4.0)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     imgkit (1.6.1)
     jbuilder (2.4.1)
@@ -296,6 +301,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_paperclip
   factory_girl_rails
+  fcm
   figaro
   font-awesome-sass
   hash_attribute_assignment
