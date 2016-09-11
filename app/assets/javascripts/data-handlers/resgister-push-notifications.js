@@ -1,6 +1,11 @@
 (function() {
     var sendSubscriberIdToServer = function(subscriber_id) {
         console.log('subscriber_id:', subscriber_id);
+        var url = "/api/my/push_notification_subscriptions";
+
+        $.post(url, {subscription_id: subscriber_id}, function() {
+            console.log('Saved to server!');
+        });
     };
 
     var registerPushNotifications = function(e) {
@@ -20,6 +25,8 @@
                 });
             });
         }
+
+        return false;
     };
 
     $(document).on('click', '[data-register-push-notifications]', registerPushNotifications);

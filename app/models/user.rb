@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :crew_memberships
   has_many :crews, through: :crew_memberships
 
+  has_many :push_notification_subscriptions, dependent: :destroy
   has_many :authentications, dependent: :destroy
 
   def self.create_from_omniauth!(auth_hash)
