@@ -171,4 +171,16 @@ ActiveRecord::Schema.define(version: 20160911220300) do
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "push_notification_subscriptions", "users"
+
+  create_view :pendant_searches,  sql_definition: <<-SQL
+      SELECT pendants.id AS pendant_id,
+      pendants.name AS term
+     FROM pendants
+  UNION
+   SELECT pendants.id AS pendant_id,
+      artists.name AS term
+     FROM (pendants
+       JOIN artists ON ((pendants.artist_id = artists.id)));
+  SQL
+
 end

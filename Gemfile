@@ -65,6 +65,8 @@ gem 'high_voltage', '~> 2.4.0'
 
 gem 'render_anywhere', require: false
 
+gem 'scenic'
+
 gem 'rubocop'
 gem 'scss_lint', require: false
 
