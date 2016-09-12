@@ -31,4 +31,10 @@ Rails.application.routes.draw do
 
     resource :last_week_in_pendants, only: %i(show)
   end
+
+  namespace :api do
+    namespace :my, module: :current_user do
+      resources :push_notification_subscriptions, only: %i(create)
+    end
+  end
 end
