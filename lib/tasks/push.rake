@@ -7,7 +7,7 @@ namespace :push do
       icon: '/assets/launcher-icon-4x.png'
     }
 
-    PushNotificationSubscription.all.each do |sub|
+    PushNotificationSubscription.needs_reminder.each do |sub|
       Delayed::Job.enqueue Push.new(push_notification_subscription_id: sub.id, data: data)
     end
   end
