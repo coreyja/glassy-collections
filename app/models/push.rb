@@ -1,5 +1,5 @@
 class Push
-  TTL = 3600.freeze
+  TTL = 3600
 
   include HashAttributeAssignment
 
@@ -19,7 +19,7 @@ class Push
     auth_params.merge(
       message: message,
       ttl: TTL,
-      api_key: Figaro.env.GCM_API_KEY
+      api_key: Figaro.env.GCM_API_KEY,
     )
   end
 

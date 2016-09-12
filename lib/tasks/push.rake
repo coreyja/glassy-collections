@@ -1,10 +1,10 @@
 namespace :push do
-  desc "Enqueue a job to send a Push Notification To All Subcriptions"
+  desc 'Enqueue a job to send a Push Notification To All Subcriptions'
   task enqueue_reminder: :environment do
     data = {
       title: 'Record Pendant',
       body: 'Do it Now!',
-      icon: '/assets/launcher-icon-4x.png'
+      icon: '/assets/launcher-icon-4x.png',
     }
 
     PushNotificationSubscription.needs_reminder.each do |sub|
