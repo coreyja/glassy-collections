@@ -18,7 +18,7 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
     console.log('Notification click: tag ', event.notification.tag);
     event.notification.close();
-    var url = 'https://www.google.com/';
+    var url = 'https://glassycollections.com/';
     if (clients.openWindow) {
         return clients.openWindow(url);
     }
