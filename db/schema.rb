@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906021957) do
+ActiveRecord::Schema.define(version: 20160911220300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,18 @@ ActiveRecord::Schema.define(version: 20160906021957) do
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
+  create_table "push_notification_subscriptions", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "endpoint",   null: false
+    t.string   "p256dh",     null: false
+    t.string   "auth",       null: false
+  end
+
+  add_index "push_notification_subscriptions", ["endpoint", "p256dh", "auth"], name: "index_push_notification_subscriptions_on_data", unique: true, using: :btree
+  add_index "push_notification_subscriptions", ["user_id"], name: "index_push_notification_subscriptions_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -158,6 +170,7 @@ ActiveRecord::Schema.define(version: 20160906021957) do
   add_foreign_key "pendants", "artists"
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
+  add_foreign_key "push_notification_subscriptions", "users"
 
   create_view :pendant_searches,  sql_definition: <<-SQL
       SELECT pendants.id AS pendant_id,

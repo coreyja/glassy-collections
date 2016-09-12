@@ -70,6 +70,11 @@ gem 'scenic'
 gem 'rubocop'
 gem 'scss_lint', require: false
 
+gem 'serviceworker-rails'
+gem 'webpush'
+
+gem 'lodash-rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'timecop'

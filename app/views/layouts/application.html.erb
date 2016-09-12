@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!--<link rel="manifest" href="<%= asset_path 'manifest.json' %>">-->
+  <link rel="manifest" href="/assets/manifest.json">
+  <%= favicon_link_tag %>
 
   <title>GlassyCollections</title>
 
@@ -14,6 +17,8 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'sw', 'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'https://www.google.com/jsapi', 'chartkick', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>

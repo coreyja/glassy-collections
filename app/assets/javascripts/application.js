@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require lodash
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -17,4 +18,7 @@
 //= require howler.min
 //= require tether
 //= require bootstrap-sprockets
-//= require_tree .
+
+//= require header
+
+//= require_tree ./data-handlers
