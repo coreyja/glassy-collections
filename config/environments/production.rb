@@ -82,6 +82,9 @@ Rails.application.configure do
   Rails.application.config.secret_key_base = ENV['SECRET_KEY_BASE']
   Rails.application.config.secret_token = ENV['SECRET_TOKEN']
 
+  # force HTTPS on production
+  config.force_ssl = true
+
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
