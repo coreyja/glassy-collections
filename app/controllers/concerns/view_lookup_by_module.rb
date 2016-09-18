@@ -2,7 +2,7 @@ module ViewLookupByModule
   extend ActiveSupport::Concern
 
   included do
-    before_filter :add_module_prefix
+    before_action :add_module_prefix
   end
 
   def add_module_prefix
