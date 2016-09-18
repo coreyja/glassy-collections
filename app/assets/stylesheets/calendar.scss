@@ -7,6 +7,12 @@ $calendar-desktop-width: 800px;
   }
 }
 
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 @mixin cell {
   width: 100%;
   flex: 0 0 auto;
@@ -28,14 +34,10 @@ $calendar-desktop-width: 800px;
   width: 100%;
   box-sizing: border-box;
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
   .headers {
     display: none;
+
+    @include list-reset;
 
     @include desktop {
       display: flex;
@@ -51,6 +53,8 @@ $calendar-desktop-width: 800px;
   .week {
     display: flex;
     flex-direction: column;
+
+    @include list-reset;
 
     @include desktop {
       flex-direction: row;
@@ -75,34 +79,34 @@ $calendar-desktop-width: 800px;
         display: none;
       }
     }
+  }
 
-    .day-label {
-      padding: 5px;
+  .day-label {
+    padding: 5px;
 
-      font-size: 1em;
-      font-weight: bold;
+    font-size: 1em;
+    font-weight: bold;
 
-      .weekday {
-        font-size: 0.8em;
-        font-weight: normal;
+    .weekday {
+      font-size: 0.8em;
+      font-weight: normal;
 
-        @include desktop {
-          display: none;
-        }
+      @include desktop {
+        display: none;
       }
     }
+  }
 
-    .pendant-record {
-      text-align: center;
+  .pendant-record {
+    text-align: center;
 
-      .pendant-name {
-        margin-bottom: 0.2rem;
-        font-weight: bold;
-      }
+    .pendant-name {
+      margin-bottom: 0.2rem;
+      font-weight: bold;
+    }
 
-      img {
-        display: inline-block;
-      }
+    img {
+      display: inline-block;
     }
   }
 }
