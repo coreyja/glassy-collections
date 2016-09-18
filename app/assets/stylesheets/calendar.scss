@@ -22,28 +22,29 @@ $calendar-desktop-width: 800px;
 }
 
 .calendar {
+  border: 1px solid $black;
+  border-top: 0;
+
   width: 100%;
   box-sizing: border-box;
 
-  border: 1px solid black;
-  border-top: 0;
-
   ul {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 
   .headers {
     display: none;
 
-    li {
-      @include cell;
-    }
     @include desktop {
       display: flex;
-      flex-direction: row;
       text-align: center;
+      flex-direction: row;
+    }
+
+    li {
+      @include cell;
     }
   }
 
@@ -57,10 +58,10 @@ $calendar-desktop-width: 800px;
   }
 
   .day {
+    @include cell;
+
     position: relative;
     min-height: 50px;
-
-    @include cell;
 
     &.disabled {
       display: none;
@@ -71,7 +72,7 @@ $calendar-desktop-width: 800px;
       }
 
       * {
-        display: none !important;
+        display: none;
       }
     }
 
@@ -91,10 +92,8 @@ $calendar-desktop-width: 800px;
       }
     }
 
-    .pendant-records {
-      .pendant-record {
-        text-align: center;
-      }
+    .pendant-record {
+      text-align: center;
 
       .pendant-name {
         margin-bottom: 0.2rem;
