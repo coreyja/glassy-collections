@@ -5,20 +5,16 @@
 <%= link_to 'Previous Month', my_pendant_records_path(date: calendar.first_of_month-1.month), class: 'previous-link' %>
 <%= link_to 'Next Month', my_pendant_records_path(date: calendar.first_of_month+1.month), class: 'next-link' %>
 
-<table class="calendar">
-  <thead>
-  <tr>
-    <th>Sunday</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-  </tr>
-  </thead>
+<div class="calendar">
+  <ul class="headers">
+    <li>Sunday</li>
+    <li>Monday</li>
+    <li>Tuesday</li>
+    <li>Wednesday</li>
+    <li>Thursday</li>
+    <li>Friday</li>
+    <li>Saturday</li>
+  </ul>
 
-  <tbody>
   <%= render partial: 'week', collection: calendar.weeks %>
-  </tbody>
-</table>
+</div>
