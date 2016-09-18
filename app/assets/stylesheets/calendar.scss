@@ -1,0 +1,112 @@
+$calendar-desktop-width: 800px;
+
+
+@mixin desktop {
+  @media (min-width: #{$calendar-desktop-width}) {
+    @content;
+  }
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin cell {
+  width: 100%;
+  flex: 0 0 auto;
+  border-top: 1px solid $black;
+
+  @include desktop {
+    width: calc(100% / 7);
+
+    &:not(:last-child) {
+      border-right: 1px solid $black;
+    }
+  }
+}
+
+.calendar {
+  border: 1px solid $black;
+  border-top: 0;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  .headers {
+    display: none;
+
+    @include list-reset;
+
+    @include desktop {
+      display: flex;
+      text-align: center;
+      flex-direction: row;
+    }
+
+    li {
+      @include cell;
+    }
+  }
+
+  .week {
+    display: flex;
+    flex-direction: column;
+
+    @include list-reset;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  .day {
+    @include cell;
+
+    position: relative;
+    min-height: 50px;
+
+    &.disabled {
+      display: none;
+      background: $light-grey;
+
+      @include desktop {
+        display: block;
+      }
+
+      * {
+        display: none;
+      }
+    }
+  }
+
+  .day-label {
+    padding: 5px;
+
+    font-size: 1em;
+    font-weight: bold;
+
+    .weekday {
+      font-size: 0.8em;
+      font-weight: normal;
+
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
+  .pendant-record {
+    text-align: center;
+
+    .pendant-name {
+      margin-bottom: 0.2rem;
+      font-weight: bold;
+    }
+
+    img {
+      display: inline-block;
+    }
+  }
+}
