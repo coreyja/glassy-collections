@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '~> 5.0'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -34,8 +34,8 @@ gem 'chartkick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'paperclip', '~> 4.3'
-gem 'aws-sdk-v1'
+gem 'paperclip', '~> 5.1.0'
+gem 'aws-sdk', '~> 2.3.0'
 
 gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
@@ -61,7 +61,7 @@ gem 'font-awesome-sass'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
-gem 'high_voltage', '~> 2.4.0'
+gem 'high_voltage', '~> 3.0.0'
 
 gem 'render_anywhere', require: false
 
@@ -76,7 +76,7 @@ gem 'webpush'
 gem 'lodash-rails'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 3.5'
   gem 'timecop'
 
   gem 'factory_girl_rails'
