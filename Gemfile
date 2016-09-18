@@ -61,7 +61,7 @@ gem 'font-awesome-sass'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
-gem 'high_voltage', '~> 2.4.0'
+gem 'high_voltage', '~> 3.0.0'
 
 gem 'render_anywhere', require: false
 
