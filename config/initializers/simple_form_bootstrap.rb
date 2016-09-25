@@ -42,7 +42,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
-  config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-check', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'control-label'
