@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'loaderio-6740bbace59df2ad01bb669b65e8333e', controller: :loader_io, action: :verify
+
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'clearance/sessions', only: [:create]
 
