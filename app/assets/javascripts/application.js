@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require moment.min
 //= require howler.min
+//= require list
+//= require list.fuzzysearch
 //= require tether
 //= require bootstrap-sprockets
 

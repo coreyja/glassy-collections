@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :artists, only: %i(new create index)
 
   namespace :my, module: :current_user do
-    resources :pendants, only: %i(new create index)
+    resources :pendants, only: %i(new create index show edit update)
     resources :pendant_records, only: %i(new create index)
     resources :fake_pendant_records, only: %i(new create)
     resources :artists, only: %i(index)
