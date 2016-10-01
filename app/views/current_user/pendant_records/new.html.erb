@@ -3,7 +3,7 @@
   <div id="pendant-list">
     <input type="search" class="search" placeholder="Search" />
     <div class="list">
-      <%= render partial: 'radio_button', collection: @pendants.to_a*4, as: :pendant %>
+      <%= render partial: 'radio_button', collection: @pendants.to_a, as: :pendant %>
     </div>
     <script>
       new List('pendant-list', { plugins: [ ListFuzzySearch() ], valueNames: [{ data: ['name', 'artist-name']}]});
