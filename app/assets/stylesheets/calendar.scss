@@ -1,4 +1,4 @@
-$calendar-desktop-width: 800px;
+$calendar-desktop-width: 700px;
 
 
 @mixin desktop {
@@ -66,6 +66,7 @@ $calendar-desktop-width: 800px;
 
     position: relative;
     min-height: 50px;
+    padding: 5px;
 
     &.disabled {
       display: none;
@@ -82,7 +83,7 @@ $calendar-desktop-width: 800px;
   }
 
   .day-label {
-    padding: 5px;
+    padding: 0 5px 5px 0;
 
     font-size: 1em;
     font-weight: bold;
@@ -107,6 +108,7 @@ $calendar-desktop-width: 800px;
 
     img {
       display: inline-block;
+      max-width: 100%;
     }
   }
 }
