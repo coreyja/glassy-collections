@@ -59,7 +59,7 @@ class PendantRecordCalendar
   class CalendarDay
     include HashAttributeAssignment
 
-    REQUIRED_KEYS = %i(user date).freeze
+    REQUIRED_KEYS = %i(user date date_range).freeze
 
     attr_reader :date
 
