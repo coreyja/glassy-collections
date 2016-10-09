@@ -31,4 +31,4 @@
     };
 
     $(document).on('click', '[data-register-push-notifications]', registerPushNotifications);
-})();
+}());
