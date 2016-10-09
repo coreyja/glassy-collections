@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :push do
   desc 'Enqueue a job to send a Push Notification To All Subcriptions'
   task enqueue_reminder: :environment do

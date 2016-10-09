@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   get 'loaderio-6740bbace59df2ad01bb669b65e8333e', controller: :loader_io, action: :verify
 
