@@ -1,10 +1,13 @@
 (function() {
     var sendDataToServer = function(sub) {
         var url = "/api/my/push_notification_subscriptions";
+        var extract = function(key) {
+            btoa(String.fromCharCode.apply(null, new Uint8Array(key))).replace(/\+/g, '-').replace(/\//g, '_')
+        };
         var data = {
             endpoint: sub.endpoint,
-            p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_'),
-            auth: btoa(String.fromCharCode.apply(null, new Uint8Array(sub.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_')
+            p256dh: extract(sub.getKey('p256dh')),
+            auth: extract(sub.getKey('auth'))
         };
 
         $.post(url, data, function() {
@@ -31,4 +34,4 @@
     };
 
     $(document).on('click', '[data-register-push-notifications]', registerPushNotifications);
-})();
+}());
