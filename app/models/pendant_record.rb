@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PendantRecord < ActiveRecord::Base
   belongs_to :user
   belongs_to :pendant

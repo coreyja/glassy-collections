@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ArtistsController < ApplicationController
   before_action :require_login
 

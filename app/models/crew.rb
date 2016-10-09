@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Crew < ActiveRecord::Base
   belongs_to :user
   alias_attribute :leader, :user
