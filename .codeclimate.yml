@@ -18,6 +18,10 @@ engines:
     enabled: true
   fixme:
     enabled: true
+    exclude_fingerprints:
+      - c80884e2a2655adda525de0a6787f74b
+      - 5509a482d34ea3e12ee3e4aafce78fc7
+      - bcfc5dfc02c1198fda553c02bafa3bfd
   rubocop:
     enabled: true
 ratings:
