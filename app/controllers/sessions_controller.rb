@@ -13,7 +13,7 @@ class SessionsController < Clearance::SessionsController
   end
 
   def authentication
-    Authentication.find_by_omniauth(omniauth_hash) || Authentication.create_with_omniauth!(omniauth_hash, current_user)
+    Authentication.find_by(omniauth_hash) || Authentication.create_with_omniauth!(omniauth_hash, current_user)
   end
 
   def user

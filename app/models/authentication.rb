@@ -12,10 +12,6 @@ class Authentication < ActiveRecord::Base
     )
   end
 
-  def self.find_by_omniauth(auth_hash)
-    find_by(provider: auth_hash['provider'], uid: auth_hash['uid'])
-  end
-
   def update_token(auth_hash)
     update token: auth_hash['credentials']['token']
   end
