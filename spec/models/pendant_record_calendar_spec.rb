@@ -42,4 +42,20 @@ RSpec.describe PendantRecordCalendar, type: :model do
       end
     end
   end
+
+  describe '#month' do
+    let(:date) { Date.parse('2016-01-05') }
+
+    it 'returns a String representation of the month' do
+      expect(subject.month).to eq 'January'
+    end
+  end
+
+  describe '#year' do
+    let(:date) { Date.parse('2016-01-05') }
+
+    it 'returns a String representation of the year' do
+      expect(subject.year).to eq '2016'
+    end
+  end
 end
