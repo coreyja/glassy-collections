@@ -44,4 +44,14 @@ RSpec.describe Pendant, type: :model do
       end
     end
   end
+
+  describe '#to_s' do
+    let(:name) { 'PendantName' }
+
+    subject { FactoryGirl.create(:pendant, name: name) }
+
+    it 'returns the name of the pendant' do
+      expect(subject.name).to eq 'PendantName'
+    end
+  end
 end
