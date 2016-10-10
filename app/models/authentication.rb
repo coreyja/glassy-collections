@@ -2,7 +2,7 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
 
-  def self.create_with_omniauth!(auth_hash, current_user)
+  def self.create_with_omniauth!(auth_hash, current_user = nil)
     create!(
       provider: auth_hash['provider'],
       uid: auth_hash['uid'],
@@ -10,10 +10,6 @@ class Authentication < ActiveRecord::Base
       username: auth_hash[:info][:nickname],
       user: current_user || User.create_from_omniauth!(auth_hash),
     )
-  end
-
-  def self.find_by_omniauth(auth_hash)
-    find_by(provider: auth_hash['provider'], uid: auth_hash['uid'])
   end
 
   def update_token(auth_hash)
