@@ -2,7 +2,7 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
 
-  def self.create_with_omniauth!(auth_hash, current_user)
+  def self.create_with_omniauth!(auth_hash, current_user = nil)
     create!(
       provider: auth_hash['provider'],
       uid: auth_hash['uid'],
