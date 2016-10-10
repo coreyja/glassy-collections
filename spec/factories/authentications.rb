@@ -2,7 +2,7 @@
 FactoryGirl.define do
   factory :authentication do
     provider 'SomeCoolProvider'
-    sequence(:uid) { |n| "#{n}" }
+    sequence(:uid, &:to_s)
     token { SecureRandom.base64 }
     user
   end
