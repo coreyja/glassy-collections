@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :push_notification_subscriptions, dependent: :destroy
   has_many :authentications, dependent: :destroy
 
-  scope :needs_reminder, -> { where.not(id: joins(:pendant_records).merge(PendantRecord.on_date(Time.zone.today))) }
+  scope :needs_reminder, -> { where.not(id: joins(:pendant_records).merge(PendantRecord.worn_on(Time.zone.today))) }
 
   def self.create_from_omniauth!(auth_hash)
     create!(
