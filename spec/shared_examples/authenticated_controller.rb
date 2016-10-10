@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.shared_examples 'authenticated GET controller' do |url|
   context 'when a User is NOT logged in' do
     it 'redirects to the login page' do

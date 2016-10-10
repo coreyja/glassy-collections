@@ -24,8 +24,8 @@ RSpec.describe 'ArtistsController', type: :request do
           {
             artist: {
               name: nil,
-              instagram_name: nil
-            }
+              instagram_name: nil,
+            },
           }
         end
 
@@ -41,8 +41,8 @@ RSpec.describe 'ArtistsController', type: :request do
         let(:params) do
           {
             artist: {
-              name: 'Artist Name'
-            }
+              name: 'Artist Name',
+            },
           }
         end
 
