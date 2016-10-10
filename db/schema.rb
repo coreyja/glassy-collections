@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911220300) do
+ActiveRecord::Schema.define(version: 20161010002853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ar_internal_metadata", primary_key: "key", id: :string, force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string   "name",               null: false
@@ -31,42 +36,9 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", unique: true, using: :btree
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
-
-  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", unique: true, using: :btree
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
-
-  create_table "crew_memberships", force: :cascade do |t|
-    t.integer  "crew_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "crew_memberships", ["crew_id", "user_id"], name: "index_crew_memberships_on_crew_id_and_user_id", unique: true, using: :btree
-  add_index "crew_memberships", ["crew_id"], name: "index_crew_memberships_on_crew_id", using: :btree
-  add_index "crew_memberships", ["user_id"], name: "index_crew_memberships_on_user_id", using: :btree
-
-  create_table "crews", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "crews", ["user_id"], name: "index_crews_on_user_id", using: :btree
-
-  create_table "dabs", force: :cascade do |t|
-    t.integer  "user_id",                  null: false
-    t.integer  "nail_id",                  null: false
-    t.integer  "milliseconds",             null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "rating",       default: 3, null: false
-  end
-
-  add_index "dabs", ["nail_id"], name: "index_dabs_on_nail_id", using: :btree
-  add_index "dabs", ["user_id"], name: "index_dabs_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -80,19 +52,8 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
-  create_table "nails", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "description"
-    t.integer  "user_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "nails", ["user_id"], name: "index_nails_on_user_id", using: :btree
 
   create_table "pendant_records", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -101,12 +62,11 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date     "worn_on",    null: false
+    t.index ["created_at"], name: "index_pendant_records_on_created_at", using: :btree
+    t.index ["pendant_id"], name: "index_pendant_records_on_pendant_id", using: :btree
+    t.index ["photo_id"], name: "index_pendant_records_on_photo_id", using: :btree
+    t.index ["user_id"], name: "index_pendant_records_on_user_id", using: :btree
   end
-
-  add_index "pendant_records", ["created_at"], name: "index_pendant_records_on_created_at", using: :btree
-  add_index "pendant_records", ["pendant_id"], name: "index_pendant_records_on_pendant_id", using: :btree
-  add_index "pendant_records", ["photo_id"], name: "index_pendant_records_on_photo_id", using: :btree
-  add_index "pendant_records", ["user_id"], name: "index_pendant_records_on_user_id", using: :btree
 
   create_table "pendants", force: :cascade do |t|
     t.string   "name",       null: false
@@ -114,10 +74,9 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_pendants_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_pendants_on_user_id", using: :btree
   end
-
-  add_index "pendants", ["artist_id"], name: "index_pendants_on_artist_id", using: :btree
-  add_index "pendants", ["user_id"], name: "index_pendants_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -128,9 +87,8 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.integer  "photo_file_size",    null: false
     t.datetime "photo_updated_at",   null: false
     t.boolean  "photo_processing"
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
-
-  add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "push_notification_subscriptions", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -139,10 +97,9 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.string   "endpoint",   null: false
     t.string   "p256dh",     null: false
     t.string   "auth",       null: false
+    t.index ["endpoint", "p256dh", "auth"], name: "index_push_notification_subscriptions_on_data", unique: true, using: :btree
+    t.index ["user_id"], name: "index_push_notification_subscriptions_on_user_id", using: :btree
   end
-
-  add_index "push_notification_subscriptions", ["endpoint", "p256dh", "auth"], name: "index_push_notification_subscriptions_on_data", unique: true, using: :btree
-  add_index "push_notification_subscriptions", ["user_id"], name: "index_push_notification_subscriptions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
@@ -152,18 +109,11 @@ ActiveRecord::Schema.define(version: 20160911220300) do
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
     t.string   "name"
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-
   add_foreign_key "authentications", "users"
-  add_foreign_key "crew_memberships", "crews"
-  add_foreign_key "crew_memberships", "users"
-  add_foreign_key "crews", "users"
-  add_foreign_key "dabs", "nails"
-  add_foreign_key "dabs", "users"
-  add_foreign_key "nails", "users"
   add_foreign_key "pendant_records", "pendants"
   add_foreign_key "pendant_records", "photos"
   add_foreign_key "pendant_records", "users"
