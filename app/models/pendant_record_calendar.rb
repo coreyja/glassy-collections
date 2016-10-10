@@ -64,7 +64,7 @@ class PendantRecordCalendar
     attr_reader :date
 
     def pendant_records
-      @pendant_records ||= user.pendant_records.on_date(date).order('created_at ASC')
+      @pendant_records ||= user.pendant_records.worn_on(date).order('created_at ASC')
     end
 
     def enabled?
