@@ -31,10 +31,6 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    if name.present?
-      name
-    else
-      email
-    end
+    name || email
   end
 end

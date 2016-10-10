@@ -24,4 +24,23 @@ RSpec.describe User, type: :model do
       expect(subject).to contain_exactly user_with_record_yesterday, user_without_record
     end
   end
+
+  describe '#display_name' do
+    let(:name) { nil }
+    subject { FactoryGirl.create :user, email: '1@example.org', name: name }
+
+    context 'when no name exists for the User' do
+      it 'returns the email' do
+        expect(subject.display_name).to eq '1@example.org'
+      end
+    end
+
+    context 'when a name is present on the User' do
+      let(:name) { 'Somebody' }
+
+      it 'returns the email' do
+        expect(subject.display_name).to eq 'Somebody'
+      end
+    end
+  end
 end
