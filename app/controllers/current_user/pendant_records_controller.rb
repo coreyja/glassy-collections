@@ -5,7 +5,7 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      @pendants = current_user.wearable_pendants
+      @pendants = current_user.pendants
     end
 
     def create
@@ -15,7 +15,7 @@ module CurrentUser
       if @pendant_record.save
         redirect_to action: :index
       else
-        @pendants = current_user.wearable_pendants
+        @pendants = current_user.pendants
         render :new
       end
     end
