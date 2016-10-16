@@ -44,7 +44,7 @@
     }
 
     img {
-      max-width: 100%;
+      @include img-fluid(inline-block);
     }
   }
 }
