@@ -1,0 +1,5 @@
+<div class="pendant-record">
+  <%= image_tag pendant_record.photo.url, class: '', data: { src: pendant_record.photo.url } if pendant_record.photo.present? %>
+  <p class="worn-on"><%= pendant_record.worn_on.strftime('%A, %B %-d, %Y') %></p>
+  <p class="recorded-at"><%= pendant_record.created_at.strftime('%A, %B %-d, %Y at %I:%M%p') %></p>
+</div>
