@@ -42,5 +42,9 @@
       line-height: 1;
       display: block;
     }
+
+    img {
+      @include img-fluid(inline-block);
+    }
   }
 }

@@ -107,8 +107,7 @@ $calendar-desktop-width: 700px;
     }
 
     img {
-      display: inline-block;
-      max-width: 100%;
+      @include img-fluid(inline-block);
     }
   }
 }
