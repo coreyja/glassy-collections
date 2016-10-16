@@ -41,8 +41,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  Rails.application.config.secret_key_base = ENV['SECRET_KEY_BASE']
-  Rails.application.config.secret_token = ENV['SECRET_TOKEN']
+  Rails.application.config.secret_key_base =
+    '48bae6047e8cd6cea96eb18fb2ace13dc89a3de9b8b630b4a73e84807418a85d'\
+    'b92da453fcbb3acdc896b953dc678a9b11bd2d06240e394400d814700f8af99a'
+  Rails.application.config.secret_token =
+    '0fd2cfa8d0ff83a54ede684ebe265ad319e6ccb84a197a8cb33f567d1aab7479'\
+    'f3c2c043a81d67d1a4a9f655c7e152146a0388dddba331f28428be1baeea9817'
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
