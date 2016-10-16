@@ -1,3 +1,46 @@
 .pendants__chart {
   width: 100%;
 }
+
+#pendant {
+  .pendant-record {
+    border: 1px solid $black;
+    border-bottom-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    text-align: center;
+
+    padding: 10px;
+
+    &:not(:last-child) {
+      border-top-width: 1px;
+    }
+
+    &:last-child {
+      border-bottom-width: 1px;
+    }
+
+    .worn-on {
+      padding-top: 5px;
+
+      &::before {
+        content: "Worn";
+        text-decoration: underline;
+        color: $dark-grey;
+        font-size: 80%;
+        line-height: 1;
+        display: block;
+      }
+    }
+
+    .recorded-at::before {
+      content: "Recorded";
+      text-decoration: underline;
+      color: $dark-grey;
+      font-size: 80%;
+      line-height: 1;
+      display: block;
+    }
+  }
+}

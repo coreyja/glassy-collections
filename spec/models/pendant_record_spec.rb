@@ -31,4 +31,20 @@ RSpec.describe PendantRecord, type: :model do
       expect(subject).to contain_exactly pendant_record_on
     end
   end
+
+  describe '.by_worn_on' do
+    let(:pendant) { FactoryGirl.create(:pendant) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:date) { Date.parse('2016-01-05') }
+
+    let!(:pendant_record_1) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-05'), created_at: Time.parse('2016-01-03 12:00')) }
+    let!(:pendant_record_2) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-09 12:00')) }
+    let!(:pendant_record_3) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-04 12:00')) }
+
+    subject { described_class.by_worn_on }
+
+    it 'returns only the pendant records on the given date' do
+      expect(subject).to eq [pendant_record_1, pendant_record_2, pendant_record_3]
+    end
+  end
 end
