@@ -32,7 +32,7 @@ module CurrentUser
 
     def update
       @pendant = current_user.pendants.find params[:id]
-      if @pendant.save
+      if @pendant.update create_params
         redirect_to action: :index
       else
         render :new
@@ -42,7 +42,7 @@ module CurrentUser
     private
 
     def create_params
-      params.require(:pendant).permit(:name, :user_id, :artist_id)
+      params.require(:pendant).permit(:name, :artist_id)
     end
   end
 end

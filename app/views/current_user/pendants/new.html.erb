@@ -1,4 +1,4 @@
-<%= simple_form_for @pendant, url: my_pendants_path do |f| %>
+<%= simple_form_for [:my, @pendant] do |f| %>
   <%= f.input :user_id, as: :hidden %>
   <%= f.input :artist_id, collection: Artist.all %>
   <%= f.input :name %>
