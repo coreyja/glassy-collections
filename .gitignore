@@ -42,3 +42,6 @@ bower.json
 # RubyMine config
 .idea/
 
+# Bundle gened bins I don't think I wan to check in
+rails/
+
