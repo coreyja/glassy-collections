@@ -1,4 +1,4 @@
-<%= simple_form_for [:my, @pendant] do |f| %>
+<%= simple_form_for [:my, @pendant], remote: true do |f| %>
   <%= f.input :user_id, as: :hidden %>
   <%= f.input :artist_id, collection: Artist.all %>
   <%= f.input :name %>

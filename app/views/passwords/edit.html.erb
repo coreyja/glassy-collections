@@ -5,7 +5,8 @@
 
   <%= form_for :password_reset,
         url: my_password_path(@user, token: @user.confirmation_token),
-        html: { method: :put } do |form| %>
+        html: { method: :put },
+        remote: true do |form| %>
     <div class="password-field">
       <%= form.label :password %>
       <%= form.password_field :password %>

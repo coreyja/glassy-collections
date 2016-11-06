@@ -5,6 +5,8 @@ AllCops:
     - 'vendor/**/*'
     - 'db/migrate/**/*'
     - 'db/schema.rb'
+    - 'rails/*/'
+    - 'config/**/*'
 
 Metrics/LineLength:
   Max: 120

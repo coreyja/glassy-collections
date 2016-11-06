@@ -26,7 +26,7 @@ class LastWeekInPendantsImage
     @pendant_records_by_day ||= day_range.map do |day|
       {
         day: start_date + day.days,
-        pendants: user.pendant_records.on_date(start_date + day.days),
+        pendants: user.pendant_records.worn_on(start_date + day.days),
       }
     end
   end
