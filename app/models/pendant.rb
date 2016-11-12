@@ -2,6 +2,7 @@
 class Pendant < ApplicationRecord
   belongs_to :user
   belongs_to :artist
+  belongs_to :artist_group
 
   has_many :pendant_records
   has_many :pendant_searches

@@ -2,6 +2,7 @@
 class ArtistGroup < ApplicationRecord
   has_many :artist_artist_groups
   has_many :artists, through: :artist_artist_groups
+  has_many :pendants
 
   def collab?
     artists.count > 1

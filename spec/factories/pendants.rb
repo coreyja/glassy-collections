@@ -4,5 +4,6 @@ FactoryGirl.define do
     name 'Pendant'
     user
     artist
+    artist_group
   end
 end
