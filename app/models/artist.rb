@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Artist < ActiveRecord::Base
+class Artist < ApplicationRecord
   has_many :pendants
 
   validates :name, presence: true

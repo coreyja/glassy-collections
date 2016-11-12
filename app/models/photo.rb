@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   belongs_to :user
 
   has_attached_file :photo, styles: {

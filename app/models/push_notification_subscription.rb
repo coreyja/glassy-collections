@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class PushNotificationSubscription < ActiveRecord::Base
+class PushNotificationSubscription < ApplicationRecord
   belongs_to :user
 
   scope :needs_reminder, -> { joins(:user).merge(User.needs_reminder) }
