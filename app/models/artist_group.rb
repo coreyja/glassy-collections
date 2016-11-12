@@ -6,4 +6,8 @@ class ArtistGroup < ApplicationRecord
   def collab?
     artists.count > 1
   end
+
+  def name
+    artists.pluck(:name).join(' & ')
+  end
 end

@@ -30,4 +30,27 @@ RSpec.describe ArtistGroup, type: :model do
       end
     end
   end
+
+  describe '#name' do
+    subject { FactoryGirl.create(:artist_group, artists: artists) }
+
+    context 'when there is only 1 artist' do
+      let(:artists) { [FactoryGirl.create(:artist, name: 'Joe')] }
+
+      it 'is the name of the artist' do
+        expect(subject.name).to eq 'Joe'
+      end
+    end
+
+    context 'when there are 3 artists' do
+      let(:artist_1) { FactoryGirl.create(:artist, name: 'Joe') }
+      let(:artist_2) { FactoryGirl.create(:artist, name: 'Bill') }
+      let(:artist_3) { FactoryGirl.create(:artist, name: 'Mark') }
+      let(:artists) { [artist_1, artist_2, artist_3] }
+
+      it 'is the name of the artist concatted with a ampersand and spaces' do
+        expect(subject.name).to eq 'Joe & Bill & Mark'
+      end
+    end
+  end
 end
