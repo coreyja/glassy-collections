@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(version: 20161112200932) do
   end
 
   create_table "artist_artist_groups", force: :cascade do |t|
-    t.integer  "artists_id",       null: false
-    t.integer  "artist_groups_id", null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["artist_groups_id"], name: "index_artist_artist_groups_on_artist_groups_id", using: :btree
-    t.index ["artists_id"], name: "index_artist_artist_groups_on_artists_id", using: :btree
+    t.integer  "artist_id",       null: false
+    t.integer  "artist_group_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["artist_group_id"], name: "index_artist_artist_groups_on_artist_group_id", using: :btree
+    t.index ["artist_id", "artist_group_id"], name: "index_artist_artist_groups_on_join_uniqueness", unique: true, using: :btree
+    t.index ["artist_id"], name: "index_artist_artist_groups_on_artist_id", using: :btree
   end
 
   create_table "artist_groups", force: :cascade do |t|
@@ -127,6 +128,8 @@ ActiveRecord::Schema.define(version: 20161112200932) do
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
+  add_foreign_key "artist_artist_groups", "artist_groups"
+  add_foreign_key "artist_artist_groups", "artists"
   add_foreign_key "authentications", "users"
   add_foreign_key "pendant_records", "pendants"
   add_foreign_key "pendant_records", "photos"
