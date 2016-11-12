@@ -2,6 +2,27 @@
 require 'rails_helper'
 
 RSpec.describe ArtistGroup, type: :model do
+  describe 'artists uniqueness validation' do
+    let(:artist_1) { FactoryGirl.create(:artist) }
+    let(:artist_2) { FactoryGirl.create(:artist) }
+
+    subject { FactoryGirl.build(:artist_group, artists: [artist_1, artist_2]) }
+
+    context 'when there is not already a persisted ArtistGroup' do
+      it 'is valid' do
+        expect(subject.valid?).to eq true
+      end
+    end
+
+    context 'when there is already a persisted ArtistGroup with the same artists' do
+      let!(:existing_record) { FactoryGirl.create(:artist_group, artists: [artist_1, artist_2]) }
+
+      it 'is invalid' do
+        expect(subject.valid?).to eq false
+      end
+    end
+  end
+
   describe '#collab?' do
     let(:artists) { FactoryGirl.create_list(:artist, artist_count) }
     subject { FactoryGirl.create(:artist_group, artists: artists) }
