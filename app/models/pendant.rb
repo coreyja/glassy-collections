@@ -6,6 +6,7 @@ class Pendant < ApplicationRecord
 
   has_many :pendant_records
   has_many :pendant_searches
+  has_many :artists, through: :artist_group
 
   scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term)).distinct }
 
