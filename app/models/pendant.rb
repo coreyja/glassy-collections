@@ -13,4 +13,8 @@ class Pendant < ApplicationRecord
   def to_s
     name
   end
+
+  def artist_name
+    artist_group&.name || artist.name
+  end
 end

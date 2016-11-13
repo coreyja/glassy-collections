@@ -54,4 +54,25 @@ RSpec.describe Pendant, type: :model do
       expect(subject.name).to eq 'PendantName'
     end
   end
+
+  describe '#artist_name' do
+    let(:artist) { FactoryGirl.create(:artist, name: 'Bill') }
+    subject { FactoryGirl.create(:pendant, artist: artist, artist_group: artist_group) }
+
+    context 'when the artist group is nil' do
+      let(:artist_group) { nil }
+
+      it 'uses the artist name' do
+        expect(subject.artist_name).to eq 'Bill'
+      end
+    end
+
+    context 'when the artist group exists' do
+      let(:artist_group) { FactoryGirl.create(:artist_group, artists: FactoryGirl.create_list(:artist, 2, name: 'Joe')) }
+
+      it 'uses the names of the artists in the account group' do
+        expect(subject.artist_name).to eq 'Joe & Joe'
+      end
+    end
+  end
 end
