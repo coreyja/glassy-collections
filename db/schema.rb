@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112205811) do
+ActiveRecord::Schema.define(version: 20161113234249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,8 +149,9 @@ ActiveRecord::Schema.define(version: 20161112205811) do
   UNION
    SELECT pendants.id AS pendant_id,
       artists.name AS term
-     FROM (pendants
-       JOIN artists ON ((pendants.artist_id = artists.id)));
+     FROM ((pendants
+       JOIN artist_artist_groups ON ((pendants.artist_group_id = artist_artist_groups.artist_group_id)))
+       JOIN artists ON ((artist_artist_groups.artist_id = artists.id)));
   SQL
 
 end

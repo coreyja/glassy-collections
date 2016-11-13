@@ -3,16 +3,19 @@ require 'rails_helper'
 
 RSpec.describe Pendant, type: :model do
   describe '.search' do
+    let(:artist_group_1) { FactoryGirl.create(:artist_group, artists: [artist_1, artist_3]) }
+    let(:artist_group_2) { FactoryGirl.create(:artist_group, artists: [artist_2]) }
     let(:artist_1) { FactoryGirl.create(:artist, name: 'Aiuto') }
     let(:artist_2) { FactoryGirl.create(:artist, name: 'RyanKane') }
-    let!(:pendant_1) { FactoryGirl.create(:pendant, artist: artist_1, name: 'Lizard on a Shroom') }
-    let!(:pendant_2) { FactoryGirl.create(:pendant, artist: artist_1, name: 'Fumicello') }
-    let!(:pendant_3) { FactoryGirl.create(:pendant, artist: artist_2, name: 'Wolf Head') }
+    let(:artist_3) { FactoryGirl.create(:artist, name: 'Keepsake') }
+    let!(:pendant_1) { FactoryGirl.create(:pendant, artist_group: artist_group_1, name: 'Lizard on a Shroom') }
+    let!(:pendant_2) { FactoryGirl.create(:pendant, artist_group: artist_group_1, name: 'Fumicello') }
+    let!(:pendant_3) { FactoryGirl.create(:pendant, artist_group: artist_group_2, name: 'Wolf Head') }
 
     subject { described_class.search(term) }
 
     context 'when the search term is in the artist name' do
-      let(:term) { 'aiuto' }
+      let(:term) { 'keep' }
 
       it 'finds the correct pendants' do
         expect(subject).to contain_exactly pendant_1, pendant_2
@@ -28,7 +31,7 @@ RSpec.describe Pendant, type: :model do
     end
 
     context 'when the search term is in the artist name and pendant name' do
-      let!(:pendant_3) { FactoryGirl.create(:pendant, artist: artist_2, name: 'ryan wolf head') }
+      let!(:pendant_3) { FactoryGirl.create(:pendant, artist_group: artist_group_2, name: 'ryan wolf head') }
       let(:term) { 'ryan' }
 
       it 'only returns the matching pendant once' do
@@ -57,7 +60,7 @@ RSpec.describe Pendant, type: :model do
 
   describe '#artist_name' do
     let(:artist) { FactoryGirl.create(:artist, name: 'Bill') }
-    subject { FactoryGirl.create(:pendant, artist: artist, artist_group: artist_group) }
+    subject { FactoryGirl.create(:pendant, artist_id: artist.id, artist_group: artist_group) }
 
     context 'when the artist group is nil' do
       let(:artist_group) { nil }
