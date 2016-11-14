@@ -5,13 +5,13 @@ module CurrentUser
 
     def index
       @artists = artists
-      @chart_data = Pendant.where(artist: @artists).group(:artist).count.sort.map { |k, v| [k.name, v] }
+      @chart_data = Pendant.joins(:artists).merge(Artist.where(id: @artists)).group(:artist).count.sort.map { |k, v| [k.name, v] }
     end
 
     private
 
     def artists
-      current_user.pendants.map(&:artist).uniq.sort { |l, r| l.name.downcase <=> r.name.downcase }
+      Artist.joins(:pendants).merge(current_user.pendants).uniq.sort_by { |artist| artist.name.downcase }
     end
   end
 end
