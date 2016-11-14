@@ -8,17 +8,20 @@ describe 'artist_group:backfill_pendant_artist_groups' do
     let(:artist) { FactoryGirl.create(:artist) }
     let!(:pendant_without_artist_group) { FactoryGirl.create(:pendant, artist_group: nil, artist: artist) }
 
-    context 'when an Artist Group with the pendant artist already exists' do
+    context 'when an Artist Group with only the pendant artist exists' do
       let!(:artist_group) { FactoryGirl.create(:artist_group, artists: [artist]) }
 
-      it 'assigns the existing artist group to the pendant' do
+      it 'assigns it to the pendant' do
         expect { subject.invoke }.to change { pendant_without_artist_group.reload.artist_group }.from(nil).to(artist_group)
       end
     end
 
-    context 'when an Artist Group with the pendant artist does NOT already exists' do
+    context 'when an Artist Group with only the pendant artist does NOT already exists' do
+      let(:other_artist) { FactoryGirl.create(:artist) }
+      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist, other_artist]) }
+
       it 'creates a new artist group and assign it to the pendant' do
-        expect { subject.invoke }.to change { ArtistGroup.count }.from(0).to(1).
+        expect { subject.invoke }.to change { ArtistGroup.count }.from(1).to(2).
           and change { pendant_without_artist_group.reload.artist_group }.from(nil)
       end
     end
