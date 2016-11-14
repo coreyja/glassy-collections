@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113234249) do
+ActiveRecord::Schema.define(version: 20161114015235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,14 @@ ActiveRecord::Schema.define(version: 20161113234249) do
      FROM ((pendants
        JOIN artist_artist_groups ON ((pendants.artist_group_id = artist_artist_groups.artist_group_id)))
        JOIN artists ON ((artist_artist_groups.artist_id = artists.id)));
+  SQL
+
+  create_view :artist_group_artists,  sql_definition: <<-SQL
+      SELECT artist_groups.id AS artist_group_id,
+      array_agg(artist_artist_groups.artist_id) AS artist_ids
+     FROM (artist_groups
+       JOIN artist_artist_groups ON ((artist_artist_groups.artist_group_id = artist_groups.id)))
+    GROUP BY artist_groups.id;
   SQL
 
 end
