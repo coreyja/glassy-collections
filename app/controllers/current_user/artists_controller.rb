@@ -5,7 +5,8 @@ module CurrentUser
 
     def index
       @artists = artists
-      @chart_data = Pendant.joins(:artists).merge(Artist.where(id: @artists)).group(:artist).count.sort.map { |k, v| [k.name, v] }
+      @chart_data = Pendant.joins(:artists).merge(Artist.where(id: @artists)).
+        group(:artist).count.sort.map { |k, v| [k.name, v] }
     end
 
     private
