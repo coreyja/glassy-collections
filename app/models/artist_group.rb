@@ -47,7 +47,7 @@ class ArtistGroup < ApplicationRecord
       if artist_ids.empty?
         ArtistGroupArtist.where('artist_ids = ARRAY[]::INTEGER[]')
       else
-        ArtistGroupArtist.where('artist_ids = ARRAY[:artists_ids]', artists_ids: artist_ids.sort)
+        ArtistGroupArtist.where('artist_ids = ARRAY[:sorted_artist_ids]', sorted_artist_ids: artist_ids.sort)
       end
     end
 
