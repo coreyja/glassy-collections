@@ -83,7 +83,7 @@ RSpec.describe ArtistGroup, type: :model do
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryGirl.create(:artist) }
-      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist, other_artist])}
+      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist, other_artist]) }
 
       it 'is nil' do
         expect(subject).to eq nil
@@ -91,7 +91,7 @@ RSpec.describe ArtistGroup, type: :model do
     end
 
     context 'when an ArtistGroup with the artists does not exist' do
-      let!(:existing_artist_group) { FactoryGirl.create(:artist_group, artists: [artist])}
+      let!(:existing_artist_group) { FactoryGirl.create(:artist_group, artists: [artist]) }
 
       it 'returns the existing_artist_group' do
         expect(subject).to eq existing_artist_group
@@ -107,7 +107,7 @@ RSpec.describe ArtistGroup, type: :model do
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryGirl.create(:artist) }
-      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist, other_artist])}
+      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist, other_artist]) }
 
       it 'is a new record with the correct artists' do
         expect(subject.persisted?).to eq false
@@ -116,7 +116,7 @@ RSpec.describe ArtistGroup, type: :model do
     end
 
     context 'when an ArtistGroup with the artists does not exist' do
-      let!(:existing_artist_group) { FactoryGirl.create(:artist_group, artists: [artist])}
+      let!(:existing_artist_group) { FactoryGirl.create(:artist_group, artists: [artist]) }
 
       it 'returns the existing_artist_group' do
         expect(subject).to eq existing_artist_group
