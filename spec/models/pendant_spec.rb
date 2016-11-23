@@ -78,4 +78,33 @@ RSpec.describe Pendant, type: :model do
       end
     end
   end
+
+  describe '#artist_ids=' do
+    let(:artist_ids) { [artist_1.id, artist_2.id] }
+    let(:artist_1) { FactoryGirl.create(:artist) }
+    let(:artist_2) { FactoryGirl.create(:artist) }
+
+    subject { FactoryGirl.create(:pendant) }
+
+    context 'when an ArtistGroup with the artists does not exist' do
+      let(:other_artist) { FactoryGirl.create(:artist) }
+      let!(:other_artist_group) { FactoryGirl.create(:artist_group, artists: [artist_1, other_artist]) }
+
+      it 'inits a new artist group and assigns it' do
+        subject.artist_ids = artist_ids
+        expect(subject.artist_group.persisted?).to eq false
+        expect(subject.artist_group.artists).to eq [artist_1, artist_2]
+      end
+    end
+
+    context 'when an ArtistGroup with the artists does exist' do
+      let!(:existing_artist_group) { FactoryGirl.create(:artist_group, artists: [artist_1, artist_2]) }
+
+      it 'assigns the existing artist group' do
+        subject.artist_ids = artist_ids
+        expect(subject.artist_group.persisted?).to eq true
+        expect(subject.artist_group).to eq existing_artist_group
+      end
+    end
+  end
 end

@@ -42,7 +42,7 @@ module CurrentUser
     private
 
     def create_params
-      params.require(:pendant).permit(:name, :artist_id)
+      params.require(:pendant).permit(:name, :artist_id, artist_ids: [])
     end
   end
 end

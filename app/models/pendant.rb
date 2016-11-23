@@ -17,4 +17,8 @@ class Pendant < ApplicationRecord
   def artist_name
     artist_group&.name || artist.name
   end
+
+  def artist_ids=(artist_ids)
+    self.artist_group = ArtistGroup.find_or_initialize_by_artist_ids(artist_ids.select(&:present?).map(&:to_i))
+  end
 end

@@ -1,6 +1,6 @@
 <%= simple_form_for [:my, @pendant], remote: true do |f| %>
   <%= f.input :user_id, as: :hidden %>
-  <%= f.input :artist_id, collection: Artist.all %>
+  <%= f.input :artist_ids, collection: Artist.all, as: :check_boxes %>
   <%= f.input :name %>
 
   <%= f.submit %>
