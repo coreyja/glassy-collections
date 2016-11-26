@@ -102,8 +102,60 @@ RSpec.describe Pendant, type: :model do
 
       it 'assigns the existing artist group' do
         subject.artist_ids = artist_ids
-        expect(subject.artist_group.persisted?).to eq true
         expect(subject.artist_group).to eq existing_artist_group
+        expect(subject.artist_group.artists).to eq [artist_1, artist_2]
+      end
+    end
+  end
+
+  describe '::Params' do
+    subject { described_class::Params.new params }
+
+    describe '#attrs' do
+      context 'when provided with an artist_ids array' do
+        let(:params) do
+          {
+            artist_ids: artist_ids,
+          }
+        end
+
+        context 'when the array is all strings with a empty string' do
+          let(:artist_ids) { ['', '1', '2'] }
+
+          it 'removes the empty string and returns integers' do
+            expect(subject.attrs).to include(artist_ids: [1, 2])
+          end
+        end
+
+        context 'when the array is already integers' do
+          let(:artist_ids) { [1, 2] }
+
+          it 'does no transformation' do
+            expect(subject.attrs).to include(artist_ids: [1, 2])
+          end
+        end
+      end
+
+      context 'when no artist_ids are provided' do
+        let(:params) do
+          {}
+        end
+
+        it 'does not contain artist_ids' do
+          expect(subject.attrs.include?(:artist_ids)).to eq false
+        end
+      end
+
+      context 'when given non-artist_ids params' do
+        let(:params) do
+          {
+            name: 'Pendnat Name',
+          }
+        end
+
+        it 'returns the params' do
+          expect(subject.attrs).to eq params
+        end
       end
     end
   end
