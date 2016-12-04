@@ -17,7 +17,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all.order('LOWER(name)')
-    @chart_data = Artist.joins(:pendants).group('Artists.id', 'Artists.name').count.map { |k,v| [k.last,v] }
+    @chart_data = Artist.joins(:pendants).group('Artists.id', 'Artists.name').count.map { |k, v| [k.last, v] }
   end
 
   private
