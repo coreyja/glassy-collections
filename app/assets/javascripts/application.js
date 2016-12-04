@@ -20,6 +20,9 @@
 //= require list.fuzzysearch
 //= require tether
 //= require bootstrap-sprockets
+//= require react
+//= require react_ujs
+//= require components
 
 //= require header
 

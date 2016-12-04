@@ -1,6 +1,6 @@
-<div class="form-check" data-name="<%= pendant.name %>" data-artist-name="<%= pendant.artist.name %>">
+<div class="form-check" data-name="<%= pendant.name %>" data-artist-name="<%= pendant.artist_name %>">
   <label class="form-check-label">
     <input type="radio" class="form-check-input" name="pendant_record[pendant_id]" id="pendant_record_pendant_id_<%= pendant.id %>" value="<%= pendant.id %>">
-    <%= pendant.name %> - <%= pendant.artist.name %>
+    <%= pendant.name %> - <%= pendant.artist_name %>
   </label>
 </div>

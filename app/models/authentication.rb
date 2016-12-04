@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Authentication < ActiveRecord::Base
+class Authentication < ApplicationRecord
   belongs_to :user
 
   def self.create_with_omniauth!(auth_hash, current_user = nil)

@@ -75,6 +75,11 @@ gem 'serviceworker-rails'
 gem 'webpush'
 
 gem 'lodash-rails'
+gem 'react-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-react-select', '1.0.0.rc.1'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

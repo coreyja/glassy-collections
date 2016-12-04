@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010002853) do
+ActiveRecord::Schema.define(version: 20161122231045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "ar_internal_metadata", primary_key: "key", id: :string, force: :cascade do |t|
     t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artist_artist_groups", force: :cascade do |t|
+    t.integer  "artist_id",       null: false
+    t.integer  "artist_group_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["artist_group_id"], name: "index_artist_artist_groups_on_artist_group_id", using: :btree
+    t.index ["artist_id", "artist_group_id"], name: "index_artist_artist_groups_on_join_uniqueness", unique: true, using: :btree
+    t.index ["artist_id"], name: "index_artist_artist_groups_on_artist_id", using: :btree
+  end
+
+  create_table "artist_groups", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,11 +84,13 @@ ActiveRecord::Schema.define(version: 20161010002853) do
   end
 
   create_table "pendants", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",            null: false
     t.integer  "artist_id"
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "artist_group_id"
+    t.index ["artist_group_id"], name: "index_pendants_on_artist_group_id", using: :btree
     t.index ["artist_id"], name: "index_pendants_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_pendants_on_user_id", using: :btree
   end
@@ -113,10 +130,13 @@ ActiveRecord::Schema.define(version: 20161010002853) do
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
+  add_foreign_key "artist_artist_groups", "artist_groups"
+  add_foreign_key "artist_artist_groups", "artists"
   add_foreign_key "authentications", "users"
   add_foreign_key "pendant_records", "pendants"
   add_foreign_key "pendant_records", "photos"
   add_foreign_key "pendant_records", "users"
+  add_foreign_key "pendants", "artist_groups"
   add_foreign_key "pendants", "artists"
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
@@ -129,8 +149,17 @@ ActiveRecord::Schema.define(version: 20161010002853) do
   UNION
    SELECT pendants.id AS pendant_id,
       artists.name AS term
-     FROM (pendants
-       JOIN artists ON ((pendants.artist_id = artists.id)));
+     FROM ((pendants
+       JOIN artist_artist_groups ON ((pendants.artist_group_id = artist_artist_groups.artist_group_id)))
+       JOIN artists ON ((artist_artist_groups.artist_id = artists.id)));
+  SQL
+
+  create_view :artist_group_artists,  sql_definition: <<-SQL
+      SELECT artist_groups.id AS artist_group_id,
+      array_agg(artist_artist_groups.artist_id ORDER BY artist_artist_groups.artist_id) AS artist_ids
+     FROM (artist_groups
+       JOIN artist_artist_groups ON ((artist_artist_groups.artist_group_id = artist_groups.id)))
+    GROUP BY artist_groups.id;
   SQL
 
 end

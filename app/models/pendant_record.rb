@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class PendantRecord < ActiveRecord::Base
+class PendantRecord < ApplicationRecord
   belongs_to :user
   belongs_to :pendant
   belongs_to :photo
