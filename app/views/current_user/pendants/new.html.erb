@@ -1,6 +1,17 @@
 <%= simple_form_for [:my, @pendant], remote: true do |f| %>
   <%= f.input :user_id, as: :hidden %>
-  <%= f.input :artist_ids, collection: Artist.all, as: :check_boxes %>
+
+  <label for="pendant[artist_ids][]">
+    Artists
+  </label>
+  <input type="hidden" name="pendant[artist_ids][]" value="" />
+  <%= react_component('GlassySelect',
+      name: 'pendant[artist_ids][]',
+      placeholder: 'Who made this pendant?',
+      multi: true,
+      value: @pendant.artist_ids,
+      options: Artist.all.map { |a| { value: a.id, label: a.name} })
+  %>
   <%= f.input :name %>
 
   <%= f.submit %>
