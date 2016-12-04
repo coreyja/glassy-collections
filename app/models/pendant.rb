@@ -10,7 +10,7 @@ class Pendant < ApplicationRecord
 
   scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term)).distinct }
 
-  validates :name, :artists, presence: true
+  validates :name, :artist_group, presence: true
 
   def to_s
     name

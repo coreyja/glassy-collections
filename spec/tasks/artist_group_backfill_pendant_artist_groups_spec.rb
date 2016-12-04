@@ -6,7 +6,7 @@ describe 'artist_group:backfill_pendant_artist_groups' do
 
   context 'when there are pendants without a ArtistGroup' do
     let(:artist) { FactoryGirl.create(:artist) }
-    let!(:pendant_without_artist_group) { FactoryGirl.create(:pendant, artist_group: nil, artist: artist) }
+    let!(:pendant_without_artist_group) { FactoryGirl.create(:pendant, :ignore_validations, artist_group: nil, artist: artist) }
 
     context 'when an Artist Group with only the pendant artist exists' do
       let!(:artist_group) { FactoryGirl.create(:artist_group, artists: [artist]) }
