@@ -10,6 +10,7 @@ class ArtistGroup < ApplicationRecord
   end
 
   validate :must_have_unique_artists
+  validates :artists, presence: true
 
   def self.find_by_artist_ids(artist_ids)
     with_artist_ids(artist_ids).first
