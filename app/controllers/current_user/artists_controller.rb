@@ -4,15 +4,14 @@ module CurrentUser
     before_action :require_login
 
     def index
-      @artists = artists
-      @chart_data = Pendant.joins(:artists).merge(Artist.where(id: @artists)).
-        group(:artist).count.sort.map { |k, v| [k.name, v] }
+      @artists = artists.sort_by { |artist| artist.name.downcase }
+      @chart_data = Artist.where(id: artists).joins(:pendants).group('Artists.id', 'Artists.name').count.map { |k,v| [k.last,v] }
     end
 
     private
 
     def artists
-      Artist.joins(:pendants).merge(current_user.pendants).uniq.sort_by { |artist| artist.name.downcase }
+      Artist.joins(:pendants).merge(current_user.pendants).uniq
     end
   end
 end
