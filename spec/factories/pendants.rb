@@ -5,5 +5,9 @@ FactoryGirl.define do
     user
     artist
     artist_group
+
+    trait :ignore_validations do
+      to_create { |instance| instance.save!(validate: false) }
+    end
   end
 end

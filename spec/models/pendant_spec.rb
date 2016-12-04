@@ -63,7 +63,7 @@ RSpec.describe Pendant, type: :model do
     subject { FactoryGirl.create(:pendant, artist_id: artist.id, artist_group: artist_group) }
 
     context 'when the artist group is nil' do
-      let(:artist_group) { nil }
+      subject { FactoryGirl.create(:pendant, :ignore_validations, artist_id: artist.id, artist_group: nil) }
 
       it 'uses the artist name' do
         expect(subject.artist_name).to eq 'Bill'
