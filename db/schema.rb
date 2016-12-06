@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206010521) do
+ActiveRecord::Schema.define(version: 20161206011650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20161206010521) do
     t.integer  "user_id",         null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "artist_group_id"
+    t.integer  "artist_group_id", null: false
     t.index ["artist_group_id"], name: "index_pendants_on_artist_group_id", using: :btree
     t.index ["user_id"], name: "index_pendants_on_user_id", using: :btree
   end
