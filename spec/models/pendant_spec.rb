@@ -62,7 +62,6 @@ RSpec.describe Pendant, type: :model do
     let(:artist_group) { FactoryGirl.create(:artist_group, artists: FactoryGirl.create_list(:artist, 2, name: 'Joe')) }
     subject { FactoryGirl.create(:pendant, artist_group: artist_group) }
 
-
     it 'uses the names of the artists in the artist group' do
       expect(subject.artist_name).to eq 'Joe & Joe'
     end
