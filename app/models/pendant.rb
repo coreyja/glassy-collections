@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class Pendant < ApplicationRecord
   belongs_to :user
-  belongs_to :artist
   belongs_to :artist_group
 
   has_many :pendant_records
@@ -17,7 +16,7 @@ class Pendant < ApplicationRecord
   end
 
   def artist_name
-    artist_group&.name || artist.name
+    artist_group.name
   end
 
   def artist_ids=(artist_ids)
