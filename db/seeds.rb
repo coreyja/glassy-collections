@@ -8,4 +8,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env.development?
   User.create email: '1@example.org', password: 'password'
+  User.create email: '2@example.org', password: 'password'
 end

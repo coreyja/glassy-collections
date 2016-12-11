@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module CurrentUser
   class U2fRegistrationsController < ApplicationController
+    before_action :require_login
+
     def new
       @registration_requests = u2f.registration_requests
       session[:challenges] = @registration_requests.map(&:challenge)
@@ -27,6 +29,8 @@ module CurrentUser
         public_key:  reg.public_key,
         counter:     reg.counter,
       )
+
+      redirect_to root_path
     end
 
     private
