@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class U2fRegistration < ApplicationRecord
   belongs_to :user
 
