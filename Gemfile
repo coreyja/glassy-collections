@@ -77,6 +77,8 @@ gem 'webpush'
 gem 'lodash-rails'
 gem 'react-rails'
 
+gem 'u2f'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-react-select', '1.0.0.rc.1'
 end
@@ -103,6 +105,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'powder'
+  gem 'tunnelss'
 end
 
 group :production do
