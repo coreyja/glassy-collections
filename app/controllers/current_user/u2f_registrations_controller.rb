@@ -7,7 +7,7 @@ module CurrentUser
       @registration_requests = u2f.registration_requests
       session[:challenges] = @registration_requests.map(&:challenge)
 
-      key_handles = U2fRegistration.all.pluck(&:key_handle)
+      key_handles = U2fRegistration.all.pluck(:key_handle)
       @sign_requests = u2f.authentication_requests(key_handles)
     end
 
