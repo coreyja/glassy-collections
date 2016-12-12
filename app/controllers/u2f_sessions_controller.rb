@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class U2fSessionsController < Clearance::SessionsController
-
   def new
     key_handles = U2fRegistration.all.pluck(:key_handle)
 
@@ -15,8 +14,8 @@ class U2fSessionsController < Clearance::SessionsController
     registration = U2fRegistration.find_by!(key_handle: response.key_handle)
 
     u2f.authenticate!(session[:challenges], response,
-        Base64.decode64(registration.public_key),
-        registration.counter)
+                      Base64.decode64(registration.public_key),
+                      registration.counter)
 
     registration.update(counter: response.counter)
 
