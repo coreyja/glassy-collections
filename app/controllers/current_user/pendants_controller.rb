@@ -13,7 +13,7 @@ module CurrentUser
     end
 
     def new
-      @pendant = current_user.pendants.new
+      @pendant = Pendant.new
     end
 
     def edit
@@ -22,8 +22,8 @@ module CurrentUser
     end
 
     def create
-      @pendant = current_user.pendants.new pendant_attrs
-      if @pendant.save
+      @pendant = Pendant.new
+      if @pendant.update pendant_attrs
         redirect_to action: :index
       else
         render :new
@@ -42,7 +42,7 @@ module CurrentUser
     private
 
     def pendant_attrs
-      Pendant::Params.new(create_params).attrs
+      Pendant::Params.new(create_params.merge(user: current_user)).attrs
     end
 
     def create_params

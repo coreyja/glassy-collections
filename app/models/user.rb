@@ -2,10 +2,10 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :nails
-  has_many :dabs
+  has_many :collection_owners, foreign_key: :owner_id
+  has_many :collections, through: :collection_owners
+  has_many :pendants, through: :collections
 
-  has_many :pendants
   has_many :pendant_records
 
   has_many :photos
