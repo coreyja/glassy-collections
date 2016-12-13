@@ -13,7 +13,8 @@ class U2fSessionsController < Clearance::SessionsController
 
     registration = U2fRegistration.find_by!(key_handle: response.key_handle)
 
-    u2f.authenticate!(session[:challenges], response,
+    u2f.authenticate!(session[:challenges],
+                      response,
                       Base64.decode64(registration.public_key),
                       registration.counter)
 
@@ -28,7 +29,6 @@ class U2fSessionsController < Clearance::SessionsController
   private
 
   def u2f
-    # use base_url as app_id, e.g. 'http://localhost:3000'
     @u2f ||= U2F::U2F.new(request.base_url)
   end
 
