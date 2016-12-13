@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211061707) do
+ActiveRecord::Schema.define(version: 20161213042439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20161211061707) do
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", unique: true, using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "collection_owners", force: :cascade do |t|
+    t.integer  "collection_id", null: false
+    t.integer  "owner_id",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["collection_id"], name: "index_collection_owners_on_collection_id", using: :btree
+    t.index ["owner_id"], name: "index_collection_owners_on_owner_id", using: :btree
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -142,6 +157,8 @@ ActiveRecord::Schema.define(version: 20161211061707) do
   add_foreign_key "artist_artist_groups", "artist_groups"
   add_foreign_key "artist_artist_groups", "artists"
   add_foreign_key "authentications", "users"
+  add_foreign_key "collection_owners", "collections"
+  add_foreign_key "collection_owners", "users", column: "owner_id"
   add_foreign_key "pendant_records", "pendants"
   add_foreign_key "pendant_records", "photos"
   add_foreign_key "pendant_records", "users"
