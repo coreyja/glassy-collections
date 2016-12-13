@@ -1,6 +1,6 @@
 <div id='waiting'></div>
 <div id='error'></div>
-<%= form_for :u2f_session, url: u2f_session_path do |f| %>
+<%= form_for :u2f_session, url: session_u2f_path do |f| %>
     <%= f.text_field :response, type: 'hidden' %>
 <% end  %>
 
