@@ -5,14 +5,26 @@
     Artists
   </label>
   <input type="hidden" name="pendant[artist_ids][]" value="" />
-  <%= react_component('GlassySelect',
-      name: 'pendant[artist_ids][]',
-      placeholder: 'Who made this pendant?',
-      multi: true,
-      value: @pendant.artist_ids,
-      options: Artist.all.map { |a| { value: a.id, label: a.name} })
-  %>
-  <%= f.input :name %>
+    <%= react_component('GlassySelect',
+        name: 'pendant[artist_ids][]',
+        placeholder: 'Who made this pendant?',
+        multi: true,
+        value: @pendant.artist_ids,
+        options: Artist.all.map { |a| { value: a.id, label: a.name} })
+    %>
+
+    <label for="pendant[collection_id]">
+      Collection
+    </label>
+    <%= react_component('GlassySelect',
+      name: 'pendant[collection_id]',
+      placeholder: 'Select Collection...',
+      multi: false,
+      value: @pendant.collection_id,
+      options: current_user.collections.all.map { |a| { value: a.id, label: a.name} })
+    %>
+
+    <%= f.input :name %>
 
   <%= f.submit %>
 <% end %>

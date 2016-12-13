@@ -8,7 +8,7 @@ var GlassySelect = React.createClass({
         return {
             multi: this.props.multi || false,
             options: this.props.options || [],
-            value: this.props.value || [],
+            value: this.props.value || null,
             placeholder: this.props.placeholder || 'Select...'
         };
     },
