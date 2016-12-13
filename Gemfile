@@ -2,6 +2,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
 # Use postgres as the database for Active Record
@@ -69,7 +70,6 @@ gem 'render_anywhere', require: false
 gem 'scenic'
 
 gem 'rubocop'
-gem 'scss_lint', require: false
 
 gem 'serviceworker-rails'
 gem 'webpush'
