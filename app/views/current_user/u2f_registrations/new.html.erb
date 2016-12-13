@@ -1,0 +1,40 @@
+<div id='waiting'></div>
+<div id='error'></div>
+<%= form_for :u2f_registration, url: my_u2f_registrations_path do |f| %>
+    <%= f.text_field :response, type: 'hidden' %>
+<% end  %>
+
+<script>
+  var registerRequests = <%= @registration_requests.to_json.html_safe %>;
+  var signRequests = <%= @sign_requests.to_json.html_safe %>;
+  var appId = '<%= request.base_url %>';
+  var $waiting = document.getElementById('waiting');
+  var $error = document.getElementById('error');
+  var errorMap = {
+    1: 'Unknown error, try again',
+    2: "Bad request error, try again" ,
+    3: "This key isn't supported, please try another one",
+    4: 'The device is already registered, please login',
+    5: 'Authentication timed out. Please reload to try again.'
+  };
+  var setError = function(code) {
+    $waiting.style.display = 'none';
+    $error.style.display = 'block';
+    $error.innerHTML = errorMap[code];
+  };
+
+  u2f.register(appId, registerRequests, signRequests, function(registerResponse) {
+    var form, response;
+
+    if (registerResponse.errorCode) {
+      return setError(registerResponse.errorCode);
+    }
+
+    response = document.querySelector('[name="u2f_registration[response]"]');
+    form = response.form;
+
+    response.value = JSON.stringify(registerResponse);
+
+    form.submit();
+  }, 15);
+</script>

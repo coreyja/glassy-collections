@@ -2,13 +2,15 @@
 Rails.application.routes.draw do
   get 'loaderio-6740bbace59df2ad01bb669b65e8333e', controller: :loader_io, action: :verify
 
-  resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
-  resource :session, controller: 'clearance/sessions', only: [:create]
+  resources :passwords, controller: 'clearance/passwords', only: %i(new create)
+  resource :session, controller: 'clearance/sessions', only: %i(create) do
+    resource :u2f, controller: 'u2f_sessions', only: %i(new create)
+  end
 
-  resources :users, controller: 'clearance/users', only: [:create] do
+  resources :users, controller: 'clearance/users', only: %i(create) do
     resource :password,
              controller: 'clearance/passwords',
-             only: [:create, :edit, :update]
+             only: %i(create edit update)
   end
 
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
     end
 
     resource :last_week_in_pendants, only: %i(show)
+
+    resources :u2f_registrations, only: %i(new create)
   end
 
   namespace :api do

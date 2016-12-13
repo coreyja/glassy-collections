@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206011650) do
+ActiveRecord::Schema.define(version: 20161211061707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20161206011650) do
     t.index ["user_id"], name: "index_push_notification_subscriptions_on_user_id", using: :btree
   end
 
+  create_table "u2f_registrations", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.string   "key_handle",  null: false
+    t.string   "public_key",  null: false
+    t.string   "certificate", null: false
+    t.integer  "counter",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_u2f_registrations_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -138,6 +149,7 @@ ActiveRecord::Schema.define(version: 20161206011650) do
   add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "push_notification_subscriptions", "users"
+  add_foreign_key "u2f_registrations", "users"
 
   create_view :pendant_searches,  sql_definition: <<-SQL
       SELECT pendants.id AS pendant_id,
