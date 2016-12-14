@@ -88,6 +88,8 @@ group :development, :test do
   gem 'timecop'
 
   gem 'factory_girl_rails'
+
+  gem 'fuubar'
 end
 
 group :test do

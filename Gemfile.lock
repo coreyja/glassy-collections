@@ -112,6 +112,9 @@ GEM
       thor (~> 0.14)
     font-awesome-sass (4.6.2)
       sass (>= 3.2)
+    fuubar (2.2.0)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hash_attribute_assignment (0.0.5)
@@ -337,6 +340,7 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   font-awesome-sass
+  fuubar
   hash_attribute_assignment
   high_voltage (~> 3.0.0)
   imgkit
