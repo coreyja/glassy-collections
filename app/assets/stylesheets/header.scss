@@ -1,3 +1,4 @@
+$transition: all 0.8s ease;
 .header {
 
   margin-bottom: 1rem;
@@ -9,7 +10,7 @@
     font-size: 2rem;
 
     &::before {
-      @include transition(all 0.8s ease);
+      @include transition($transition);
       display: inline-block;
       font-family: FontAwesome;
       content: '\f102';
@@ -27,6 +28,8 @@
 
   font-size: 0.8rem;
 
+  transition: $transition;
+
   .brand__logo {
     position: absolute;
     top: 0;
@@ -36,6 +39,8 @@
 
     width: 75px;
     height: 75px;
+
+    transition: $transition;
 
     a {
       display: block;
@@ -106,20 +111,21 @@
   border-style: solid;
   border-color: $border-color;
 
-  max-height: 166px;
+  max-height: 83px;
 
   overflow: hidden;
 
   flex-wrap: wrap;
 
+  transition: $transition;
+
   .header--collapsed & {
-    opacity: 0;
     max-height: 0;
+    border-color: rgba(0,0,0,0);
   }
 
   .nav-item {
     @include flex(0 0 50%);
-
 
     border-width: 0;
     border-bottom-width: $border-width;
