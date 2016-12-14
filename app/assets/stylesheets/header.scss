@@ -103,7 +103,7 @@ $transition: all 0.8s ease;
   $border-color: rgb(178, 178, 178);
   $border-width: 1px;
 
-  @include display(flex);
+  display: flex;
 
   opacity: 1;
 
@@ -125,7 +125,7 @@ $transition: all 0.8s ease;
   }
 
   .nav-item {
-    @include flex(0 0 50%);
+    flex: 0 0 50%;
 
     border-width: 0;
     border-bottom-width: $border-width;
