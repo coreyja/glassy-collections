@@ -1,14 +1,16 @@
 <%= simple_form_for @pendant_record, url: my_pendant_records_path do |f| %>
 
-  <div id="pendant-list">
-    <input type="search" class="search" placeholder="Search" />
-    <div class="list">
-      <%= render partial: 'radio_button', collection: @pendants.to_a, as: :pendant %>
-    </div>
-    <script>
-      new List('pendant-list', { plugins: [ ListFuzzySearch() ], valueNames: [{ data: ['name', 'artist-name']}]});
-    </script>
-  </div>
+  <label for="pendant_record[pendant_id]">
+    Pendant
+  </label>
+  <%= react_component('GlassySelect',
+    name: 'pendant_record[pendant_id]',
+    placeholder: 'Select Pendant...',
+    multi: false,
+    value: @pendant_record.pendant_id,
+    options: current_user.pendants.all.map { |p| { value: p.id, label: "#{p.name} - #{p.artist_name}" } }
+    )
+  %>
 
   <%= f.input :photo, as: :camera %>
 
