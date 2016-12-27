@@ -6,6 +6,11 @@ namespace :push do
       title: 'Record Pendant',
       body: 'Do it Now!',
       icon: '/assets/launcher-icon-4x.png',
+      tag: 'pendant-reminder',
+      actions: [
+        { action: 'record-pendant', title: 'Record Pendant Now' },
+        { action: 'ignore', title: 'Later' }
+      ]
     }
 
     PushNotificationSubscription.needs_reminder.each do |sub|

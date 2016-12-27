@@ -9,17 +9,26 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('push', function(event) {
     if (event.data) {
         var json = event.data.json();
-        self.registration.showNotification(json.title, {
-            body: json.body,
-            icon: json.icon
-        });
+        self.registration.showNotification(json.title, json);
     }
 });
 self.addEventListener('notificationclick', function(event) {
     console.log('Notification click: tag ', event.notification.tag);
     event.notification.close();
-    var url = 'https://glassycollections.com/';
-    if (clients.openWindow) {
-        return clients.openWindow(url);
+    if (event.action === 'record-pendant') {
+        var url = 'https://glassycollections.com/';
+        event.waitUntil(clients.matchAll({
+                includeUncontrolled: true,
+                type: 'window'
+            }).then(
+            function(activeClients) {
+                if (activeClients.length > 0) {
+                    activeClients[0].navigate(url);
+                    activeClients[0].focus();
+                } else {
+                    clients.openWindow(url);
+                }
+            })
+        );
     }
 });
