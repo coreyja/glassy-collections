@@ -8,8 +8,8 @@ env:
 env:
 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
+cache: bundler
 bundler_args: --without production development
-
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
