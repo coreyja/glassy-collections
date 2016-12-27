@@ -15,7 +15,10 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
     console.log('Notification click: tag ', event.notification.tag);
     event.notification.close();
-    if (event.action === 'record-pendant') {
+
+    var action = event.action || 'record-pendant';
+
+    if (action === 'record-pendant') {
         var url = 'https://glassycollections.com/';
         event.waitUntil(clients.matchAll({
                 includeUncontrolled: true,
