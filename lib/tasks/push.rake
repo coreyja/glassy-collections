@@ -9,8 +9,8 @@ namespace :push do
       tag: 'pendant-reminder',
       actions: [
         { action: 'record-pendant', title: 'Record Pendant Now' },
-        { action: 'ignore', title: 'Later' }
-      ]
+        { action: 'ignore', title: 'Later' },
+      ],
     }
 
     PushNotificationSubscription.needs_reminder.each do |sub|
