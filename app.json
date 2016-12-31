@@ -1,6 +1,7 @@
 {
   "name": "glassy-collections",
   "scripts": {
+    "postdeploy": "./bin/yarn"
   },
   "env": {
     "AWS_ACCESS_KEY_ID": {
