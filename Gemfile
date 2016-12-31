@@ -79,9 +79,7 @@ gem 'react-rails'
 
 gem 'u2f'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-react-select', '1.0.0.rc.1'
-end
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

@@ -21,6 +21,7 @@ config/secrets.yml
 ## Environment normalization:
 /.bundle
 /vendor/bundle
+/vendor/node_modules
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
@@ -44,4 +45,8 @@ bower.json
 
 # Bundle gened bins I don't think I wan to check in
 rails/
+
+
+# Ignore files compiled by webpacker.
+public/packs/*
 
