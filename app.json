@@ -38,7 +38,7 @@
     },
     "DEPLOY_TASKS": {
       "description": "Rake tasks to run after deploying",
-      "value": "db:migrate"
+      "value": "db:migrate webpacker:compile"
     }
   },
   "addons": [
