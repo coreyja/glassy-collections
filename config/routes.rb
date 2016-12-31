@@ -26,13 +26,11 @@ Rails.application.routes.draw do
 
   namespace :my, module: :current_user do
     resources :pendants, only: %i(new create index show edit update)
-    resources :pendant_records, only: %i(new create index)
+    resources :pendant_records, only: %i(new create index) do
+      resource :photos, controller: 'pendant_record_photos', only: %i(new create)
+    end
     resources :fake_pendant_records, only: %i(new create)
     resources :artists, only: %i(index)
-
-    resources :crews, only: %i(new create index) do
-      resources :crew_memberships, only: %i(new create index)
-    end
 
     resource :last_week_in_pendants, only: %i(show)
 
