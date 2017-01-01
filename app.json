@@ -39,7 +39,7 @@
     },
     "DEPLOY_TASKS": {
       "description": "Rake tasks to run after deploying",
-      "value": "db:migrate yarn:install webpacker:compile assets:precompile assets:clean"
+      "value": "db:migrate yarn:install assets:clobber webpacker:compile assets:precompile assets:clean"
     }
   },
   "addons": [
