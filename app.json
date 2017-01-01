@@ -52,6 +52,9 @@
       "url": "urn:buildpack:heroku/ruby"
     },
     {
+      "url": "urn:buildpack:heroku/nodejs"
+    },
+    {
       "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ]
