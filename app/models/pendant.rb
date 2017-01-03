@@ -32,7 +32,14 @@ class Pendant < ApplicationRecord
     end
 
     def attrs
-      params.merge(artist_ids: artist_ids).compact
+      params.merge(overrides).compact
+    end
+
+    def overrides
+      {
+        artist_ids: artist_ids,
+        name: name,
+      }
     end
 
     private
@@ -41,6 +48,10 @@ class Pendant < ApplicationRecord
 
     def artist_ids
       params[:artist_ids].select(&:present?).map(&:to_i) if params.include?(:artist_ids)
+    end
+
+    def name
+      params[:name].strip if params.include?(:name)
     end
   end
 end
