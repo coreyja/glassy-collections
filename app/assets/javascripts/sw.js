@@ -18,7 +18,7 @@ self.addEventListener('notificationclick', function(event) {
 
   var action = event.action || 'open-app';
 
-  var url = false;
+  var url = event.url;
 
   if (action === 'open-app') {
     url = '//glassycollections.com/';
