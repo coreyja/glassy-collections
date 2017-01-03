@@ -18,12 +18,12 @@ self.addEventListener('notificationclick', function(event) {
 
   var action = event.action || 'open-app';
 
-  var url = event.url;
+  var url = false;
 
   if (action === 'open-app') {
-    url = '//glassycollections.com/';
+    url = 'https://glassycollections.com/';
   } else if (action === 'record-pendant') {
-    url = '//glassycollections.com/my/pendant_records/new';
+    url = 'https://glassycollections.com/my/pendant_records/new';
   }
 
   if (url) {
