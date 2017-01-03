@@ -21,9 +21,9 @@ self.addEventListener('notificationclick', function(event) {
   var url = false;
 
   if (action === 'open-app') {
-    url = 'https://glassycollections.com/';
+    url = '//glassycollections.com/';
   } else if (action === 'record-pendant') {
-    url = 'https://glassycollections.com/my/pendant_records/new';
+    url = '//glassycollections.com/my/pendant_records/new';
   }
 
   if (url) {
