@@ -2,7 +2,7 @@
     var sendDataToServer = function(sub) {
         var url = "/api/my/push_notification_subscriptions";
         var extract = function(key) {
-            btoa(String.fromCharCode.apply(null, new Uint8Array(key))).replace(/\+/g, '-').replace(/\//g, '_')
+            return btoa(String.fromCharCode.apply(null, new Uint8Array(key))).replace(/\+/g, '-').replace(/\//g, '_')
         };
         var data = {
             endpoint: sub.endpoint,
