@@ -133,6 +133,26 @@ SimpleForm.setup do |config|
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
+
+  config.wrappers :addon, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'control-label'
+
+    b.wrapper tag: 'div', class: 'input-group' do |ba|
+      ba.wrapper tag: :span, class: 'input-group-addon' do |bb|
+        bb.optional :addon
+      end
+      ba.use :input, class: 'form-control'
+    end
+    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+  end
+
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)
   # to learn about the different styles for forms and inputs,
@@ -146,5 +166,6 @@ SimpleForm.setup do |config|
     datetime: :multi_select,
     date: :multi_select,
     time: :multi_select,
+    addon: :addon,
   }
 end

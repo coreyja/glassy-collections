@@ -1,5 +1,13 @@
 <%= link_to 'New Pendant', new_my_pendant_path %>
-<div class="pendants table-responsive">
+<div class="pendants">
+
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Total Number of Pendants</h4>
+      <%= @pendants.count %>
+    </div>
+  </div>
+
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -10,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'pendant_table', collection: @pendants, as: :pendant %>
+        <%= render partial: 'pendant_row', collection: @pendants, as: :pendant %>
       </tbody>
     </table>
   </div>

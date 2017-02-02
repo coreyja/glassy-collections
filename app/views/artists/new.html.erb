@@ -1,6 +1,6 @@
 <%= simple_form_for @artist, remote: true do |f| %>
   <%= f.input :name %>
-  <%= f.input :instagram_username %>
+  <%= f.input :instagram_username, as: :addon, addon: '@' %>
 
   <%= f.submit %>
 <% end %>
