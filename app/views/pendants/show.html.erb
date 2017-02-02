@@ -1,0 +1,10 @@
+<div id="pendant">
+  <h1><%= @pendant.name %></h1>
+  <h2><%= @pendant.artist_name %></h2>
+
+  <h4>Times Worn: <%= @pendant.pendant_records.count %></h4>
+
+  <div class="pendant-records">
+    <%= render partial: 'pendant_record', collection: @pendant.pendant_records.by_worn_on %>
+  </div>
+</div>

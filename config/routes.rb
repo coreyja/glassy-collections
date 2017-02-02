@@ -23,16 +23,15 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create_from_omniauth'
 
   resources :artists, only: %i(new create index)
+  resources :collections, only: %i(show) do
+    resources :pendants, only: %i(show)
+  end
 
   namespace :my, module: :current_user do
     resources :pendants, only: %i(new create index show edit update)
     resources :pendant_records, only: %i(new create index)
     resources :fake_pendant_records, only: %i(new create)
     resources :artists, only: %i(index)
-
-    resources :crews, only: %i(new create index) do
-      resources :crew_memberships, only: %i(new create index)
-    end
 
     resource :last_week_in_pendants, only: %i(show)
 
