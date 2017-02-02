@@ -1,0 +1,27 @@
+<div class="pendants">
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3"><%= @collection.name %></h1>
+      <% if @collection.owners_names.strip.present? %>
+          <p class="lead">Owned By: <%= @collection.owners_names %></p>
+      <% end %>
+      <p class="lead">Total Number of Pendants: <%= @collection.pendants.count %></p>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Artist Name</th>
+        <th>Times Worn</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: 'pendant_row', collection: @collection.pendants, as: :pendant %>
+      </tbody>
+    </table>
+  </div>
+</div>
