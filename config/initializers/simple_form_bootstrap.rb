@@ -144,9 +144,7 @@ SimpleForm.setup do |config|
     b.use :label, class: 'control-label'
 
     b.wrapper tag: 'div', class: 'input-group' do |ba|
-      ba.wrapper tag: :span, class: 'input-group-addon' do |bb|
-        bb.optional :addon
-      end
+      ba.optional :addon, wrap_with: { tag: :span, class: 'input-group-addon' }
       ba.use :input, class: 'form-control'
     end
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
