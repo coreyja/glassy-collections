@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.3'
 
 gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -78,6 +78,8 @@ gem 'lodash-rails'
 gem 'react-rails'
 
 gem 'u2f'
+
+gem 'puma'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-react-select', '1.0.0.rc.1'
