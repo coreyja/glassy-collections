@@ -29,9 +29,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render partial: 'header' %>
+  <%= render 'navbar' %>
 
-  <div class="container-fluid page-content">
+  <div class="container-fluid">
     <%= yield %>
   </div>
 </body>
