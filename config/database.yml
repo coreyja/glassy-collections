@@ -10,4 +10,9 @@ staging:
   url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
 
 production:
-  url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>
+  encoding: utf8
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
