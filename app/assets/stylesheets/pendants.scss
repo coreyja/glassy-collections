@@ -44,7 +44,7 @@
     }
 
     img {
-      @include img-fluid(inline-block);
+      @include img-fluid;
     }
   }
 }
