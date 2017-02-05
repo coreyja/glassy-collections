@@ -5,23 +5,19 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      @pendants = current_user.pendants
     end
 
     def create
-      @photo = current_user.photos.new photo_params
       @pendant_record = current_user.pendant_records.new pendant_record_params
-      @pendant_record.photo = @photo if @photo.valid?
       if @pendant_record.save
-        redirect_to action: :index
+        redirect_to new_my_pendant_record_photos_path(@pendant_record)
       else
-        @pendants = current_user.pendants
         render :new
       end
     end
 
     def index
-      @calendar = calendar
+      @calendar = PendantRecordCalendar.new calendar_hash
     end
 
     private
@@ -31,14 +27,6 @@ module CurrentUser
         date: params[:date].try(:to_date) || Date.today,
         user: current_user,
       }
-    end
-
-    def calendar
-      PendantRecordCalendar.new calendar_hash
-    end
-
-    def photo_params
-      params.require(:pendant_record).permit(:photo)
     end
 
     def pendant_record_params

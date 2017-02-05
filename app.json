@@ -38,7 +38,7 @@
     },
     "DEPLOY_TASKS": {
       "description": "Rake tasks to run after deploying",
-      "value": "db:migrate"
+      "value": "db:migrate yarn:install assets:clobber webpacker:compile assets:precompile assets:clean"
     }
   },
   "addons": [
@@ -48,10 +48,7 @@
   ],
   "buildpacks": [
     {
-      "url": "urn:buildpack:heroku/ruby"
-    },
-    {
-      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
+      "url": "https://github.com/negativetwelve/heroku-buildpack-subdir"
     }
   ]
 }
