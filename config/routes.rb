@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     resource :last_week_in_pendants, only: %i(show)
 
     resources :u2f_registrations, only: %i(new create)
+
+    resource :settings, only: %i(show)
   end
 
   namespace :api do
