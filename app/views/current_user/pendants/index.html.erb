@@ -1,32 +1,48 @@
 <%= content_for :active_tab, :pendants %>
 
-<%= link_to 'New Pendant', new_my_pendant_path %>
 <div class="pendants">
 
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-block">
-      <h4 class="card-title">Total Number of Pendants</h4>
-      <%= @pendants.count %>
+      <h5 class="card-title">Total Number of Pendants</h5>
+      <p class="card-text"><%= @pendants.count %></p>
+      <%= link_to 'New Pendant', new_my_pendant_path, class: 'btn btn-primary' %>
     </div>
   </div>
 
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Artist Name</th>
-          <th>Times Worn</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'pendant_row', collection: @pendants, as: :pendant %>
-      </tbody>
-    </table>
-  </div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#table" role="tab">Table</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#graphs" role="tab">Graphs</a>
+    </li>
+  </ul>
 
-  <figure class="figure pendants__chart">
-    <figcaption class="figure-caption">Number of Times Worn by Pendant</figcaption>
-    <%= pie_chart @chart_data %>
-  </figure>
+  <!-- Tab panes -->
+  <div class="tab-content mt-1">
+    <div class="tab-pane active" id="table" role="tabpanel">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Artist Name</th>
+            <th>Times Worn</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%= render partial: 'pendant_row', collection: @pendants, as: :pendant %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tab-pane" id="graphs" role="tabpanel">
+      <figure class="figure pendants__chart">
+        <figcaption class="figure-caption">Number of Times Worn by Pendant</figcaption>
+        <%= pie_chart @chart_data %>
+      </figure>
+    </div>
+  </div>
 </div>

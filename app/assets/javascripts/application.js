@@ -20,7 +20,7 @@
 //= require react_ujs
 //= require components
 //= require u2f_api
+//= require chartkick
 
-//= require header
 
 //= require_tree ./data-handlers
