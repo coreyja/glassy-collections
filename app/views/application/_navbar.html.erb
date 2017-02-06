@@ -11,16 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav  mr-auto">
       <li class="nav-item">
-        <%= link_to 'Pendant Records', my_pendant_records_path, class: 'nav-link' %>
+        <%= link_to 'Pendant Records', my_pendant_records_path, class: nav_link_class_for('pendant_records') %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Pendants', my_pendants_path, class: 'nav-link' %>
+        <%= link_to 'Pendants', my_pendants_path, class: nav_link_class_for('pendants') %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Artists', my_artists_path, class: 'nav-link' %>
+        <%= link_to 'Artists', my_artists_path, class: nav_link_class_for('artists') %>
       </li>
       <li class="nav-item">
-        <%= link_to 'LWIP', my_last_week_in_pendants_path, class: 'nav-link' %>
+        <%= link_to 'LWIP', my_last_week_in_pendants_path, class: nav_link_class_for('lwip') %>
       </li>
     </ul>
     <div class="navbar-text">
