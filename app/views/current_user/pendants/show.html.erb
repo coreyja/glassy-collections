@@ -8,7 +8,7 @@
 
   <h4>Times Worn: <%= @pendant.pendant_records.count %></h4>
 
-  <div class="pendant-records">
+  <div class="pendant-records card-columns">
     <%= render partial: 'pendant_record', collection: @pendant.pendant_records.by_worn_on %>
   </div>
 </div>
