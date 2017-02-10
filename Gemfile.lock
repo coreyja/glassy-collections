@@ -64,7 +64,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.2)
     byebug (9.0.5)
-    chartkick (2.1.1)
+    chartkick (2.2.2)
     clearance (1.14.2)
       bcrypt
       email_validator (~> 1.4)
