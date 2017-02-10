@@ -1,0 +1,35 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-3">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= link_to root_path, class: 'navbar-brand' do %>
+      <span class="d-inline-block align-middle" style="width: 30px;">
+        <%= raw_asset 'penguin-logo.svg' %>
+      </span>
+      Glassy Collections
+  <% end %>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav  mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Pendant Records', my_pendant_records_path, class: nav_link_class_for('pendant_records') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Pendants', my_pendants_path, class: nav_link_class_for('pendants') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Artists', my_artists_path, class: nav_link_class_for('artists') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'LWIP', my_last_week_in_pendants_path, class: nav_link_class_for('lwip') %>
+      </li>
+    </ul>
+    <div class="navbar-text">
+      <% if current_user.present? %>
+          <%= current_user.email %>
+          <%= link_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+          <%= link_to 'Sign in', sign_in_path %>
+      <% end %>
+    </div>
+  </div>
+</nav>

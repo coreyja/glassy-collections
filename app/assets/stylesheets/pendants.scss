@@ -3,48 +3,22 @@
 }
 
 #pendant {
+  .pendant-records {
+    @include make-row();
+  }
+
   .pendant-record {
-    border: 1px solid $black;
-    border-bottom-width: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-
-    text-align: center;
-
-    padding: 10px;
-
-    &:not(:last-child) {
-      border-top-width: 1px;
+    @include media-breakpoint-up('sm') {
+      max-width: calc(100% / 2);
     }
-
-    &:last-child {
-      border-bottom-width: 1px;
+    @include media-breakpoint-up('md') {
+      max-width: calc(100% / 3);
     }
-
-    .worn-on {
-      padding-top: 5px;
-
-      &::before {
-        content: "Worn";
-        text-decoration: underline;
-        color: $dark-grey;
-        font-size: 80%;
-        line-height: 1;
-        display: block;
-      }
+    @include media-breakpoint-up('lg') {
+      max-width: calc(100% / 4);
     }
-
-    .recorded-at::before {
-      content: "Recorded";
-      text-decoration: underline;
-      color: $dark-grey;
-      font-size: 80%;
-      line-height: 1;
-      display: block;
-    }
-
-    img {
-      @include img-fluid(inline-block);
+    @include media-breakpoint-up('xl') {
+      max-width: calc(100% / 5);
     }
   }
 }
