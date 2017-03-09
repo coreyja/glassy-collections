@@ -84,8 +84,8 @@ Rails.application.configure do
   Rails.application.config.secret_token = ENV['SECRET_TOKEN']
 
   # force HTTPS on production
-  ## Turn off for now since I can't get the cert generation to work right now :sad:
-  config.force_ssl = false
+  config.force_ssl = true
+  config.middleware.insert_before ActionDispatch::SSL, AcmeChallengeMiddleware
 
   config.paperclip_defaults = {
     storage: :s3,
