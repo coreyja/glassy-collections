@@ -4,8 +4,8 @@ class AcmeChallengeMiddleware
   end
 
   def call(env)
-    if acme_challenge_request? && acme_request_token.present?
-      [200, { 'Content-Type' => 'text/plain' }, [acme_request_token]]
+    if acme_challenge_request?(env) && acme_request_token(env).present?
+      [200, { 'Content-Type' => 'text/plain' }, [acme_request_token(env)]]
     else
       @app.call(env)
     end
@@ -13,16 +13,16 @@ class AcmeChallengeMiddleware
 
   private
 
-  def acme_challenge_request?
+  def acme_challenge_request?(env)
     env['PATH_INFO'].starts_with? acme_path_prefix
   end
 
-  def acme_request_key
-    s[acme_path_prefix.length..-1].join
+  def acme_request_key(env)
+    env['PATH_INFO'][acme_path_prefix.length..-1].join
   end
 
-  def acme_request_token
-    acme_data[acme_request_key]
+  def acme_request_token(env)
+    acme_data[acme_request_key(env)]
   end
 
   def acme_path_prefix
