@@ -32,12 +32,12 @@ class AcmeChallengeMiddleware
   def acme_data
     {}.tap do |data|
       if ENV['ACME_KEY'] && ENV['ACME_TOKEN']
-        data[ENV['ACME_KEY']] = ENV['ACME_TOKEN']
+        data[ENV['ACME_TOKEN']] = ENV['ACME_KEY']
       else
         ENV.each do |k, v|
           if d = k.match(/^ACME_KEY_([0-9]+)/)
             index = d[1]
-            data[v] = ENV["ACME_TOKEN_#{index}"]
+            data[ENV["ACME_TOKEN_#{index}"]] = v
           end
         end
       end
