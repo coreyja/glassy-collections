@@ -44,4 +44,6 @@ Rails.application.configure do
   Rails.application.config.secret_token = ENV['SECRET_TOKEN']
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  config.middleware.insert_before 0, AcmeChallengeMiddleware
 end
