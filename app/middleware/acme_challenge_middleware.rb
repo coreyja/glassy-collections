@@ -14,11 +14,11 @@ class AcmeChallengeMiddleware
   private
 
   def acme_challenge_request?(env)
-    env['PATH_INFO'].starts_with? acme_path_prefix
+    env['PATH_INFO'] && env['PATH_INFO'].starts_with?(acme_path_prefix)
   end
 
   def acme_request_key(env)
-    env['PATH_INFO'][acme_path_prefix.length..-1].join
+    env['PATH_INFO'][acme_path_prefix.length..-1]
   end
 
   def acme_request_token(env)
