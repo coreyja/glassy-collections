@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class PendantRecord < ApplicationRecord
   belongs_to :user
-  belongs_to :pendant
+  belongs_to :pendant, class_name: 'GlassArtPiece'
   belongs_to :photo
 
   scope :worn_on, ->(day) { where(worn_on: day) }

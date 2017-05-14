@@ -1,7 +1,6 @@
 <%= content_for :active_tab, :pendants %>
 
-<%= simple_form_for [:my, @pendant], remote: true do |f| %>
-  <%= f.input :user_id, as: :hidden %>
+<%= simple_form_for [:my, @pendant], url: (@pendant.persisted? ? my_pendants_path : new_my_pendant_path), remote: true do |f| %>
 
   <label for="pendant[artist_ids][]">
     Artists

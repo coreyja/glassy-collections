@@ -1,45 +1,46 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'pry'
 
-RSpec.describe Pendant, type: :model do
+RSpec.describe GlassArtPiece, type: :model do
   describe '.search' do
     let(:artist_group_1) { FactoryGirl.create(:artist_group, artists: [artist_1, artist_3]) }
     let(:artist_group_2) { FactoryGirl.create(:artist_group, artists: [artist_2]) }
     let(:artist_1) { FactoryGirl.create(:artist, name: 'Aiuto') }
     let(:artist_2) { FactoryGirl.create(:artist, name: 'RyanKane') }
     let(:artist_3) { FactoryGirl.create(:artist, name: 'Keepsake') }
-    let!(:pendant_1) { FactoryGirl.create(:pendant, artist_group: artist_group_1, name: 'Lizard on a Shroom') }
-    let!(:pendant_2) { FactoryGirl.create(:pendant, artist_group: artist_group_1, name: 'Fumicello') }
-    let!(:pendant_3) { FactoryGirl.create(:pendant, artist_group: artist_group_2, name: 'Wolf Head') }
+    let!(:glass_art_piece_1) { FactoryGirl.create(:glass_art_piece, :wearable,  artist_group: artist_group_1, name: 'Lizard on a Shroom') }
+    let!(:glass_art_piece_2) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_1, name: 'Fumicello') }
+    let!(:glass_art_piece_3) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_2, name: 'Wolf Head') }
 
     subject { described_class.search(term) }
 
     context 'when the search term is in the artist name' do
       let(:term) { 'keep' }
 
-      it 'finds the correct pendants' do
-        expect(subject).to contain_exactly pendant_1, pendant_2
+      it 'finds the correct glass_art_pieces' do
+        expect(subject).to contain_exactly glass_art_piece_1, glass_art_piece_2
       end
     end
 
-    context 'when the search term is in the pendant name' do
+    context 'when the search term is in the glass_art_piece name' do
       let(:term) { 'wolf' }
 
-      it 'finds the correct pendants' do
-        expect(subject).to contain_exactly pendant_3
+      it 'finds the correct glass_art_pieces' do
+        expect(subject).to contain_exactly glass_art_piece_3
       end
     end
 
-    context 'when the search term is in the artist name and pendant name' do
-      let!(:pendant_3) { FactoryGirl.create(:pendant, artist_group: artist_group_2, name: 'ryan wolf head') }
+    context 'when the search term is in the artist name and glass_art_piece name' do
+      let!(:glass_art_piece_3) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_2, name: 'ryan wolf head') }
       let(:term) { 'ryan' }
 
-      it 'only returns the matching pendant once' do
-        expect(subject).to contain_exactly pendant_3
+      it 'only returns the matching glass_art_piece once' do
+        expect(subject).to contain_exactly glass_art_piece_3
       end
     end
 
-    context 'when the search term is not in any of the pendants' do
+    context 'when the search term is not in any of the glass_art_pieces' do
       let(:term) { 'eye' }
 
       it 'returns an empty collection' do
@@ -51,16 +52,16 @@ RSpec.describe Pendant, type: :model do
   describe '#to_s' do
     let(:name) { 'PendantName' }
 
-    subject { FactoryGirl.create(:pendant, name: name) }
+    subject { FactoryGirl.create(:glass_art_piece, name: name) }
 
-    it 'returns the name of the pendant' do
+    it 'returns the name of the glass_art_piece' do
       expect(subject.name).to eq 'PendantName'
     end
   end
 
   describe '#artist_name' do
     let(:artist_group) { FactoryGirl.create(:artist_group, artists: FactoryGirl.create_list(:artist, 2, name: 'Joe')) }
-    subject { FactoryGirl.create(:pendant, artist_group: artist_group) }
+    subject { FactoryGirl.create(:glass_art_piece, artist_group: artist_group) }
 
     it 'uses the names of the artists in the artist group' do
       expect(subject.artist_name).to eq 'Joe & Joe'
@@ -72,7 +73,7 @@ RSpec.describe Pendant, type: :model do
     let(:artist_1) { FactoryGirl.create(:artist) }
     let(:artist_2) { FactoryGirl.create(:artist) }
 
-    subject { FactoryGirl.create(:pendant) }
+    subject { FactoryGirl.create(:glass_art_piece) }
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryGirl.create(:artist) }

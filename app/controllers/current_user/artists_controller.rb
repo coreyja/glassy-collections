@@ -12,7 +12,7 @@ module CurrentUser
     private
 
     def artists
-      Artist.joins(:pendants).merge(current_user.pendants).uniq
+      Artist.joins(:pendants).merge(current_user.glass_art_pieces).uniq
     end
   end
 end

@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :collection_owners, foreign_key: :owner_id
   has_many :collections, through: :collection_owners
-  has_many :pendants, through: :collections
+  has_many :glass_art_pieces, through: :collections
 
   has_many :pendant_records
 

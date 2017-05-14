@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Pendant < ApplicationRecord
+class GlassArtPiece < ApplicationRecord
   belongs_to :user
   belongs_to :artist_group
   belongs_to :collection
@@ -10,8 +10,8 @@ class Pendant < ApplicationRecord
   has_many :artists, through: :artist_group
 
   scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term)).distinct }
+  scope :wearable, -> { where wearable: true }
 
-  validates! :user, presence: true
   validates :name, :artist_group, :collection, presence: true
 
   def to_s

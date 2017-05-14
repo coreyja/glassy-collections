@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213044655) do
+ActiveRecord::Schema.define(version: 20170514020250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(version: 20161213044655) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
+  create_table "glass_art_pieces", force: :cascade do |t|
+    t.string   "name",                            null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "artist_group_id",                 null: false
+    t.integer  "collection_id"
+    t.boolean  "wearable",        default: false, null: false
+    t.index ["artist_group_id"], name: "index_glass_art_pieces_on_artist_group_id", using: :btree
+    t.index ["collection_id"], name: "index_glass_art_pieces_on_collection_id", using: :btree
+  end
+
   create_table "pendant_records", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "pendant_id", null: false
@@ -96,18 +107,6 @@ ActiveRecord::Schema.define(version: 20161213044655) do
     t.index ["pendant_id"], name: "index_pendant_records_on_pendant_id", using: :btree
     t.index ["photo_id"], name: "index_pendant_records_on_photo_id", using: :btree
     t.index ["user_id"], name: "index_pendant_records_on_user_id", using: :btree
-  end
-
-  create_table "pendants", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "artist_group_id", null: false
-    t.integer  "collection_id"
-    t.index ["artist_group_id"], name: "index_pendants_on_artist_group_id", using: :btree
-    t.index ["collection_id"], name: "index_pendants_on_collection_id", using: :btree
-    t.index ["user_id"], name: "index_pendants_on_user_id", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -161,27 +160,14 @@ ActiveRecord::Schema.define(version: 20161213044655) do
   add_foreign_key "authentications", "users"
   add_foreign_key "collection_owners", "collections"
   add_foreign_key "collection_owners", "users", column: "owner_id"
-  add_foreign_key "pendant_records", "pendants"
+  add_foreign_key "glass_art_pieces", "artist_groups"
+  add_foreign_key "glass_art_pieces", "collections"
+  add_foreign_key "pendant_records", "glass_art_pieces", column: "pendant_id"
   add_foreign_key "pendant_records", "photos"
   add_foreign_key "pendant_records", "users"
-  add_foreign_key "pendants", "artist_groups"
-  add_foreign_key "pendants", "collections"
-  add_foreign_key "pendants", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "push_notification_subscriptions", "users"
   add_foreign_key "u2f_registrations", "users"
-
-  create_view :pendant_searches,  sql_definition: <<-SQL
-      SELECT pendants.id AS pendant_id,
-      pendants.name AS term
-     FROM pendants
-  UNION
-   SELECT pendants.id AS pendant_id,
-      artists.name AS term
-     FROM ((pendants
-       JOIN artist_artist_groups ON ((pendants.artist_group_id = artist_artist_groups.artist_group_id)))
-       JOIN artists ON ((artist_artist_groups.artist_id = artists.id)));
-  SQL
 
   create_view :artist_group_artists,  sql_definition: <<-SQL
       SELECT artist_groups.id AS artist_group_id,
@@ -189,6 +175,20 @@ ActiveRecord::Schema.define(version: 20161213044655) do
      FROM (artist_groups
        JOIN artist_artist_groups ON ((artist_artist_groups.artist_group_id = artist_groups.id)))
     GROUP BY artist_groups.id;
+  SQL
+
+  create_view :pendant_searches,  sql_definition: <<-SQL
+      SELECT glass_art_pieces.id AS glass_art_piece_id,
+      glass_art_pieces.name AS term
+     FROM glass_art_pieces
+    WHERE (glass_art_pieces.wearable = true)
+  UNION
+   SELECT glass_art_pieces.id AS glass_art_piece_id,
+      artists.name AS term
+     FROM ((glass_art_pieces
+       JOIN artist_artist_groups ON ((glass_art_pieces.artist_group_id = artist_artist_groups.artist_group_id)))
+       JOIN artists ON ((artist_artist_groups.artist_id = artists.id)))
+    WHERE (glass_art_pieces.wearable = true);
   SQL
 
 end

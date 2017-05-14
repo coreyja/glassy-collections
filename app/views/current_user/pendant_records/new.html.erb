@@ -10,7 +10,7 @@
     placeholder: 'Select Pendant...',
     multi: false,
     value: @pendant_record.pendant_id,
-    options: current_user.pendants.all.map { |p| { value: p.id, label: "#{p.name} - #{p.artist_name}" } }
+    options: current_user.glass_art_pieces.all.map { |p| { value: p.id, label: "#{p.name} - #{p.artist_name}" } }
     )
   %>
 
