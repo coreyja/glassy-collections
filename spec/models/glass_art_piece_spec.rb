@@ -9,7 +9,7 @@ RSpec.describe GlassArtPiece, type: :model do
     let(:artist_1) { FactoryGirl.create(:artist, name: 'Aiuto') }
     let(:artist_2) { FactoryGirl.create(:artist, name: 'RyanKane') }
     let(:artist_3) { FactoryGirl.create(:artist, name: 'Keepsake') }
-    let!(:glass_art_piece_1) { FactoryGirl.create(:glass_art_piece, :wearable,  artist_group: artist_group_1, name: 'Lizard on a Shroom') }
+    let!(:glass_art_piece_1) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_1, name: 'Lizard on a Shroom') }
     let!(:glass_art_piece_2) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_1, name: 'Fumicello') }
     let!(:glass_art_piece_3) { FactoryGirl.create(:glass_art_piece, :wearable, artist_group: artist_group_2, name: 'Wolf Head') }
 

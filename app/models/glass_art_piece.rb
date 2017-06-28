@@ -5,7 +5,7 @@ class GlassArtPiece < ApplicationRecord
   belongs_to :collection
   has_many :owners, through: :collection
 
-  has_many :pendant_records
+  has_many :pendant_records, foreign_key: 'pendant_id'
   has_many :pendant_searches
   has_many :artists, through: :artist_group
 

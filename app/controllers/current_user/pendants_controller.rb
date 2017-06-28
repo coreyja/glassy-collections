@@ -46,7 +46,7 @@ module CurrentUser
     end
 
     def create_params
-      params.require(:pendant).permit(:name, :collection_id, artist_ids: [])
+      params.require(:glass_art_piece).permit(:name, :collection_id, artist_ids: [])
     end
   end
 end
