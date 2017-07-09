@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe GlassArtPiece, type: :model do
   describe '.search' do
