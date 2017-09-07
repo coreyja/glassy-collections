@@ -26,62 +26,38 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'chartkick'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
+gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
-gem 'paperclip', '~> 5.1.0'
-
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'chartkick'
+gem 'clearance'
 gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
-
-gem 'clearance'
+gem 'figaro'
+gem 'font-awesome-sass'
+gem 'high_voltage', '~> 3.0.0'
+gem 'imgkit'
+gem 'lodash-rails'
 gem 'omniauth'
 gem 'omniauth-instagram'
-
-gem 'figaro'
-
+gem 'paperclip', '~> 5.1.0'
+gem 'puma'
+gem 'react-rails'
+gem 'render_anywhere', require: false
+gem 'rubocop'
+gem 'scenic'
+gem 'serviceworker-rails'
 gem 'simple_form'
+gem 'u2f'
+gem 'webpush'
+gem 'wkhtmltoimage-binary'
 
 gem 'hash_attribute_assignment'
 # gem 'hash_attribute_assignment', path: '~/Projects/hash_attribute_assignment/'
 
-gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 4.0.0.alpha3'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
-gem 'font-awesome-sass'
-
-gem 'imgkit'
-gem 'wkhtmltoimage-binary'
-
-gem 'high_voltage', '~> 3.0.0'
-
-gem 'render_anywhere', require: false
-
-gem 'scenic'
-
-gem 'rubocop'
-
-gem 'serviceworker-rails'
-gem 'webpush'
-
-gem 'lodash-rails'
-gem 'react-rails'
-
-gem 'u2f'
-gem 'puma'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-react-select', '1.0.0.rc.1'
+  gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 group :development, :test do
