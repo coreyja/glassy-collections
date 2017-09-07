@@ -42,7 +42,7 @@ module CurrentUser
     private
 
     def pendant_attrs
-      GlassArtPiece::Params.new(create_params).attrs
+      GlassArtPiece::Params::Pendant.new(create_params).attrs
     end
 
     def create_params

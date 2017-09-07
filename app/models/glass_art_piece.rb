@@ -26,32 +26,35 @@ class GlassArtPiece < ApplicationRecord
     self.artist_group = ArtistGroup.find_or_initialize_by_artist_ids(artist_ids)
   end
 
-  class Params
-    def initialize(params = {})
-      @params = params.to_h
-    end
+  module Params
+    class Pendant
+      def initialize(params = {})
+        @params = params.to_h
+      end
 
-    def attrs
-      params.merge(overrides).compact
-    end
+      def attrs
+        params.merge(overrides).compact
+      end
 
-    def overrides
-      {
-        artist_ids: artist_ids,
-        name: name,
-      }
-    end
+      def overrides
+        {
+          artist_ids: artist_ids,
+          name: name,
+          wearable: true,
+        }
+      end
 
-    private
+      private
 
-    attr_reader :params
+      attr_reader :params
 
-    def artist_ids
-      params[:artist_ids].select(&:present?).map(&:to_i) if params.include?(:artist_ids)
-    end
+      def artist_ids
+        params[:artist_ids].select(&:present?).map(&:to_i) if params.include?(:artist_ids)
+      end
 
-    def name
-      params[:name].strip if params.include?(:name)
+      def name
+        params[:name].strip if params.include?(:name)
+      end
     end
   end
 end

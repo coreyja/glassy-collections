@@ -97,7 +97,7 @@ RSpec.describe GlassArtPiece, type: :model do
   end
 
   describe '::Params' do
-    subject { described_class::Params.new params }
+    subject { described_class::Params::Pendant.new params }
 
     describe '#attrs' do
       context 'when provided with an artist_ids array' do
@@ -141,8 +141,8 @@ RSpec.describe GlassArtPiece, type: :model do
           }
         end
 
-        it 'returns the params' do
-          expect(subject.attrs).to eq params
+        it 'returns the params, plus some defaults' do
+          expect(subject.attrs).to include params
         end
       end
     end
