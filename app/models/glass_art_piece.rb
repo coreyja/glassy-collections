@@ -8,6 +8,8 @@ class GlassArtPiece < ApplicationRecord
   has_many :pendant_records, foreign_key: 'pendant_id'
   has_many :pendant_searches
   has_many :artists, through: :artist_group
+  has_many :glass_art_piece_colors
+  has_many :colors, through: :glass_art_piece_colors
 
   scope :search, ->(term) { joins(:pendant_searches).merge(PendantSearch.for(term)).distinct }
   scope :wearable, -> { where wearable: true }
