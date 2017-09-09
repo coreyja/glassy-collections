@@ -1,3 +1,4 @@
+<%= link_to 'New Color', new_color_path %>
 <div class="colors">
   <div class="table-responsive">
     <table class="table table-hover">
@@ -8,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'color_row', collection: @colors %>
+        <%= render partial: 'color_row', collection: @colors, as: :color %>
       </tbody>
     </table>
   </div>

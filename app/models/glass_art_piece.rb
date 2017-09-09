@@ -41,6 +41,7 @@ class GlassArtPiece < ApplicationRecord
       def overrides
         {
           artist_ids: artist_ids,
+          color_ids: color_ids,
           name: name,
           wearable: true,
         }
@@ -52,6 +53,10 @@ class GlassArtPiece < ApplicationRecord
 
       def artist_ids
         params[:artist_ids].select(&:present?).map(&:to_i) if params.include?(:artist_ids)
+      end
+
+      def color_ids
+        params[:color_ids].select(&:present?).map(&:to_i) if params.include?(:color_ids)
       end
 
       def name

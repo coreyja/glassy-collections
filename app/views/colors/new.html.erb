@@ -1,0 +1,17 @@
+<%= simple_form_for @color do |f| %>
+  <%= f.input :name %>
+
+  <label for="color[artist_ids][]">
+    Artists
+  </label>
+  <input type="hidden" name="color[artist_ids][]" value="" />
+  <%= react_component('GlassySelect',
+      name: 'color[artist_ids][]',
+      placeholder: 'Who made this pendant?',
+      multi: true,
+      value: @color.artist_ids,
+      options: Artist.all.map { |a| { value: a.id, label: a.name} })
+  %>
+
+  <%= f.submit %>
+<% end %>
