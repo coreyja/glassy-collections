@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :pendants, only: %i(show)
   end
 
+  resources :colors, only: %i(index show)
+
   namespace :my, module: :current_user do
     resources :pendants, only: %i(new create index show edit update)
     resources :pendant_records, only: %i(new create index)
