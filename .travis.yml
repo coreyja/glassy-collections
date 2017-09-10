@@ -4,10 +4,8 @@ rvm:
 services:
   - postgresql
 env:
-  - SECRET_KEY_BASRE=AUFXrZCOun8ZmxNfZeyhUVGNW0yTejYvretzA7ezkqZiK4aMIAgX5zbI4csePmkNbHQJi2rwRZWfLTfy6EbxsUU4bIeUuuJGk7T59cKA561NJ1nueGweH3JPgIl37PlfVXxQ1Jc1k8Pk5WSqfr3IeSldbA68nvzsATL2kJBA10els486SX5LoeWLkqUvsDqRz3btlNle SECRET_TOKEN=Mxz1p7kXV9sleqsCFQtSgjTvkdbERwwZ8pBG7Jjk6DLkGXUHed
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - CC_TEST_REPORTER_ID=9e086a3d80910b05d16fa32889989d7cb058ca81153531de35ebf66d17344b9a
-env:
-- NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
 before_install:
   - gem update --system
