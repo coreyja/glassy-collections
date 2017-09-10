@@ -4,8 +4,9 @@ rvm:
 services:
   - postgresql
 env:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - CC_TEST_REPORTER_ID=9e086a3d80910b05d16fa32889989d7cb058ca81153531de35ebf66d17344b9a
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+    - CC_TEST_REPORTER_ID=9e086a3d80910b05d16fa32889989d7cb058ca81153531de35ebf66d17344b9a
 
 before_install:
   - gem update --system
