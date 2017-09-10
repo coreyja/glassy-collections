@@ -4,7 +4,8 @@ rvm:
 services:
   - postgresql
 env:
-- SECRET_KEY_BASRE=AUFXrZCOun8ZmxNfZeyhUVGNW0yTejYvretzA7ezkqZiK4aMIAgX5zbI4csePmkNbHQJi2rwRZWfLTfy6EbxsUU4bIeUuuJGk7T59cKA561NJ1nueGweH3JPgIl37PlfVXxQ1Jc1k8Pk5WSqfr3IeSldbA68nvzsATL2kJBA10els486SX5LoeWLkqUvsDqRz3btlNle SECRET_TOKEN=Mxz1p7kXV9sleqsCFQtSgjTvkdbERwwZ8pBG7Jjk6DLkGXUHed
+  - SECRET_KEY_BASRE=AUFXrZCOun8ZmxNfZeyhUVGNW0yTejYvretzA7ezkqZiK4aMIAgX5zbI4csePmkNbHQJi2rwRZWfLTfy6EbxsUU4bIeUuuJGk7T59cKA561NJ1nueGweH3JPgIl37PlfVXxQ1Jc1k8Pk5WSqfr3IeSldbA68nvzsATL2kJBA10els486SX5LoeWLkqUvsDqRz3btlNle SECRET_TOKEN=Mxz1p7kXV9sleqsCFQtSgjTvkdbERwwZ8pBG7Jjk6DLkGXUHed
+  - CC_TEST_REPORTER_ID=9e086a3d80910b05d16fa32889989d7cb058ca81153531de35ebf66d17344b9a
 env:
 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
@@ -17,8 +18,9 @@ bundler_args: --without production development
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
-addons:
-  code_climate:
-    repo_token: 9e086a3d80910b05d16fa32889989d7cb058ca81153531de35ebf66d17344b9a
-
+after_script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
