@@ -4,6 +4,13 @@
   <h1><%= @pendant.name %></h1>
   <h2><%= @pendant.artist_name %></h2>
 
+  <h3>
+    <% @pendant.colors.sort_by(&:name).each_with_index do |color, i| %>
+      <%= link_to color.name, color_path(color) %>
+      <%= ' - ' unless @pendant.colors.count - 1 == i %>
+    <% end %>
+  </h3>
+
   <%= link_to 'Edit', edit_my_pendant_path(@pendant) %>
 
   <h4>Times Worn: <%= @pendant.pendant_records.count %></h4>
