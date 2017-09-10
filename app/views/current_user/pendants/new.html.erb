@@ -1,23 +1,24 @@
-<%= simple_form_for [:my, @pendant], remote: true do |f| %>
-  <%= f.input :user_id, as: :hidden %>
+<%= content_for :active_tab, :pendants %>
 
-  <label for="pendant[artist_ids][]">
+<%= simple_form_for [:my, @pendant], url: (@pendant.persisted? ? my_pendant_path(id: @pendant) : new_my_pendant_path) do |f| %>
+
+  <label for="glass_art_piece[artist_ids][]">
     Artists
   </label>
-  <input type="hidden" name="pendant[artist_ids][]" value="" />
+  <input type="hidden" name="glass_art_piece[artist_ids][]" value="" />
     <%= react_component('GlassySelect',
-        name: 'pendant[artist_ids][]',
+        name: 'glass_art_piece[artist_ids][]',
         placeholder: 'Who made this pendant?',
         multi: true,
         value: @pendant.artist_ids,
         options: Artist.all.map { |a| { value: a.id, label: a.name} })
     %>
 
-    <label for="pendant[collection_id]">
+    <label for="glass_art_piece[collection_id]">
       Collection
     </label>
     <%= react_component('GlassySelect',
-      name: 'pendant[collection_id]',
+      name: 'glass_art_piece[collection_id]',
       placeholder: 'Select Collection...',
       multi: false,
       value: @pendant.collection_id,
@@ -25,6 +26,18 @@
     %>
 
     <%= f.input :name %>
+
+  <label for="glass_art_piece[colors_ids][]">
+    Colors
+  </label>
+  <input type="hidden" name="glass_art_piece[colors_ids][]" value="" />
+    <%= react_component('GlassySelect',
+        name: 'glass_art_piece[color_ids][]',
+        placeholder: 'What colors is this piece made of?',
+        multi: true,
+        value: @pendant.color_ids,
+        options: Color.all.map { |a| { value: a.id, label: a.name} })
+    %>
 
   <%= f.submit %>
 <% end %>

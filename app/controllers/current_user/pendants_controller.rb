@@ -4,25 +4,25 @@ module CurrentUser
     before_action :require_login
 
     def index
-      @pendants = current_user.pendants
+      @pendants = current_user.glass_art_pieces
       @chart_data = current_user.pendant_records.group(:pendant).count.sort.map { |k, v| [k.name, v] }
     end
 
     def show
-      @pendant = current_user.pendants.find params[:id]
+      @pendant = current_user.glass_art_pieces.find params[:id]
     end
 
     def new
-      @pendant = Pendant.new
+      @pendant = GlassArtPiece.new
     end
 
     def edit
-      @pendant = current_user.pendants.find params[:id]
+      @pendant = current_user.glass_art_pieces.find params[:id]
       render :new
     end
 
     def create
-      @pendant = Pendant.new
+      @pendant = GlassArtPiece.new
       if @pendant.update pendant_attrs
         redirect_to action: :index
       else
@@ -31,7 +31,7 @@ module CurrentUser
     end
 
     def update
-      @pendant = current_user.pendants.find params[:id]
+      @pendant = current_user.glass_art_pieces.find params[:id]
       if @pendant.update pendant_attrs
         redirect_to action: :index
       else
@@ -42,11 +42,11 @@ module CurrentUser
     private
 
     def pendant_attrs
-      Pendant::Params.new(create_params.merge(user: current_user)).attrs
+      GlassArtPiece::Params::Pendant.new(create_params).attrs
     end
 
     def create_params
-      params.require(:pendant).permit(:name, :collection_id, artist_ids: [])
+      params.require(:glass_art_piece).permit(:name, :collection_id, artist_ids: [], color_ids: [])
     end
   end
 end

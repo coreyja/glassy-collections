@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe PendantRecordCalendar, type: :model do
   let(:user) { FactoryGirl.create :user }
-  let(:pendant) { FactoryGirl.create :pendant, user: user }
+  let(:pendant) { FactoryGirl.create :glass_art_piece, :wearable }
   let(:date) { Date.parse('2016-01-05') }
 
   subject { PendantRecordCalendar.new user: user, date: date }

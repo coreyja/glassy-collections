@@ -5,6 +5,7 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
+      @pendants = current_user.glass_art_pieces
     end
 
     def create
@@ -12,6 +13,7 @@ module CurrentUser
       if @pendant_record.save
         redirect_to new_my_pendant_record_photos_path(@pendant_record)
       else
+        @pendants = current_user.glass_art_pieces
         render :new
       end
     end

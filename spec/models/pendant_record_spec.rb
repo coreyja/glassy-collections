@@ -17,7 +17,7 @@ RSpec.describe PendantRecord, type: :model do
   end
 
   describe '.worn_on' do
-    let(:pendant) { FactoryGirl.create(:pendant) }
+    let(:pendant) { FactoryGirl.create(:glass_art_piece) }
     let(:user) { FactoryGirl.create(:user) }
     let(:date) { Date.parse('2016-01-05') }
 
@@ -33,7 +33,7 @@ RSpec.describe PendantRecord, type: :model do
   end
 
   describe '.by_worn_on' do
-    let(:pendant) { FactoryGirl.create(:pendant) }
+    let(:pendant) { FactoryGirl.create(:glass_art_piece) }
     let(:user) { FactoryGirl.create(:user) }
     let(:date) { Date.parse('2016-01-05') }
 

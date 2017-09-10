@@ -1,0 +1,6 @@
+.PageContent {
+
+  &-content {
+    @include make-container();
+  }
+}

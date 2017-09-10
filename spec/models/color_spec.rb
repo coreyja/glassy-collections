@@ -1,6 +1,5 @@
-# frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe CollectionOwner, type: :model do
+RSpec.describe Color, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

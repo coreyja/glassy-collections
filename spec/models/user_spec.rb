@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
     let!(:user_with_record_yesterday) { FactoryGirl.create(:user) }
     let!(:user_with_record_today) { FactoryGirl.create(:user) }
 
-    let(:pendant_1) { FactoryGirl.create(:pendant, user: user_with_record_yesterday) }
-    let(:pendant_2) { FactoryGirl.create(:pendant, user: user_with_record_today) }
+    let(:pendant_1) { FactoryGirl.create(:glass_art_piece) }
+    let(:pendant_2) { FactoryGirl.create(:glass_art_piece) }
 
     let!(:yesterday_record) { FactoryGirl.create :pendant_record, user: user_with_record_yesterday, worn_on: Date.parse('2016-01-04'), pendant: pendant_1 }
     let!(:today_record) { FactoryGirl.create :pendant_record, user: user_with_record_today, worn_on: Date.parse('2016-01-05'), pendant: pendant_2 }

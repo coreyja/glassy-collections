@@ -85,6 +85,7 @@ Rails.application.configure do
 
   # force HTTPS on production
   config.force_ssl = true
+  config.middleware.insert_before ActionDispatch::SSL, AcmeChallengeMiddleware
 
   config.paperclip_defaults = {
     storage: :s3,

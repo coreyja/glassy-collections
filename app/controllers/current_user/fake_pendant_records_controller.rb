@@ -5,7 +5,7 @@ module CurrentUser
 
     def new
       @pendant_record = current_user.pendant_records.new
-      @pendants = current_user.pendants
+      @pendants = current_user.glass_art_pieces
     end
 
     def create
@@ -13,7 +13,7 @@ module CurrentUser
       if @pendant_record.update pendant_record_params
         redirect_to my_pendant_records_path
       else
-        @pendants = current_user.pendants
+        @pendants = current_user.glass_art_pieces
         render :new
       end
     end

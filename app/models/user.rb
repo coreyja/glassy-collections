@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :collection_owners, foreign_key: :owner_id
   has_many :collections, through: :collection_owners
-  has_many :pendants, through: :collections
+  has_many :glass_art_pieces, through: :collections
 
   has_many :pendant_records
 
@@ -18,15 +18,11 @@ class User < ApplicationRecord
   def self.create_from_omniauth!(auth_hash)
     create!(
       name: auth_hash[:info][:nickname],
-      email: auth_hash[:info][:email],
+      email: auth_hash[:info][:email] || "#{auth_hash[:info][:nickname]}@fake-oauth-email.instagram.dev",
     )
   end
 
   def password_optional?
-    true
-  end
-
-  def email_optional?
     true
   end
 

@@ -17,6 +17,10 @@ Metrics/ClassLength:
   Exclude:
     - 'spec/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Documentation:
   Enabled: false
 

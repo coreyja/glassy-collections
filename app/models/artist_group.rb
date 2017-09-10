@@ -2,7 +2,7 @@
 class ArtistGroup < ApplicationRecord
   has_many :artist_artist_groups, dependent: :destroy
   has_many :artists, through: :artist_artist_groups
-  has_many :pendants
+  has_many :glass_art_pieces
 
   has_many :artist_group_artists # View to do artist equality checks
   scope :with_artist_ids, ->(artist_ids) do

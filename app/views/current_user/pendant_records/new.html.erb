@@ -1,3 +1,5 @@
+<%= content_for :active_tab, :pendant_records %>
+
 <%= simple_form_for @pendant_record, url: my_pendant_records_path do |f| %>
 
   <label for="pendant_record[pendant_id]">
@@ -8,7 +10,7 @@
     placeholder: 'Select Pendant...',
     multi: false,
     value: @pendant_record.pendant_id,
-    options: current_user.pendants.all.map { |p| { value: p.id, label: "#{p.name} - #{p.artist_name}" } }
+    options: current_user.glass_art_pieces.all.map { |p| { value: p.id, label: "#{p.name} - #{p.artist_name}" } }
     )
   %>
 

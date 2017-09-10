@@ -2,6 +2,6 @@
 FactoryGirl.define do
   factory :pendant_record do
     user
-    pendant
+    pendant { create :glass_art_piece, :wearable }
   end
 end

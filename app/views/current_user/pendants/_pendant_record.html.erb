@@ -1,5 +1,7 @@
-<div class="pendant-record">
-  <%= image_tag pendant_record.photo.url, class: '', data: { src: pendant_record.photo.url } if pendant_record.photo.present? %>
-  <p class="worn-on"><%= pendant_record.worn_on.strftime('%A, %B %-d, %Y') %></p>
-  <p class="recorded-at"><%= pendant_record.created_at.strftime('%A, %B %-d, %Y at %I:%M%p') %></p>
+<div class="pendant-record card text-center p-3 m-0">
+  <%= image_tag pendant_record.photo.url, class: 'card-img-top img-fluid', data: { src: pendant_record.photo.url } if pendant_record.photo.present? %>
+  <div class="card-block">
+    <p class="card-text">Worn On: <%= pendant_record.worn_on.strftime('%A, %B %-d, %Y') %></p>
+    <p class="card-text text-muted">Created at: <%= pendant_record.created_at.strftime('%A, %B %-d, %Y at %I:%M%p') %></p>
+  </div>
 </div>

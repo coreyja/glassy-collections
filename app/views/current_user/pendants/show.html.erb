@@ -1,12 +1,23 @@
+<%= content_for :active_tab, :pendants %>
+
 <div id="pendant">
   <h1><%= @pendant.name %></h1>
   <h2><%= @pendant.artist_name %></h2>
+
+  <h3>
+    <% @pendant.colors.sort_by(&:name).each_with_index do |color, i| %>
+      <%= link_to color.name, color_path(color) %>
+      <%= ' - ' unless @pendant.colors.count - 1 == i %>
+    <% end %>
+  </h3>
+  <%= link_to 'Create and Add Color', new_my_pendant_colors_path(@pendant) %>
+  <br />
 
   <%= link_to 'Edit', edit_my_pendant_path(@pendant) %>
 
   <h4>Times Worn: <%= @pendant.pendant_records.count %></h4>
 
-  <div class="pendant-records">
+  <div class="pendant-records card-columns">
     <%= render partial: 'pendant_record', collection: @pendant.pendant_records.by_worn_on %>
   </div>
 </div>
