@@ -1,6 +1,6 @@
 <%= content_for :active_tab, :pendants %>
 
-<%= simple_form_for [:my, @pendant], url: my_pendants_path(@pendant) do |f| %>
+<%= simple_form_for [:my, @pendant], url: (@pendant.persisted? ? my_pendant_path(id: @pendant) : new_my_pendant_path) do |f| %>
 
   <label for="glass_art_piece[artist_ids][]">
     Artists
@@ -26,6 +26,18 @@
     %>
 
     <%= f.input :name %>
+
+  <label for="glass_art_piece[colors_ids][]">
+    Colors
+  </label>
+  <input type="hidden" name="glass_art_piece[colors_ids][]" value="" />
+    <%= react_component('GlassySelect',
+        name: 'glass_art_piece[color_ids][]',
+        placeholder: 'What colors is this piece made of?',
+        multi: true,
+        value: @pendant.color_ids,
+        options: Color.all.map { |a| { value: a.id, label: a.name} })
+    %>
 
   <%= f.submit %>
 <% end %>

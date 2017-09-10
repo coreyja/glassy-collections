@@ -1,0 +1,19 @@
+<h1><%= color.name %></h1>
+
+<h2><%= color.artist_group.name %></h2>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Artist Name</th>
+      <th>Colors</th>
+      <th>Times Worn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'current_user/pendants/pendant_row', collection: color.glass_art_pieces, as: :pendant %>
+  </tbody>
+</table>

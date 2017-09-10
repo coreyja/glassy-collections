@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514020250) do
+ActiveRecord::Schema.define(version: 20170909213634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20170514020250) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.integer  "artist_group_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["artist_group_id"], name: "index_colors_on_artist_group_id", using: :btree
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -83,6 +91,14 @@ ActiveRecord::Schema.define(version: 20170514020250) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  end
+
+  create_table "glass_art_piece_colors", force: :cascade do |t|
+    t.integer "glass_art_piece_id", null: false
+    t.integer "color_id",           null: false
+    t.index ["color_id"], name: "index_glass_art_piece_colors_on_color_id", using: :btree
+    t.index ["glass_art_piece_id", "color_id"], name: "index_glass_art_piece_colors_on_glass_art_piece_id_and_color_id", unique: true, using: :btree
+    t.index ["glass_art_piece_id"], name: "index_glass_art_piece_colors_on_glass_art_piece_id", using: :btree
   end
 
   create_table "glass_art_pieces", force: :cascade do |t|
@@ -160,6 +176,9 @@ ActiveRecord::Schema.define(version: 20170514020250) do
   add_foreign_key "authentications", "users"
   add_foreign_key "collection_owners", "collections"
   add_foreign_key "collection_owners", "users", column: "owner_id"
+  add_foreign_key "colors", "artist_groups"
+  add_foreign_key "glass_art_piece_colors", "colors"
+  add_foreign_key "glass_art_piece_colors", "glass_art_pieces"
   add_foreign_key "glass_art_pieces", "artist_groups"
   add_foreign_key "glass_art_pieces", "collections"
   add_foreign_key "pendant_records", "glass_art_pieces", column: "pendant_id"

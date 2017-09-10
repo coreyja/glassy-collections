@@ -1,5 +1,11 @@
 <tr>
   <td><%= link_to pendant.name, my_pendant_path(pendant) %></td>
   <td><%= pendant.artist_name %></td>
+  <td>
+    <% pendant.colors.sort_by(&:name).each_with_index do |color, i| %>
+      <%= link_to color.name, color_path(color) %>
+      <%= ' & ' unless pendant.colors.count - 1 == i %>
+    <% end %>
+  </td>
   <td><%= pendant.pendant_records.count %></td>
 </tr>
