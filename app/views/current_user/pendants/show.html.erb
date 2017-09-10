@@ -10,6 +10,8 @@
       <%= ' - ' unless @pendant.colors.count - 1 == i %>
     <% end %>
   </h3>
+  <%= link_to 'Create and Add Color', new_my_pendant_colors_path(@pendant) %>
+  <br />
 
   <%= link_to 'Edit', edit_my_pendant_path(@pendant) %>
 
