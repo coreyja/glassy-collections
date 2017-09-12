@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'capybara'
 gem 'capybara-selenium'
 gem 'chartkick'
