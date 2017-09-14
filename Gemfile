@@ -63,7 +63,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.6'
   gem 'timecop'
 
   gem 'factory_girl_rails'
