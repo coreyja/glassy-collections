@@ -325,7 +325,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    webpush (0.3.1)
+    webpush (0.3.2)
       hkdf (~> 0.2)
       jwt
     websocket-driver (0.6.5)
