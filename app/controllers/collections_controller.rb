@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CollectionsController < ApplicationController
   before_action :require_login, only: %i(edit update new create)
 

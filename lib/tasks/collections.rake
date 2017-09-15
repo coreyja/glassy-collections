@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :collections do
   desc 'Create a Collection for each User and assign them as the owner. Add all their pendants to this collection.'
   task backfill_collections_from_users: :environment do

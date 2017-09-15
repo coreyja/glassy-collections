@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Push
   TTL = 3600
 

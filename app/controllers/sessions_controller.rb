@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SessionsController < Clearance::SessionsController
   def create_from_omniauth
     authentication.update_token(omniauth_hash)

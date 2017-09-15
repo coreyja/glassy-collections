@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.3.3'
 
@@ -27,8 +28,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'capybara'
-gem 'capybara-selenium'
 gem 'chartkick'
 gem 'clearance'
 gem 'delayed_job_active_record'
@@ -61,12 +60,14 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+  end
   gem 'timecop'
 
   gem 'factory_girl_rails'
 
-  gem 'fuubar'
+  gem 'fuubar', '~> 2.0'
 end
 
 group :development do
