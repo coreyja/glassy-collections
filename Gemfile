@@ -29,8 +29,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'capybara'
-gem 'capybara-selenium'
 gem 'chartkick'
 gem 'clearance'
 gem 'delayed_job_active_record'
@@ -69,6 +67,9 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'fuubar'
+
+  gem 'capybara'
+  gem 'capybara-selenium'
 end
 
 group :development do
