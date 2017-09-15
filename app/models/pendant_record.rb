@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PendantRecord < ApplicationRecord
   belongs_to :user
   belongs_to :pendant, class_name: 'GlassArtPiece'

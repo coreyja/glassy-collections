@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.3.3'
 
 gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.1'
 # Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -12,8 +13,6 @@ gem 'bourbon'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -61,15 +60,15 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+  end
+  gem 'capybara'
   gem 'timecop'
 
   gem 'factory_girl_rails'
 
-  gem 'fuubar'
-
-  gem 'capybara'
-  gem 'capybara-selenium'
+  gem 'fuubar', '~> 2.0'
 end
 
 group :development do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CurrentUser
   class PendantRecordsController < ApplicationController
     before_action :require_login

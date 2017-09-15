@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ColorsController < ApplicationController
   def index
     @colors = Color.all

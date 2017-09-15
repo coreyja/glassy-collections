@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CurrentUser
   class LastWeekInPendantsController < ApplicationController
     def show
