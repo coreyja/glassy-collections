@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class U2fSessionsController < Clearance::SessionsController
   def new
     key_handles = U2fRegistration.all.pluck(:key_handle)
