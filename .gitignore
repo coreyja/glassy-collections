@@ -44,3 +44,6 @@ bower.json
 # Bundle gened bins I don't think I wan to check in
 rails/
 
+/public/packs
+/public/packs-test
+/node_modules

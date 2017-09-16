@@ -48,6 +48,7 @@ gem 'scenic'
 gem 'serviceworker-rails'
 gem 'simple_form'
 gem 'u2f'
+gem 'webpacker', '~> 3.0'
 gem 'webpush'
 gem 'wkhtmltoimage-binary'
 
@@ -55,7 +56,6 @@ gem 'hash_attribute_assignment'
 # gem 'hash_attribute_assignment', path: '~/Projects/hash_attribute_assignment/'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-react-select', '1.0.0.rc.1'
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
