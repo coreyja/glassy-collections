@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates Artist' do
+RSpec.describe 'User creates Artist' do
   let(:user) { FactoryGirl.create(:user) }
 
   scenario 'from home page with valid information' do
@@ -14,4 +14,3 @@ RSpec.feature 'User creates Artist' do
     expect(page).to have_content 'some_artist'
   end
 end
-

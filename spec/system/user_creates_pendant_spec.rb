@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates Pendant', js: true do
+RSpec.describe 'User creates Pendant', js: true do
   let!(:artist) { FactoryGirl.create :artist, name: 'Artist Name' }
   let(:user) { FactoryGirl.create(:user, :with_personal_collection) }
 
@@ -8,8 +8,8 @@ RSpec.feature 'User creates Pendant', js: true do
     visit root_path(as: user)
     click_link 'Pendants'
     click_link 'New Pendant'
-#    select = page.find('.Select')
-#    select.click
+    #    select = page.find('.Select')
+    #    select.click
     page.find('div', text: 'Who made this pendant?').click
   end
 end

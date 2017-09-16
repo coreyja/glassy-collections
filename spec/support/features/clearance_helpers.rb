@@ -48,5 +48,5 @@ module Features
 end
 
 RSpec.configure do |config|
-  config.include Features::ClearanceHelpers, type: :feature
+  config.include Features::ClearanceHelpers, type: :system
 end

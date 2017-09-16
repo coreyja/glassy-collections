@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require lodash
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
+//= require popper
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
