@@ -1,4 +1,4 @@
-class CreateNails < ActiveRecord::Migration
+class CreateNails < ActiveRecord::Migration[4.2]
   def change
     create_table :nails do |t|
       t.string :name, null: false

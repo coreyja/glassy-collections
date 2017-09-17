@@ -1,4 +1,4 @@
-class BackfillWornAtColumn < ActiveRecord::Migration
+class BackfillWornAtColumn < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       UPDATE pendant_records

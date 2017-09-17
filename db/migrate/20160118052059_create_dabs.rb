@@ -1,4 +1,4 @@
-class CreateDabs < ActiveRecord::Migration
+class CreateDabs < ActiveRecord::Migration[4.2]
   def change
     create_table :dabs do |t|
       t.belongs_to :user, null: false

@@ -17,9 +17,6 @@
 //= require tether
 //= require popper
 //= require bootstrap-sprockets
-//= require react
-//= require react_ujs
-//= require components
 //= require u2f_api
 //= require Chart.bundle
 //= require chartkick
