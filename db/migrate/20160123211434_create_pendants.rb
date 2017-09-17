@@ -1,4 +1,4 @@
-class CreatePendants < ActiveRecord::Migration
+class CreatePendants < ActiveRecord::Migration[4.2]
   def change
     create_table :pendants do |t|
       t.string :name, null: false

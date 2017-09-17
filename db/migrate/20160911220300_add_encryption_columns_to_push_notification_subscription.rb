@@ -1,4 +1,4 @@
-class AddEncryptionColumnsToPushNotificationSubscription < ActiveRecord::Migration
+class AddEncryptionColumnsToPushNotificationSubscription < ActiveRecord::Migration[4.2]
   def change
     remove_column :push_notification_subscriptions, :subscription_id, :string, null: false
 

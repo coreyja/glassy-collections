@@ -1,4 +1,4 @@
-class CreatePushNotificationSubscription < ActiveRecord::Migration
+class CreatePushNotificationSubscription < ActiveRecord::Migration[4.2]
   def change
     create_table :push_notification_subscriptions do |t|
       t.string :subscription_id, null: false

@@ -1,4 +1,4 @@
-class CreatePendantRecords < ActiveRecord::Migration
+class CreatePendantRecords < ActiveRecord::Migration[4.2]
   def change
     create_table :pendant_records do |t|
       t.belongs_to :user, null: false
