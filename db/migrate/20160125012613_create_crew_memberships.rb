@@ -1,4 +1,4 @@
-class CreateCrewMemberships < ActiveRecord::Migration
+class CreateCrewMemberships < ActiveRecord::Migration[4.2]
   def change
     create_table :crew_memberships do |t|
       t.references :crew, null: false
