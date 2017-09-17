@@ -15,6 +15,11 @@ before_install:
 cache: bundler
 bundler_args: --without production development
 before_script:
+  - nvm install stable && nvm alias default stable
+  - npm install npm@latest -g
+  - npm install -g yarn
+  - npm --version
+  - yarn install
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
