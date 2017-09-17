@@ -2,7 +2,7 @@ var React = require("react");
 var Select = require("react-select");
 var createReactClass = require("create-react-class");
 
-var GlassySelect = createReactClass({
+GlassySelect = createReactClass({
   displayName: 'GlassySelect',
   getInitialState: function () {
     return {
@@ -16,7 +16,7 @@ var GlassySelect = createReactClass({
     this.setState({ value });
   },
   render: function () {
-    return <Select multi={this.state.multi} name={this.props.name} value={this.state.value} placeholder={this.state.placeholder} options={this.state.options} onChange={this.handleSelectChange} />;
+    return <Select.default multi={this.state.multi} name={this.props.name} value={this.state.value} placeholder={this.state.placeholder} options={this.state.options} onChange={this.handleSelectChange} />
   }
 
 });
