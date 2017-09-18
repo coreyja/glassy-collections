@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'autoprefixer-rails'
-gem 'aws-sdk', '~> 2.3.0'
+gem 'aws-sdk', '~> 3.0.1'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'chartkick'
 gem 'clearance'
