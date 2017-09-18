@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.3.4'
 
 gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
