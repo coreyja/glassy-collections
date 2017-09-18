@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/features/clearance_helpers'
 
 RSpec.describe 'User signs out' do
   scenario 'signs out' do

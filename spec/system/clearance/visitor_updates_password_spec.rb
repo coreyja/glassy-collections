@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/features/clearance_helpers'
 
 RSpec.xdescribe 'Visitor updates password' do
   scenario 'with valid password' do

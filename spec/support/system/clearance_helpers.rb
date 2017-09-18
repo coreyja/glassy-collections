@@ -1,4 +1,4 @@
-module Features
+module System
   module ClearanceHelpers
     def reset_password_for(email)
       visit new_password_path
@@ -48,5 +48,5 @@ module Features
 end
 
 RSpec.configure do |config|
-  config.include Features::ClearanceHelpers, type: :system
+  config.include System::ClearanceHelpers, type: :system
 end

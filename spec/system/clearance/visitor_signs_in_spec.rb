@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/features/clearance_helpers'
 
 RSpec.describe 'Visitor signs in' do
   scenario 'with valid email and password' do

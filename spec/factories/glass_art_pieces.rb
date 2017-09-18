@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :glass_art_piece do
-    name 'Pendant'
+    name 'Glass Art Piece'
     artist_group
     collection
 

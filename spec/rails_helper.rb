@@ -9,6 +9,8 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'clearance/rspec'
+require 'support/system/clearance_helpers'
+require 'support/system/glassy_select_helpers'
 Dir[Rails.root.join('spec/shared_examples/**/*.rb')].each { |f| require f }
 # Add additional requires below this line. Rails is not loaded until this point!
 

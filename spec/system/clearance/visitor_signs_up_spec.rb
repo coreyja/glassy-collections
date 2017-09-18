@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/features/clearance_helpers'
 
 RSpec.describe 'Visitor signs up' do
   scenario 'by navigating to the page' do
