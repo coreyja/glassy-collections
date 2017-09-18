@@ -15,8 +15,8 @@ RSpec.describe 'User creates Pendant Record', js: true do
     click_link 'Pendant Records'
     click_link 'Record Pendant'
     fill_select_and_take_first_result 'Select Pendant...', 'Awesome Pendant'
-    attach_file("Photo", Rails.root + "spec/fixtures/sample_upload_image.png")
-    click_button "Create Pendant record"
+    attach_file('Photo', Rails.root + 'spec/fixtures/sample_upload_image.png')
+    click_button 'Create Pendant record'
 
     expect(page.find('.day[data-date="2017-09-17"]')).to have_content 'Awesome Pendant'
   end
@@ -34,7 +34,7 @@ RSpec.describe 'User creates Pendant Record', js: true do
     select_option '[name="pendant_record[worn_on(2i)]"]', 'September'
     select_option '[name="pendant_record[worn_on(3i)]"]', '13'
 
-    click_button "Create Pendant record"
+    click_button 'Create Pendant record'
 
     expect(page.find('.day[data-date="2017-09-13"]')).to have_content 'Awesome Pendant'
   end
