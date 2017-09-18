@@ -22,7 +22,9 @@ before_install:
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
-cache: bundler
+cache:
+  - bundler
+  - yarn
 bundler_args: --without production development
 before_script:
   - nvm install stable && nvm alias default stable
