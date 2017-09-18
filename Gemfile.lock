@@ -122,6 +122,8 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chartkick (2.2.4)
+    childprocess (0.7.1)
+      ffi (~> 1.0, >= 1.0.11)
     clearance (1.16.0)
       bcrypt
       email_validator (~> 1.4)
@@ -295,6 +297,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.3)
+    rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -312,6 +315,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (3.5.2)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     serviceworker-rails (0.5.5)
       railties (>= 3.1)
     simple_form (3.5.0)
@@ -367,7 +373,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   aws-sdk (~> 2.3.0)
-  bootstrap (~> 4.0.0.alpha3)
+  bootstrap (~> 4.0.0.beta)
   bourbon
   byebug
   capybara
@@ -408,6 +414,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   scenic
   sdoc (~> 0.4.0)
+  selenium-webdriver
   serviceworker-rails
   simple_form
   spring
@@ -422,7 +429,7 @@ DEPENDENCIES
   wkhtmltoimage-binary
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.3.4p301
 
 BUNDLED WITH
-   1.14.3
+   1.16.0.pre.2

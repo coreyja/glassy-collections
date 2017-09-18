@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.3.4'
 
 gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'chartkick'
 gem 'clearance'
 gem 'delayed_job_active_record'
@@ -64,6 +64,7 @@ group :development, :test do
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
   end
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'timecop'
 
   gem 'factory_girl_rails'

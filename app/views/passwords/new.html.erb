@@ -3,7 +3,7 @@
 
   <p><%= t(".description") %></p>
 
-  <%= form_for :password, url: passwords_path, remote: true do |form| %>
+  <%= form_for :password, url: passwords_path, remote: false do |form| %>
     <div class="text-field">
       <%= form.label :email %>
       <%= form.text_field :email, type: 'email' %>

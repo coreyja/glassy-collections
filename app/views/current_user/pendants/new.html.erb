@@ -1,6 +1,6 @@
 <%= content_for :active_tab, :pendants %>
 
-<%= simple_form_for [:my, @pendant], url: (@pendant.persisted? ? my_pendant_path(id: @pendant) : new_my_pendant_path) do |f| %>
+<%= simple_form_for [:my, @pendant], url: (@pendant.persisted? ? my_pendant_path(id: @pendant) : my_pendants_path) do |f| %>
 
   <label for="glass_art_piece[artist_ids][]">
     Artists
