@@ -21,9 +21,7 @@ RSpec.describe 'User creates Pendant', js: true do
     let!(:color) { FactoryGirl.create :color, name: 'Fun Color' }
 
     scenario 'with the color availible' do
-      visit root_path(as: user)
-      click_link 'Pendants'
-      click_link 'New Pendant'
+      visit new_my_pendant_path(as: user)
 
       fill_select_and_take_first_result 'Who made this pendant?', 'Artist Name'
       fill_select_and_take_first_result 'Select Collection...', 'Personal Collection'
