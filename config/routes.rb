@@ -33,7 +33,9 @@ Rails.application.routes.draw do
     resources :pendants, only: %i(new create index show edit update) do
       resource :colors, only: %i(new create), controller: 'pendant_colors'
     end
-    resources :pendant_records, only: %i(new create index)
+    resources :pendant_records, only: %i(new create index) do
+      resource :photos, controller: 'pendant_record_photos', only: %i(new create)
+    end
     resources :fake_pendant_records, only: %i(new create)
     resources :artists, only: %i(index)
 
