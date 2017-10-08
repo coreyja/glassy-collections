@@ -1,5 +1,6 @@
 class Color < ApplicationRecord
   belongs_to :artist_group
+  belongs_to :sample_photo, class_name: 'Photo'
   has_many :artists, through: :artist_group
 
   has_many :glass_art_piece_colors

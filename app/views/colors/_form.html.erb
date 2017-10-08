@@ -13,5 +13,7 @@
       options: Artist.all.map { |a| { value: a.id, label: a.name} })
   %>
 
+  <%= f.input :photo, as: :photo %>
+
   <%= f.submit %>
 <% end %>

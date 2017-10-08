@@ -2,6 +2,9 @@
 
 <h2><%= color.artist_group.name %></h2>
 
+<% if color.sample_photo.present? %>
+  <%= image_tag color.sample_photo.url, class: '', data: { src: color.sample_photo.url } %>
+<% end %>
 
 
 <table class="table">
