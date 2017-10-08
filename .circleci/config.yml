@@ -1,0 +1,86 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/glassy-collections
+    parallelism: 1
+    docker:
+      - image: circleci/ruby:2.3.4-node-browsers
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:9.4.12-alpine
+
+    steps:
+      - checkout
+
+      ## Bundler
+      # Restore Cache
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+      # Install
+      - run: bundle check || bundle install --path vendor/bundle
+      # Store Cache
+      - save_cache:
+          key: gem-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - type: shell
+        command: |
+          bundle exec rubocop \
+            --config .rubocop.yml \
+            -r $(bundle show rubocop-junit-formatter)/lib/rubocop/formatter/junit_formatter.rb \
+            --format RuboCop::Formatter::JUnitFormatter \
+            --out /tmp/test-results/rubocop.xml \
+            --format progress \
+            --force-exclusion \
+            $(bundle exec rubocop --list-target-files | circleci tests split --split-by=filesize)
+
+      ## Yarn
+      # Restore Cache
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      # Install
+      - run: yarn install --cache-folder vendor/yarn
+      # Store Cache
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - vendor/yarn
+            - node_modules
+
+      - restore_cache:
+          keys:
+            - asset-cache-{{ .Branch }}
+            - asset-cache
+      - run: bundle exec rake assets:precompile
+      - save_cache:
+          key: asset-cache-{{ .Branch }}-{{ epoch }}
+          paths:
+            - public/assets
+            - tmp/cache/assets/sprockets
+            - public/packs-test
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Database setup
+      - run: bundle exec rake db:create db:schema:load --trace
+
+      # Run rspec in parallel
+      - type: shell
+        command: |
+          bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      # Save artifacts
+      - type: store_test_results
+        path: /tmp/test-results
+      - store_artifacts:
+          path: ./tmp/screenshots
+
