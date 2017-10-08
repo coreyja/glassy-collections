@@ -60,6 +60,7 @@ jobs:
           paths:
             - public/assets
             - tmp/cache/assets/sprockets
+            - tmp/cache/webpacker
             - public/packs-test
 
       - run:
