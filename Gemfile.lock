@@ -45,6 +45,16 @@ GIT
   specs:
     rspec-support (3.7.0.pre)
 
+GIT
+  remote: https://github.com/rspec/rspec.git
+  revision: dcb407aa8b072c8c1cb612e1eeb99b9b754fa115
+  branch: master
+  specs:
+    rspec (3.7.0.pre)
+      rspec-core (= 3.7.0.pre)
+      rspec-expectations (= 3.7.0.pre)
+      rspec-mocks (= 3.7.0.pre)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -289,6 +299,8 @@ GEM
       tilt
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.50.0)
       parallel (~> 1.10)
       parser (>= 2.3.3.1, < 3.0)
@@ -296,6 +308,7 @@ GEM
       rainbow (>= 2.2.2, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-junit-formatter (0.1.3)
     ruby-progressbar (1.8.3)
     rubyzip (1.2.1)
     sass (3.5.1)
@@ -405,12 +418,15 @@ DEPENDENCIES
   rake
   react-rails
   render_anywhere
+  rspec!
   rspec-core!
   rspec-expectations!
   rspec-mocks!
   rspec-rails!
   rspec-support!
+  rspec_junit_formatter
   rubocop
+  rubocop-junit-formatter
   sass-rails (~> 5.0)
   scenic
   sdoc (~> 0.4.0)
@@ -432,4 +448,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3
