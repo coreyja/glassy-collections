@@ -14,7 +14,9 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = Color.new create_params
+    photo = Photo.new photo_params
+    @color = Color.new color_params
+    @color.sample_photo = photo if photo.valid?
     if @color.save
       redirect_to action: :index
     else
@@ -24,7 +26,11 @@ class ColorsController < ApplicationController
 
   private
 
-  def create_params
+  def color_params
     Color::Params.new(params.require(:color).permit(:name, artist_ids: [])).attrs
+  end
+
+  def photo_params
+    params.require(:color).permit(:photo)
   end
 end
