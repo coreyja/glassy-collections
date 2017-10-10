@@ -131,7 +131,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chartkick (2.2.4)
-    childprocess (0.7.1)
+    childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     clearance (1.16.0)
       bcrypt
@@ -328,7 +328,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    selenium-webdriver (3.5.2)
+    selenium-webdriver (3.6.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     serviceworker-rails (0.5.5)
