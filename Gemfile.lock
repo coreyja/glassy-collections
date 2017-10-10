@@ -221,7 +221,7 @@ GEM
     omniauth (1.7.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    omniauth-instagram (1.1.0)
+    omniauth-instagram (1.2.0)
       omniauth (~> 1)
       omniauth-oauth2 (~> 1)
     omniauth-oauth2 (1.4.0)
