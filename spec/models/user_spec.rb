@@ -26,6 +26,25 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#recorded_pendant_today?' do
+    subject { FactoryGirl.create(:user) }
+
+    let!(:old_pendant_record) { FactoryGirl.create(:pendant_record, user: subject, worn_on: 2.days.ago) }
+
+    context 'when there are NO pendant records today' do
+      it 'returns false' do
+        expect(subject.recorded_pendant_today?).to eq false
+      end
+    end
+
+    context 'when there are pendant records today' do
+      let!(:today_pendant_record) { FactoryGirl.create(:pendant_record, user: subject, worn_on: 2.hours.ago) }
+      it 'returns true' do
+        expect(subject.recorded_pendant_today?).to eq true
+      end
+    end
+  end
+
   describe '#display_name' do
     let(:name) { nil }
     subject { FactoryGirl.create :user, email: '1@example.org', name: name }

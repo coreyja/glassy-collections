@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :my, module: :current_user do
       resources :push_notification_subscriptions, only: %i(create)
+      resource :pendant_record_status, only: %i(show)
     end
   end
 end
