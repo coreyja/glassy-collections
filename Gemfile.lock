@@ -403,6 +403,7 @@ DEPENDENCIES
   imgkit
   jbuilder (~> 2.0)
   jquery-rails
+  jwt
   lodash-rails
   newrelic_rpm
   omniauth

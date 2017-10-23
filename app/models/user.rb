@@ -30,4 +30,8 @@ class User < ApplicationRecord
   def display_name
     name || email
   end
+
+  def recorded_pendant_today?
+    pendant_records.where(worn_on: Time.zone.today).any?
+  end
 end
