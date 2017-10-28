@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :u2f_registration do
     user
     key_handle 'FAKE_KEY_HANDLE'

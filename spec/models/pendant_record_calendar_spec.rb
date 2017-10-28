@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe PendantRecordCalendar, type: :model do
-  let(:user) { FactoryGirl.create :user }
-  let(:pendant) { FactoryGirl.create :glass_art_piece, :wearable }
+  let(:user) { FactoryBot.create :user }
+  let(:pendant) { FactoryBot.create :glass_art_piece, :wearable }
   let(:date) { Date.parse('2016-01-05') }
 
   subject { PendantRecordCalendar.new user: user, date: date }
@@ -30,7 +30,7 @@ RSpec.describe PendantRecordCalendar, type: :model do
 
   describe '#days' do
     let(:days_in_month) { date.end_of_month.day }
-    let!(:pendant_record) { FactoryGirl.create(:pendant_record, pendant: pendant, user: user, worn_on: Date.parse('2016-01-01')) }
+    let!(:pendant_record) { FactoryBot.create(:pendant_record, pendant: pendant, user: user, worn_on: Date.parse('2016-01-01')) }
 
     it 'returns a number of elements corresponding to the days in the month' do
       expect(subject.days.count).to eq days_in_month

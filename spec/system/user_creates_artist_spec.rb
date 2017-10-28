@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User creates Artist' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   scenario 'from home page with valid information' do
     visit root_path(as: user)

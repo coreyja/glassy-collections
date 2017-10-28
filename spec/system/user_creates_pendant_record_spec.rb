@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'User creates Pendant Record', js: true do
-  let(:user) { FactoryGirl.create(:user, :with_personal_collection) }
-  let!(:pendant) { FactoryGirl.create(:glass_art_piece, :wearable, name: 'Awesome Pendant', collection: user.collections.first) }
+  let(:user) { FactoryBot.create(:user, :with_personal_collection) }
+  let!(:pendant) { FactoryBot.create(:glass_art_piece, :wearable, name: 'Awesome Pendant', collection: user.collections.first) }
 
   let(:frozen_time) { Time.zone.parse('2017-09-17 12:00') }
   around do |example|

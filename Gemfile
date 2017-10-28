@@ -68,7 +68,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'timecop'
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   gem 'fuubar', '~> 2.0'
 end

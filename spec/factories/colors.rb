@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :color do
     artist_group
   end
