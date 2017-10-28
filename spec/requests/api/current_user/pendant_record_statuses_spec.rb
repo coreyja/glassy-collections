@@ -8,7 +8,7 @@ RSpec.describe 'User uses api to check status' do
     get api_my_pendant_record_status_path
 
     json = JSON.parse(response.body).to_hash
-    expect(json).to include({"error" => "Not Authorized"})
+    expect(json).to include('error' => 'Not Authorized')
   end
 
   scenario 'with a valid auth header gets status' do
