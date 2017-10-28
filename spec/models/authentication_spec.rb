@@ -26,7 +26,7 @@ RSpec.describe Authentication, type: :model do
     end
 
     context 'when there is a user passed in' do
-      let!(:current_user) { FactoryGirl.create :user }
+      let!(:current_user) { FactoryBot.create :user }
 
       it 'creates a new Authentication associated to the given user' do
         expect { described_class.create_with_omniauth!(omniauth_hash, current_user) }.
@@ -42,7 +42,7 @@ RSpec.describe Authentication, type: :model do
       { 'credentials' => { 'token' => 'ABC' } }
     end
 
-    subject { FactoryGirl.create :authentication, token: 'XYZ' }
+    subject { FactoryBot.create :authentication, token: 'XYZ' }
 
     it 'updates the token' do
       expect { subject.update_token omniauth_hash }.

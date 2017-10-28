@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User uses api to check status' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   let(:encoded_token) { JWT.encode({ user_id: user.id }, Rails.application.secrets.secret_key_base) }
 
   scenario 'without an auth header and gets an error' do
@@ -17,7 +17,7 @@ RSpec.describe 'User uses api to check status' do
   end
 
   context 'when the user has recorded a pendant' do
-    let!(:pendant_record) { FactoryGirl.create :pendant_record, user: user }
+    let!(:pendant_record) { FactoryBot.create :pendant_record, user: user }
 
     scenario 'with a valid auth header gets status of true' do
       get api_my_pendant_record_status_path, headers: { 'Authorization' => encoded_token }

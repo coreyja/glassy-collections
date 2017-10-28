@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe PendantRecord, type: :model do
   describe '#assign_worn_on as before_create hook' do
-    subject { FactoryGirl.build(:pendant_record) }
+    subject { FactoryBot.build(:pendant_record) }
 
     around do |example|
       Timecop.freeze(Time.parse('1-1-2000 05:00')) { example.run }
@@ -18,13 +18,13 @@ RSpec.describe PendantRecord, type: :model do
   end
 
   describe '.worn_on' do
-    let(:pendant) { FactoryGirl.create(:glass_art_piece) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:pendant) { FactoryBot.create(:glass_art_piece) }
+    let(:user) { FactoryBot.create(:user) }
     let(:date) { Date.parse('2016-01-05') }
 
-    let!(:pendant_record_before) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04')) }
-    let!(:pendant_record_on) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-05')) }
-    let!(:pendant_record_after) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-06')) }
+    let!(:pendant_record_before) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04')) }
+    let!(:pendant_record_on) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-05')) }
+    let!(:pendant_record_after) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-06')) }
 
     subject { described_class.worn_on date }
 
@@ -34,13 +34,13 @@ RSpec.describe PendantRecord, type: :model do
   end
 
   describe '.by_worn_on' do
-    let(:pendant) { FactoryGirl.create(:glass_art_piece) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:pendant) { FactoryBot.create(:glass_art_piece) }
+    let(:user) { FactoryBot.create(:user) }
     let(:date) { Date.parse('2016-01-05') }
 
-    let!(:pendant_record_1) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-05'), created_at: Time.parse('2016-01-03 12:00')) }
-    let!(:pendant_record_2) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-09 12:00')) }
-    let!(:pendant_record_3) { FactoryGirl.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-04 12:00')) }
+    let!(:pendant_record_1) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-05'), created_at: Time.parse('2016-01-03 12:00')) }
+    let!(:pendant_record_2) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-09 12:00')) }
+    let!(:pendant_record_3) { FactoryBot.create(:pendant_record, user: user, pendant: pendant, worn_on: Date.parse('2016-01-04'), created_at: Time.parse('2016-01-04 12:00')) }
 
     subject { described_class.by_worn_on }
 

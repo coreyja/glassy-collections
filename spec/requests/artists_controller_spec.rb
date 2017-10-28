@@ -13,7 +13,7 @@ RSpec.describe 'ArtistsController', type: :request do
 
   describe 'POST /artists' do
     context 'when authenticated' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
       let(:authenticated_params) { params.merge(as: user.id) }
 
       before do

@@ -9,7 +9,7 @@ RSpec.shared_examples 'authenticated GET controller' do |url|
   end
 
   context 'when a user is logged in' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     it 'responds with a 200' do
       get url, params: { as: user.id }

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'User creates Pendant', js: true do
-  let!(:artist) { FactoryGirl.create :artist, name: 'Artist Name' }
-  let(:user) { FactoryGirl.create(:user, :with_personal_collection) }
+  let!(:artist) { FactoryBot.create :artist, name: 'Artist Name' }
+  let(:user) { FactoryBot.create(:user, :with_personal_collection) }
 
   scenario 'with required info from home page' do
     visit root_path(as: user)
@@ -18,7 +18,7 @@ RSpec.describe 'User creates Pendant', js: true do
   end
 
   context 'when colors exist' do
-    let!(:color) { FactoryGirl.create :color, name: 'Fun Color' }
+    let!(:color) { FactoryBot.create :color, name: 'Fun Color' }
 
     scenario 'with the color availible' do
       visit new_my_pendant_path(as: user)

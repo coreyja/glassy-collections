@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
   describe '#data_uri' do
-    subject { FactoryGirl.create(:photo, photo_content_type: 'image/jpeg') }
+    subject { FactoryBot.create(:photo, photo_content_type: 'image/jpeg') }
 
     let(:io_adapters) { double(for: double(read: 'CONTENT')) }
     before do
