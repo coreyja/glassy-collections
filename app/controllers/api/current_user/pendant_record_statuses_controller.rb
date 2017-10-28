@@ -1,9 +1,11 @@
 module Api
   module CurrentUser
     class PendantRecordStatusesController < ApplicationController
+
       def show
         if current_user
-          render json: { pendant_recorded?: current_user.recorded_pendant_today? }
+          pendant_record = current_user.pendant_records.where(worn_on: Time.zone.today).sample
+          render json: { pendant_recorded?: pendant_record.present?, pendant_name: pendant_record&.pendant&.name  }
         else
           render json: { error: 'Not Authorized' }, status: 401
         end
