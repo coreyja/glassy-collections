@@ -49,7 +49,7 @@ gem 'scenic'
 gem 'serviceworker-rails'
 gem 'simple_form'
 gem 'u2f'
-gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.2'
 gem 'webpush'
 gem 'wkhtmltoimage-binary'
 
