@@ -40,7 +40,7 @@ gem 'jwt'
 gem 'lodash-rails'
 gem 'omniauth'
 gem 'omniauth-instagram'
-gem 'paperclip', '~> 5.1.0'
+gem 'paperclip', '~> 5.2.1'
 gem 'puma'
 gem 'react-rails'
 gem 'render_anywhere', require: false
