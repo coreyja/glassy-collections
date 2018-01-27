@@ -94,3 +94,6 @@ jobs:
           path: ./tmp/screenshots
       - store_artifacts:
           path: ./tmp/coverage
+  deploy:
+    steps:
+      - run: echo 'test'
