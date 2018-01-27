@@ -118,7 +118,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hash_attribute_assignment (0.0.5)
-    hashie (3.5.6)
+    hashie (3.5.7)
     high_voltage (3.0.0)
     hkdf (0.3.0)
     i18n (0.9.3)
@@ -152,7 +152,6 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    newrelic_rpm (4.5.0.337)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -162,10 +161,10 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    omniauth (1.7.1)
+    omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
-    omniauth-instagram (1.2.0)
+    omniauth-instagram (1.3.0)
       omniauth (~> 1)
       omniauth-oauth2 (~> 1)
     omniauth-oauth2 (1.4.0)
@@ -366,9 +365,9 @@ DEPENDENCIES
   jquery-rails
   jwt
   lodash-rails
-  newrelic_rpm
-  omniauth
-  omniauth-instagram
+  omniauth (~> 1.8)
+  omniauth-instagram (~> 1.3)
+  omniauth-oauth2 (~> 1.4)
   paperclip (~> 5.2.1)
   pg
   pry-rails
