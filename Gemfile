@@ -67,7 +67,7 @@ group :development, :test do
   gem 'fuubar', '~> 2.0'
   gem 'rspec-rails', '~> 3.7.2'
   gem 'selenium-webdriver'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'timecop'
 end
 
