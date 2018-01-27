@@ -178,7 +178,7 @@ GEM
     hashie (3.5.6)
     high_voltage (3.0.0)
     hkdf (0.3.0)
-    i18n (0.9.1)
+    i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     imgkit (1.6.1)
     jbuilder (2.7.0)
@@ -205,7 +205,7 @@ GEM
     mimemagic (0.3.2)
     mini_mime (0.1.4)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.2)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -228,7 +228,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    paperclip (5.1.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -409,7 +409,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   omniauth-instagram
-  paperclip (~> 5.1.0)
+  paperclip (~> 5.2.1)
   pg
   pry-rails
   pry-remote
