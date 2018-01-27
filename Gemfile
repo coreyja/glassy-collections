@@ -61,10 +61,8 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
-  end
   gem 'capybara'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'selenium-webdriver'
   gem 'timecop'
 
