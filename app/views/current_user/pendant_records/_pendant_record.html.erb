@@ -1,5 +1,5 @@
 <div class="pendant-record">
   <%= image_tag pendant_record.photo.url(:thumb), class: '', data: { src: pendant_record.photo.url(:thumb) } if pendant_record.photo.present? %>
-  <p class="pendant-name"><%= pendant_record.pendant.name %></p>
+  <p class="pendant-name"><%= link_to pendant_record.pendant.name, my_pendant_path(pendant_record.pendant) %></p>
   <p class="pendant-artist"><%= pendant_record.pendant.artist_name %></p>
 </div>

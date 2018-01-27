@@ -38,8 +38,9 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'imgkit'
 gem 'jwt'
 gem 'lodash-rails'
-gem 'omniauth'
-gem 'omniauth-instagram'
+gem 'omniauth', '~> 1.8'
+gem 'omniauth-instagram', '~> 1.3'
+gem 'omniauth-oauth2', '~> 1.4'
 gem 'paperclip', '~> 5.2.1'
 gem 'puma'
 gem 'react-rails'
@@ -61,10 +62,8 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
-  end
   gem 'capybara'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'selenium-webdriver'
   gem 'timecop'
 
@@ -93,6 +92,5 @@ group :test do
 end
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end

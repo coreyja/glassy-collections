@@ -30,15 +30,23 @@ class AcmeChallengeMiddleware
   end
 
   def acme_data
+    if ENV['ACME_KEY'] && ENV['ACME_TOKEN']
+      single_acme_data
+    else
+      multiple_acme_data
+    end
+  end
+
+  def single_acme_data
+    { ENV['ACME_TOKEN'] => ENV['ACME_KEY'] }
+  end
+
+  def multiple_acme_data
     {}.tap do |data|
-      if ENV['ACME_KEY'] && ENV['ACME_TOKEN']
-        data[ENV['ACME_TOKEN']] = ENV['ACME_KEY']
-      else
-        ENV.each do |k, v|
-          if d = k.match(/^ACME_KEY_([0-9]+)/)
-            index = d[1]
-            data[ENV["ACME_TOKEN_#{index}"]] = v
-          end
+      ENV.each do |k, v|
+        if d = k.match(/^ACME_KEY_([0-9]+)/)
+          index = d[1]
+          data[ENV["ACME_TOKEN_#{index}"]] = v
         end
       end
     end
