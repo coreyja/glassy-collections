@@ -36,6 +36,10 @@ jobs:
             --force-exclusion \
             $(bundle exec rubocop --list-target-files | circleci tests split --split-by=filesize)
 
+      ## CodeClimate Code Coverage
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+
       ## Yarn
       # Restore Cache
       - restore_cache:
@@ -70,6 +74,8 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create db:schema:load --trace
 
+      - run: ./cc-test-reporter before-build
+
       # Run rspec in parallel
       - type: shell
         command: |
@@ -79,9 +85,12 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
+      - run: ./cc-test-reporter format-coverage --output "coverage/codeclimate.json"
+
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-
+      - store_artificats:
+          path: ./coverage
