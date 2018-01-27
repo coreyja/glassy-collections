@@ -18,7 +18,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require u2f_api
-//= require Chart.bundle
 //= require chartkick
 
 
