@@ -85,12 +85,12 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-      - run: ./cc-test-reporter format-coverage --output "coverage/codeclimate.json"
+      - run: ./cc-test-reporter format-coverage --output "tmp/coverage/codeclimate.json"
 
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-      - store_artificats:
-          path: ./coverage
+      - store_artifacts:
+          path: ./tmp/coverage
