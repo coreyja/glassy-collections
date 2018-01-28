@@ -85,22 +85,27 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-      - run: ./cc-test-reporter format-coverage --output "tmp/coverage/codeclimate.json"
+      - run: ./cc-test-reporter format-coverage --output "tmp/workspace/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
 
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-      - store_artifacts:
-          path: ./tmp/coverage
+      - persist_to_workspace:
+          root: ./tmp/workspace
+          paths:
+            - coverage
+
   upload-code-climate-job:
     docker:
       - image: circleci/ruby:2.3.4
     steps:
-      - run: curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=$CIRCLE_TOKEN | grep -o 'https://[^"]*' > artifacts.txt
-      - run: <artifacts.txt xargs -P4 -I % wget %$CIRCLE_TOKEN
-      - run: ls
+      - attach_workspace:
+          at: ./workspace
+      - run: |
+        cc-test-reporter sum-coverage --output - --parts $PARTS ./workspace/coverage/codeclimate.*.json | cc-test-reporter upload-coverage --input -
+
 workflows:
   version: 2
   test-cc:
