@@ -86,6 +86,7 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       - run: ./cc-test-reporter format-coverage --output "tmp/workspace/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
+      - run: echo $CIRCLE_NODE_TOTAL > tmp/workspace/coverage/count.txt
 
       # Save artifacts
       - type: store_test_results
@@ -102,8 +103,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ./workspace
-      - run: |
-        cc-test-reporter sum-coverage --output - --parts $PARTS ./workspace/coverage/codeclimate.*.json | cc-test-reporter upload-coverage --input -
+      - run: cc-test-reporter sum-coverage --output - --parts $(cat ./workspace/coverage/count.txt) ./workspace/coverage/codeclimate.*.json | cc-test-reporter upload-coverage --input -
 workflows:
   version: 2
   test-cc:
