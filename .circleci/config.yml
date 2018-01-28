@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-job:
+  test-job:
     working_directory: ~/glassy-collections
     parallelism: 1
     docker:
@@ -101,15 +101,11 @@ jobs:
       - run: curl https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts?circle-token=$CIRCLE_TOKEN | grep -o 'https://[^"]*' > artifacts.txt
       - run: <artifacts.txt xargs -P4 -I % wget %$CIRCLE_TOKEN
       - run: ls
-
 workflows:
   version: 2
-  build-deploy:
+  test-cc:
     jobs:
-      - build-job
+      - test-job
       - upload-code-climate-job:
           requires:
-            - build-job
-          <%# filters: %>
-          <%#   branches: %>
-          <%#     only: master %>
+            - test-job
