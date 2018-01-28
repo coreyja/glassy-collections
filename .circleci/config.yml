@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test-job:
     working_directory: ~/glassy-collections
     parallelism: 1
     docker:
@@ -36,6 +36,10 @@ jobs:
             --force-exclusion \
             $(bundle exec rubocop --list-target-files | circleci tests split --split-by=filesize)
 
+      ## CodeClimate Code Coverage
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+
       ## Yarn
       # Restore Cache
       - restore_cache:
@@ -70,6 +74,8 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create db:schema:load --trace
 
+      - run: ./cc-test-reporter before-build
+
       # Run rspec in parallel
       - type: shell
         command: |
@@ -79,9 +85,33 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
+      - run: ./cc-test-reporter format-coverage --output "tmp/workspace/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
+      - run: echo $CIRCLE_NODE_TOTAL > tmp/workspace/coverage/count.txt
+
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-
+      - persist_to_workspace:
+          root: ./tmp/workspace
+          paths:
+            - coverage
+  upload-code-climate-job:
+    docker:
+      - image: circleci/ruby:2.3.4
+    steps:
+      - attach_workspace:
+          at: ./workspace
+      ## CodeClimate Code Coverage
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+      - run: ./cc-test-reporter sum-coverage --output - --parts $(cat ./workspace/coverage/count.txt) ./workspace/coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --input -
+workflows:
+  version: 2
+  test-cc:
+    jobs:
+      - test-job
+      - upload-code-climate-job:
+          requires:
+            - test-job
