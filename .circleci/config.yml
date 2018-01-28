@@ -103,6 +103,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ./workspace
+      ## CodeClimate Code Coverage
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
       - run: cc-test-reporter sum-coverage --output - --parts $(cat ./workspace/coverage/count.txt) ./workspace/coverage/codeclimate.*.json | cc-test-reporter upload-coverage --input -
 workflows:
   version: 2
