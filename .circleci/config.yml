@@ -96,7 +96,6 @@ jobs:
           root: ./tmp/workspace
           paths:
             - coverage
-
   upload-code-climate-job:
     docker:
       - image: circleci/ruby:2.3.4
@@ -105,7 +104,6 @@ jobs:
           at: ./workspace
       - run: |
         cc-test-reporter sum-coverage --output - --parts $PARTS ./workspace/coverage/codeclimate.*.json | cc-test-reporter upload-coverage --input -
-
 workflows:
   version: 2
   test-cc:
