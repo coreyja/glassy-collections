@@ -64,7 +64,7 @@ end
 group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
-  gem 'fuubar', '~> 2.0'
+  gem 'fuubar', '~> 2.3'
   gem 'rspec-rails', '~> 3.7.2'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
