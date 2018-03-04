@@ -21,7 +21,7 @@ jobs:
             - gem-cache-{{ checksum "Gemfile.lock" }}
             - gem-cache-date-{{ checksum "date-cache-key.txt" }}
       # Install
-      - run: bundle check || bundle install --path vendor/bundle
+      - run: bundle check --path vendor/bundle || bundle install --path vendor/bundle
       # Store Cache
       - save_cache:
           key: gem-cache-{{ checksum "Gemfile.lock" }}
