@@ -43,7 +43,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.1.0)
+    autoprefixer-rails (8.3.0)
       execjs
     aws-sdk (2.3.22)
       aws-sdk-resources (= 2.3.22)
