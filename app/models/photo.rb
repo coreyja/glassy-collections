@@ -14,8 +14,11 @@ class Photo < ApplicationRecord
 
   delegate :url, to: :photo
 
+  def base_64
+    Base64.encode64(Paperclip.io_adapters.for(photo).read.to_s)
+  end
+
   def data_uri(_style = nil)
-    base64 = Base64.encode64(Paperclip.io_adapters.for(photo).read.to_s).gsub(/\s+/, '')
-    "data:#{photo.content_type};base64,#{Rack::Utils.escape(base64)}"
+    "data:#{photo.content_type};base64,#{Rack::Utils.escape(base_64.gsub(/\s+/, ''))}"
   end
 end

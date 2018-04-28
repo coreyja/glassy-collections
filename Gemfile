@@ -23,7 +23,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0.0', group: :doc
+
+gem 'bootsnap', require: false
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
@@ -38,9 +40,10 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'imgkit'
 gem 'jwt'
 gem 'lodash-rails'
-gem 'omniauth'
-gem 'omniauth-instagram'
-gem 'paperclip', '~> 5.1.0'
+gem 'omniauth', '~> 1.8'
+gem 'omniauth-instagram', '~> 1.3'
+gem 'omniauth-oauth2', '~> 1.5'
+gem 'paperclip', '~> 5.2.1'
 gem 'puma'
 gem 'react-rails'
 gem 'render_anywhere', require: false
@@ -49,7 +52,7 @@ gem 'scenic'
 gem 'serviceworker-rails'
 gem 'simple_form'
 gem 'u2f'
-gem 'webpacker', '~> 3.0'
+gem 'webpacker', '~> 3.3'
 gem 'webpush'
 gem 'wkhtmltoimage-binary'
 
@@ -61,16 +64,13 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
-  end
   gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'timecop'
-
   gem 'factory_bot_rails'
-
-  gem 'fuubar', '~> 2.0'
+  gem 'fuubar', '~> 2.3'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'timecop'
 end
 
 group :development do
@@ -80,7 +80,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'pry-rails'
   gem 'pry-remote'
-  gem 'web-console', '~> 3.5'
+  gem 'web-console', '~> 3.6'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -93,6 +93,5 @@ group :test do
 end
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
