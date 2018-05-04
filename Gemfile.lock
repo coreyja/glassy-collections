@@ -122,7 +122,7 @@ GEM
       activesupport (>= 4.2.0)
     hash_attribute_assignment (0.0.5)
     hashie (3.5.7)
-    high_voltage (3.0.0)
+    high_voltage (3.1.0)
     hkdf (0.3.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -367,7 +367,7 @@ DEPENDENCIES
   font-awesome-sass
   fuubar (~> 2.3)
   hash_attribute_assignment
-  high_voltage (~> 3.0.0)
+  high_voltage (~> 3.1.0)
   imgkit
   jbuilder (~> 2.0)
   jquery-rails
