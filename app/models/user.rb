@@ -19,7 +19,7 @@ class User < ApplicationRecord
   def self.create_from_omniauth!(auth_hash)
     create!(
       name: auth_hash[:info][:nickname],
-      email: auth_hash[:info][:email] || "#{auth_hash[:info][:nickname]}@fake-oauth-email.instagram.dev",
+      email: auth_hash[:info][:email] || "#{auth_hash[:info][:nickname]}@fake-oauth-email.instagram.dev"
     )
   end
 

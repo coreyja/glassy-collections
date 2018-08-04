@@ -44,7 +44,7 @@ class GlassArtPiece < ApplicationRecord
           artist_ids: artist_ids,
           color_ids: color_ids,
           name: name,
-          wearable: true,
+          wearable: true
         }
       end
 

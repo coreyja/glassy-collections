@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User creates Pendant Record', js: true do
@@ -5,11 +7,12 @@ RSpec.describe 'User creates Pendant Record', js: true do
   let!(:pendant) { FactoryBot.create(:glass_art_piece, :wearable, name: 'Awesome Pendant', collection: user.collections.first) }
 
   let(:frozen_time) { Time.zone.parse('2017-09-17 12:00') }
+
   around do |example|
     Timecop.freeze(frozen_time) { example.run }
   end
 
-  scenario 'with required info from home page' do
+  it 'with required info from home page' do
     visit root_path(as: user)
 
     click_link 'Pendant Records'
@@ -21,7 +24,7 @@ RSpec.describe 'User creates Pendant Record', js: true do
     expect(page.find('.day[data-date="2017-09-17"]')).to have_content 'Awesome Pendant'
   end
 
-  scenario 'for forgotten record' do
+  it 'for forgotten record' do
     visit root_path(as: user)
 
     click_link 'Pendant Records'

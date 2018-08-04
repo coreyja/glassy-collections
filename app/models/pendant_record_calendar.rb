@@ -3,7 +3,7 @@
 class PendantRecordCalendar
   include HashAttributeAssignment
 
-  REQUIRED_KEYS = %i(user date).freeze
+  REQUIRED_KEYS = %i[user date].freeze
 
   def days
     @days ||= date_range.map { |day| CalendarDay.new user: user, date: day, date_range: date_range }
@@ -60,7 +60,7 @@ class PendantRecordCalendar
   class CalendarDay
     include HashAttributeAssignment
 
-    REQUIRED_KEYS = %i(user date date_range).freeze
+    REQUIRED_KEYS = %i[user date date_range].freeze
 
     attr_reader :date
 

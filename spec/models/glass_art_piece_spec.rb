@@ -4,6 +4,8 @@ require 'rails_helper'
 
 RSpec.describe GlassArtPiece, type: :model do
   describe '.search' do
+    subject { described_class.search(term) }
+
     let(:artist_group_1) { FactoryBot.create(:artist_group, artists: [artist_1, artist_3]) }
     let(:artist_group_2) { FactoryBot.create(:artist_group, artists: [artist_2]) }
     let(:artist_1) { FactoryBot.create(:artist, name: 'Aiuto') }
@@ -12,8 +14,6 @@ RSpec.describe GlassArtPiece, type: :model do
     let!(:glass_art_piece_1) { FactoryBot.create(:glass_art_piece, :wearable, artist_group: artist_group_1, name: 'Lizard on a Shroom') }
     let!(:glass_art_piece_2) { FactoryBot.create(:glass_art_piece, :wearable, artist_group: artist_group_1, name: 'Fumicello') }
     let!(:glass_art_piece_3) { FactoryBot.create(:glass_art_piece, :wearable, artist_group: artist_group_2, name: 'Wolf Head') }
-
-    subject { described_class.search(term) }
 
     context 'when the search term is in the artist name' do
       let(:term) { 'keep' }
@@ -50,9 +50,9 @@ RSpec.describe GlassArtPiece, type: :model do
   end
 
   describe '#to_s' do
-    let(:name) { 'PendantName' }
-
     subject { FactoryBot.create(:glass_art_piece, name: name) }
+
+    let(:name) { 'PendantName' }
 
     it 'returns the name of the glass_art_piece' do
       expect(subject.name).to eq 'PendantName'
@@ -60,8 +60,9 @@ RSpec.describe GlassArtPiece, type: :model do
   end
 
   describe '#artist_name' do
-    let(:artist_group) { FactoryBot.create(:artist_group, artists: FactoryBot.create_list(:artist, 2, name: 'Joe')) }
     subject { FactoryBot.create(:glass_art_piece, artist_group: artist_group) }
+
+    let(:artist_group) { FactoryBot.create(:artist_group, artists: FactoryBot.create_list(:artist, 2, name: 'Joe')) }
 
     it 'uses the names of the artists in the artist group' do
       expect(subject.artist_name).to eq 'Joe & Joe'
@@ -69,11 +70,11 @@ RSpec.describe GlassArtPiece, type: :model do
   end
 
   describe '#artist_ids=' do
+    subject { FactoryBot.create(:glass_art_piece) }
+
     let(:artist_ids) { [artist_1.id, artist_2.id] }
     let(:artist_1) { FactoryBot.create(:artist) }
     let(:artist_2) { FactoryBot.create(:artist) }
-
-    subject { FactoryBot.create(:glass_art_piece) }
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryBot.create(:artist) }
@@ -104,7 +105,7 @@ RSpec.describe GlassArtPiece, type: :model do
       context 'when provided with an artist_ids array' do
         let(:params) do
           {
-            artist_ids: artist_ids,
+            artist_ids: artist_ids
           }
         end
 
@@ -138,7 +139,7 @@ RSpec.describe GlassArtPiece, type: :model do
       context 'when given non-artist_ids params' do
         let(:params) do
           {
-            name: 'Pendnat Name',
+            name: 'Pendnat Name'
           }
         end
 

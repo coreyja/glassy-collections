@@ -11,7 +11,7 @@ class LastWeekInPendantsImage
   def html
     @html ||= render(
       partial: 'last_week_in_pendants/last_week_in_pendants',
-      locals: { pendant_records_by_day: pendant_records_by_day },
+      locals: { pendant_records_by_day: pendant_records_by_day }
     )
   end
 
@@ -27,7 +27,7 @@ class LastWeekInPendantsImage
     @pendant_records_by_day ||= day_range.map do |day|
       {
         day: start_date + day.days,
-        pendants: user.pendant_records.worn_on(start_date + day.days),
+        pendants: user.pendant_records.worn_on(start_date + day.days)
       }
     end
   end

@@ -47,7 +47,6 @@ gem 'paperclip', '~> 5.2.1'
 gem 'puma'
 gem 'react-rails'
 gem 'render_anywhere', require: false
-gem 'rubocop'
 gem 'scenic'
 gem 'serviceworker-rails'
 gem 'simple_form'
@@ -68,6 +67,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'fuubar', '~> 2.3'
   gem 'rspec-rails', '~> 3.7.2'
+  gem 'rubocop-coreyja', '0.2.0'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'timecop'

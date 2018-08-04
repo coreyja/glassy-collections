@@ -25,14 +25,14 @@ RSpec.describe 'ArtistsController', type: :request do
           {
             artist: {
               name: nil,
-              instagram_name: nil,
-            },
+              instagram_name: nil
+            }
           }
         end
 
         it 'does not create a new artist and rerenders' do
-          expect { post '/artists', params: authenticated_params }.
-            to change { Artist.count }.by(0)
+          expect { post '/artists', params: authenticated_params }
+            .to change(Artist, :count).by(0)
 
           expect(response).to have_http_status(200)
         end
@@ -42,14 +42,14 @@ RSpec.describe 'ArtistsController', type: :request do
         let(:params) do
           {
             artist: {
-              name: 'Artist Name',
-            },
+              name: 'Artist Name'
+            }
           }
         end
 
         it 'creates a new artist and redirects to index' do
-          expect { post '/artists', params: authenticated_params }.
-            to change { Artist.count }.by(1)
+          expect { post '/artists', params: authenticated_params }
+            .to change(Artist, :count).by(1)
 
           expect(response).to redirect_to artists_path
         end

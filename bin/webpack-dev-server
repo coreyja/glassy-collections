@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 $stdout.sync = true
 
 require 'shellwords'
@@ -29,7 +31,7 @@ begin
   HOSTNAME          = args('--host') || dev_server['host']
   PORT              = args('--port') || dev_server['port']
   HTTPS             = ARGV.include?('--https') || dev_server['https']
-  DEV_SERVER_ADDR   = "http#{'s' if HTTPS}://#{HOSTNAME}:#{PORT}".freeze
+  DEV_SERVER_ADDR   = "http#{'s' if HTTPS}://#{HOSTNAME}:#{PORT}"
   LISTEN_HOST_ADDR  = args('--listen-host') || DEFAULT_LISTEN_HOST_ADDR
 rescue Errno::ENOENT, NoMethodError
   $stdout.puts "Webpack dev_server configuration not found in #{CONFIG_FILE}."

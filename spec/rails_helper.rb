@@ -5,7 +5,7 @@ SimpleCov.start
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
@@ -72,12 +72,12 @@ end
 
 Capybara.register_driver(:headless_chrome) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu] },
+    chromeOptions: { args: %w[headless disable-gpu] }
   )
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    desired_capabilities: capabilities,
+    desired_capabilities: capabilities
   )
 end

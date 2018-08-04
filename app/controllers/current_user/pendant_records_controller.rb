@@ -30,7 +30,7 @@ module CurrentUser
     def calendar_hash
       {
         date: params[:date].try(:to_date) || Date.today,
-        user: current_user,
+        user: current_user
       }
     end
 

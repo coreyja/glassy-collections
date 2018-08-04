@@ -1,4 +1,8 @@
-inherit_from: .thoughtbot_rubocop.yml
+inherit_gem:
+  rubocop-coreyja:
+    - config/default.yml
+
+inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
@@ -10,7 +14,6 @@ AllCops:
     - 'node_modules/**/*'
 
 Metrics/LineLength:
-  Max: 120
   Exclude:
     - 'spec/**/*'
 
