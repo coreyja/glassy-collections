@@ -25,4 +25,4 @@ test:
 
 production:
   <<: *default
-  database: glassy-collections-prod
+  url: <%= ENV['DATABASE_URL'] %>
