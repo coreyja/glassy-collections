@@ -1,60 +1,8 @@
 {
   "name": "glassy-collections",
   "scripts": {
-  },
-  "env": {
-    "AWS_ACCESS_KEY_ID": {
-      "required": true
-    },
-    "AWS_SECRET_ACCESS_KEY": {
-      "required": true
-    },
-    "BUILDPACK_URL": {
-      "required": true
-    },
-    "LANG": {
-      "required": true
-    },
-    "PAPERCLIP_SECRET": {
-      "required": true
-    },
-    "RACK_ENV": {
-      "required": true
-    },
-    "RAILS_ENV": {
-      "required": true
-    },
-    "RAILS_SERVE_STATIC_FILES": {
-      "required": true
-    },
-    "S3_BUCKET_NAME": {
-      "required": true
-    },
-    "SECRET_KEY_BASE": {
-      "required": true
-    },
-    "SECRET_TOKEN": {
-      "required": true
-    },
-    "DEPLOY_TASKS": {
-      "description": "Rake tasks to run after deploying",
-      "value": "db:migrate"
-    }
-  },
-  "addons": [
-    "logentries",
-    "newrelic",
-    "heroku-postgresql"
-  ],
-  "buildpacks": [
-    {
-      "url": "urn:buildpack:heroku/nodejs"
-    },
-    {
-      "url": "urn:buildpack:heroku/ruby"
-    },
-    {
-      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
-    }
-  ]
+		"dokku": {
+			"postdeploy": "bundle exec rake db:migrate"
+		}
+	}
 }
