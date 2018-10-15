@@ -5,6 +5,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata &
 COPY Gemfile* /tmp/
 WORKDIR /tmp
 RUN bundle install --jobs 5 --retry 5 --without development test
+RUN yarn install
 
 RUN mkdir /app
 WORKDIR /app
