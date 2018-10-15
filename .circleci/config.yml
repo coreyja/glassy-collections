@@ -119,13 +119,13 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - "27:70:c5:09:00:c4:03:97:13:2e:f5:47:e4:a2:3f:97"
+          fingerprints:
+            - "27:70:c5:09:00:c4:03:97:13:2e:f5:47:e4:a2:3f:97"
       - checkout
       - run:
-        name: Deploy with git push
-        command: |
-          git push $GIT_DEPLOY_USERNAME@$GIT_DEPLOY_HOST:glassy-collections master
+          name: Deploy with git push
+          command: |
+            git push $GIT_DEPLOY_USERNAME@$GIT_DEPLOY_HOST:glassy-collections master
 workflows:
   version: 2
   test-cc:
