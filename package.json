@@ -1,6 +1,5 @@
 {
   "engines": {
-    "node": "10.x",
     "yarn": "1.x"
   },
   "dependencies": {
