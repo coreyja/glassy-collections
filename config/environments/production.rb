@@ -84,7 +84,6 @@ Rails.application.configure do
   Rails.application.config.secret_token = ENV['SECRET_TOKEN']
 
   # force HTTPS on production
-  config.force_ssl = true
   config.middleware.insert_before ActionDispatch::SSL, AcmeChallengeMiddleware
 
   config.paperclip_defaults = {
