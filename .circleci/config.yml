@@ -122,6 +122,8 @@ jobs:
           fingerprints:
             - "27:70:c5:09:00:c4:03:97:13:2e:f5:47:e4:a2:3f:97"
       - checkout
+      - run: |
+          echo 'dokku.coreyja.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBG2yW0ZfNQWo1fXW1Tca2rTJE9dcN+8uCadvIp0YSsrgFd/6qv14KCR+ClmmIpBqXQV04yjZ3b09P6APJrQm3wg=' >> ~/.ssh/known_hosts
       - run:
           name: Deploy with git push
           command: |
