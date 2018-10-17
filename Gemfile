@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.3.4'
+ruby '2.5.1'
 
 gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -80,7 +80,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'pry-rails'
   gem 'pry-remote'
-  gem 'web-console', '~> 3.6'
+  gem 'web-console', '~> 3.7'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

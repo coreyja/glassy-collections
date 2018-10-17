@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/glassy-collections
     parallelism: 1
     docker:
-      - image: circleci/ruby:2.3.4-node-browsers
+      - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
       - image: circleci/postgres:9.4.12-alpine
@@ -106,7 +106,7 @@ jobs:
             - coverage
   upload-code-climate-job:
     docker:
-      - image: circleci/ruby:2.3.4
+      - image: circleci/ruby:2.5.1
     steps:
       - attach_workspace:
           at: ./workspace
@@ -114,6 +114,20 @@ jobs:
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - run: chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter sum-coverage --output - --parts $(cat ./workspace/coverage/count.txt) ./workspace/coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --input -
+  deploy:
+    docker:
+      - image: circleci/ruby:2.5.1
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "27:70:c5:09:00:c4:03:97:13:2e:f5:47:e4:a2:3f:97"
+      - checkout
+      - run: |
+          echo 'dokku.coreyja.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBG2yW0ZfNQWo1fXW1Tca2rTJE9dcN+8uCadvIp0YSsrgFd/6qv14KCR+ClmmIpBqXQV04yjZ3b09P6APJrQm3wg=' >> ~/.ssh/known_hosts
+      - run:
+          name: Deploy with git push
+          command: |
+            git push $GIT_DEPLOY_USERNAME@$GIT_DEPLOY_HOST:glassy-collections master
 workflows:
   version: 2
   test-cc:
@@ -122,3 +136,10 @@ workflows:
       - upload-code-climate-job:
           requires:
             - test-job
+      - deploy:
+          requires:
+            - test-job
+            - upload-code-climate-job
+          filters:
+            branches:
+              only: master
