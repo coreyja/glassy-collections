@@ -127,7 +127,7 @@ GEM
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     imgkit (1.6.1)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jmespath (1.4.0)
@@ -369,7 +369,7 @@ DEPENDENCIES
   hash_attribute_assignment
   high_voltage (~> 3.1.0)
   imgkit
-  jbuilder (~> 2.0)
+  jbuilder (~> 2.8)
   jquery-rails
   jwt
   lodash-rails
