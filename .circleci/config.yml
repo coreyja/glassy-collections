@@ -86,17 +86,11 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-      - run: echo $CIRCLE_NODE_TOTAL > tmp/workspace/coverage/count.txt
-
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-      - persist_to_workspace:
-          root: ./tmp/workspace
-          paths:
-            - coverage
   deploy:
     docker:
       - image: circleci/ruby:2.5.1
