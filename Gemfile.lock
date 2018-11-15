@@ -127,6 +127,7 @@ GEM
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     imgkit (1.6.1)
+    jaro_winkler (1.5.1)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -185,7 +186,7 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.3)
     popper_js (1.14.3)
-    powerpack (0.1.1)
+    powerpack (0.1.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -263,14 +264,20 @@ GEM
     rspec-support (3.7.1)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (0.52.1)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-coreyja (0.2.0)
+      rubocop (= 0.58.2)
+      rubocop-rspec (= 1.27.0)
     rubocop-junit-formatter (0.1.4)
+    rubocop-rspec (1.27.0)
+      rubocop (>= 0.56.0)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
     sass (3.7.2)
@@ -388,7 +395,7 @@ DEPENDENCIES
   render_anywhere
   rspec-rails (~> 3.7.2)
   rspec_junit_formatter
-  rubocop
+  rubocop-coreyja (= 0.2.0)
   rubocop-junit-formatter
   sass-rails (~> 5.0)
   scenic

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User signs out' do
-  scenario 'signs out' do
+  it 'signs out' do
     sign_in
     sign_out
 

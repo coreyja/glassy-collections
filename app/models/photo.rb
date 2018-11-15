@@ -5,7 +5,7 @@ class Photo < ApplicationRecord
 
   has_attached_file :photo, styles: {
     medium: '300x300>',
-    thumb: '100x100>',
+    thumb: '100x100>'
   }, default_url: ActionController::Base.helpers.image_path('missing.png')
   process_in_background :photo
 

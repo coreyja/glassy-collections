@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User creates Artist' do
   let(:user) { FactoryBot.create(:user) }
 
-  scenario 'from home page with valid information' do
+  it 'from home page with valid information' do
     visit root_path(as: user)
     click_link 'Artists'
     click_link 'New Artist'

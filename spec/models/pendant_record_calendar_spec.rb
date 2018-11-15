@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe PendantRecordCalendar, type: :model do
+  subject { PendantRecordCalendar.new user: user, date: date }
+
   let(:user) { FactoryBot.create :user }
   let(:pendant) { FactoryBot.create :glass_art_piece, :wearable }
   let(:date) { Date.parse('2016-01-05') }
-
-  subject { PendantRecordCalendar.new user: user, date: date }
 
   it 'raises ArgumentError if not initialized with a User' do
     expect { PendantRecordCalendar.new date: Date.today }.to raise_error ArgumentError

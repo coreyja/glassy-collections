@@ -5,7 +5,7 @@ class Push
 
   include HashAttributeAssignment
 
-  REQUIRED_KEYS = %i(push_notification_subscription_id data).freeze
+  REQUIRED_KEYS = %i[push_notification_subscription_id data].freeze
 
   def perform
     Webpush.payload_send payload
@@ -21,7 +21,7 @@ class Push
     auth_params.merge(
       message: message,
       ttl: TTL,
-      api_key: Figaro.env.GCM_API_KEY,
+      api_key: Figaro.env.GCM_API_KEY
     )
   end
 

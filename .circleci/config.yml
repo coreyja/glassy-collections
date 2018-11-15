@@ -43,10 +43,6 @@ jobs:
             --force-exclusion \
             $(bundle exec rubocop --list-target-files | circleci tests split --split-by=filesize)
 
-      ## CodeClimate Code Coverage
-      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      - run: chmod +x ./cc-test-reporter
-
       ## Yarn
       # Restore Cache
       - restore_cache:
@@ -81,8 +77,6 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create db:schema:load --trace
 
-      - run: ./cc-test-reporter before-build
-
       # Run rspec in parallel
       - type: shell
         command: |
@@ -92,28 +86,11 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-      - run: ./cc-test-reporter format-coverage --output "tmp/workspace/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
-      - run: echo $CIRCLE_NODE_TOTAL > tmp/workspace/coverage/count.txt
-
       # Save artifacts
       - type: store_test_results
         path: /tmp/test-results
       - store_artifacts:
           path: ./tmp/screenshots
-      - persist_to_workspace:
-          root: ./tmp/workspace
-          paths:
-            - coverage
-  upload-code-climate-job:
-    docker:
-      - image: circleci/ruby:2.5.1
-    steps:
-      - attach_workspace:
-          at: ./workspace
-      ## CodeClimate Code Coverage
-      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      - run: chmod +x ./cc-test-reporter
-      - run: ./cc-test-reporter sum-coverage --output - --parts $(cat ./workspace/coverage/count.txt) ./workspace/coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --input -
   deploy:
     docker:
       - image: circleci/ruby:2.5.1
@@ -130,16 +107,12 @@ jobs:
             git push $GIT_DEPLOY_USERNAME@$GIT_DEPLOY_HOST:glassy-collections master
 workflows:
   version: 2
-  test-cc:
+  test-deploy:
     jobs:
       - test-job
-      - upload-code-climate-job:
-          requires:
-            - test-job
       - deploy:
           requires:
             - test-job
-            - upload-code-climate-job
           filters:
             branches:
               only: master

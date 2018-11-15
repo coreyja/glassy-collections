@@ -7,6 +7,7 @@ RSpec.describe Photo, type: :model do
     subject { FactoryBot.create(:photo, photo_content_type: 'image/jpeg') }
 
     let(:io_adapters) { double(for: double(read: 'CONTENT')) }
+
     before do
       allow(Paperclip).to receive(:io_adapters).and_return(io_adapters)
     end

@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe ArtistGroup, type: :model do
   describe 'artists uniqueness validation' do
+    subject { FactoryBot.build(:artist_group, artists: [artist_1, artist_2]) }
+
     let(:artist_1) { FactoryBot.create(:artist) }
     let(:artist_2) { FactoryBot.create(:artist) }
-
-    subject { FactoryBot.build(:artist_group, artists: [artist_1, artist_2]) }
 
     context 'when there is not already a persisted ArtistGroup' do
       it 'is valid' do
@@ -25,8 +25,9 @@ RSpec.describe ArtistGroup, type: :model do
   end
 
   describe '#collab?' do
-    let(:artists) { FactoryBot.create_list(:artist, artist_count) }
     subject { FactoryBot.create(:artist_group, artists: artists) }
+
+    let(:artists) { FactoryBot.create_list(:artist, artist_count) }
 
     context 'when there is only 1 artist' do
       let(:artist_count) { 1 }
@@ -77,10 +78,10 @@ RSpec.describe ArtistGroup, type: :model do
   end
 
   describe '.find_by_artist_ids' do
+    subject { described_class.find_by_artist_ids(artist_ids) }
+
     let(:artist_ids) { [artist.id] }
     let(:artist) { FactoryBot.create(:artist) }
-
-    subject { described_class.find_by_artist_ids(artist_ids) }
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryBot.create(:artist) }
@@ -101,10 +102,10 @@ RSpec.describe ArtistGroup, type: :model do
   end
 
   describe '.find_or_initialize_by_artist_ids' do
+    subject { described_class.find_or_initialize_by_artist_ids(artist_ids) }
+
     let(:artist_ids) { [artist.id] }
     let(:artist) { FactoryBot.create(:artist) }
-
-    subject { described_class.find_or_initialize_by_artist_ids(artist_ids) }
 
     context 'when an ArtistGroup with the artists does not exist' do
       let(:other_artist) { FactoryBot.create(:artist) }

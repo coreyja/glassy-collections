@@ -9,7 +9,7 @@ class PushNotificationSubscription < ApplicationRecord
     {
       endpoint: endpoint,
       p256dh: p256dh,
-      auth: auth,
+      auth: auth
     }
   end
 end

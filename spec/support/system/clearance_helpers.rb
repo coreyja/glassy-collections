@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module System
   module ClearanceHelpers
     def reset_password_for(email)

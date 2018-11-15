@@ -6,8 +6,8 @@ module CurrentUser
 
     def index
       @artists = artists.sort_by { |artist| artist.name.downcase }
-      @chart_data = Artist.where(id: artists).joins(:glass_art_pieces).
-        group('Artists.id', 'Artists.name').order('count_all DESC').limit(10).count.map { |k, v| [k.last, v] }
+      @chart_data = Artist.where(id: artists).joins(:glass_art_pieces)
+                          .group('Artists.id', 'Artists.name').order('count_all DESC').limit(10).count.map { |k, v| [k.last, v] }
     end
 
     private

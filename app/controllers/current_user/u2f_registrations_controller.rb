@@ -28,7 +28,7 @@ module CurrentUser
         certificate: reg.certificate,
         key_handle:  reg.key_handle,
         public_key:  reg.public_key,
-        counter:     reg.counter,
+        counter:     reg.counter
       )
 
       redirect_to root_path

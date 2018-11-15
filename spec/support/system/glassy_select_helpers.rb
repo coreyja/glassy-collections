@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module System
   module GlassySelectHelpers
     def fill_select_and_take_first_result(placeholder, query)

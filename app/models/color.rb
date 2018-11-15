@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Color < ApplicationRecord
   belongs_to :artist_group
   belongs_to :sample_photo, class_name: 'Photo'
@@ -22,7 +24,7 @@ class Color < ApplicationRecord
     def overrides
       {
         artist_ids: artist_ids,
-        name: name,
+        name: name
       }
     end
 

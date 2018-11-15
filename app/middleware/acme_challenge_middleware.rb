@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AcmeChallengeMiddleware
   def initialize(app)
     @app = app

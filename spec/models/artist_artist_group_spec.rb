@@ -5,9 +5,10 @@ require 'rails_helper'
 RSpec.describe ArtistArtistGroup, type: :model do
   context 'validations' do
     describe 'artist and artist_group uniqueness' do
+      subject { FactoryBot.build(:artist_artist_group, artist: artist, artist_group: artist_group) }
+
       let(:artist) { FactoryBot.create(:artist) }
       let(:artist_group) { FactoryBot.create(:artist_group) }
-      subject { FactoryBot.build(:artist_artist_group, artist: artist, artist_group: artist_group) }
 
       context 'with no existing records' do
         it 'is valid' do
