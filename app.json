@@ -2,8 +2,8 @@
   "name": "glassy-collections",
   "scripts": {
     "dokku": {
-      "predeploy": "RAILS_ENV=production bundle exec rake assets:precompile",
-      "postdeploy": "RAILS_ENV=production bundle exec rake db:migrate"
+      "predeploy": "RAILS_ENV=production RACK_ENV=production bundle exec rake assets:precompile",
+      "postdeploy": "RAILS_ENV=production RACK_ENV=production bundle exec rake db:migrate"
     }
   }
 }
