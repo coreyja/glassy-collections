@@ -4,10 +4,14 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('config/application', __dir__)
-require 'rubocop/rake_task'
 
 Rails.application.load_tasks
 
+require 'rubocop/rake_task'
 RuboCop::RakeTask.new
+if %w[development test].include? Rails.env
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
 
-task default: %i[rubocop spec]
+  task default: %i[rubocop spec]
+end
