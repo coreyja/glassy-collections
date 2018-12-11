@@ -124,7 +124,7 @@ GEM
     hashie (3.5.7)
     high_voltage (3.1.0)
     hkdf (0.3.0)
-    i18n (1.1.1)
+    i18n (1.2.0)
       concurrent-ruby (~> 1.0)
     imgkit (1.6.1)
     jaro_winkler (1.5.1)
