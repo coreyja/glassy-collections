@@ -29,7 +29,7 @@ gem 'bootsnap', require: false
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.3.0'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.2.1'
 gem 'chartkick'
 gem 'clearance'
 gem 'delayed_job_active_record'
