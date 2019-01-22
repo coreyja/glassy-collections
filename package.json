@@ -8,8 +8,8 @@
     "babel-preset-react": "^6.24.1",
     "create-react-class": "*",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-select": "1.0.0",
     "react_ujs": "^0.3.0"
   },
