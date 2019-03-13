@@ -118,7 +118,7 @@ GEM
     fuubar (2.3.2)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     hash_attribute_assignment (0.0.5)
     hashie (3.6.0)
