@@ -126,7 +126,7 @@ GEM
     hkdf (0.3.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    imgkit (1.6.1)
+    imgkit (1.6.2)
     jaro_winkler (1.5.2)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
