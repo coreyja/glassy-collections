@@ -67,7 +67,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'fuubar', '~> 2.3'
   gem 'rspec-rails', '~> 3.8.2'
-  gem 'rubocop-coreyja', '0.2.0'
+  gem 'rubocop-coreyja', '0.3.0'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'timecop'
