@@ -10,7 +10,7 @@
     "prop-types": "^15.7.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-select": "1.0.0",
+    "react-select": "2.4.2",
     "react_ujs": "^0.3.0"
   },
   "devDependencies": {
