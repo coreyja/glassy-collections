@@ -243,7 +243,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    regexp_parser (1.5.0)
+    regexp_parser (1.5.1)
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
     rspec-core (3.8.0)
