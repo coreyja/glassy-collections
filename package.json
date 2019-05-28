@@ -4,7 +4,7 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@rails/webpacker": "^3.0.1",
+    "@rails/webpacker": "^4.0.2",
     "babel-preset-react": "^6.24.1",
     "create-react-class": "*",
     "prop-types": "^15.7.2",
