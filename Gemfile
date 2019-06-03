@@ -65,7 +65,7 @@ end
 group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
-  gem 'fuubar', '~> 2.3'
+  gem 'fuubar', '~> 2.4'
   gem 'rspec-rails', '~> 3.8.2'
   gem 'rubocop-coreyja', '0.2.0'
   gem 'selenium-webdriver'
