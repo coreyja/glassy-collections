@@ -43,7 +43,7 @@ gem 'lodash-rails'
 gem 'omniauth', '~> 1.9'
 gem 'omniauth-instagram', '~> 1.3'
 gem 'omniauth-oauth2', '~> 1.6'
-gem 'paperclip', '~> 5.2.1'
+gem 'paperclip', '~> 6.1.0'
 gem 'puma'
 gem 'react-rails'
 gem 'render_anywhere', require: false
